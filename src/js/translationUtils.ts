@@ -54,7 +54,7 @@ export function getTranslatedData<T extends Locale, K extends DataKey<T>>(
 }
 
 /**
- * * Returns the translated route for a given locale and base route. Drop-in replacement for getRelativeLocaleUrl()
+ * Returns the translated route for a given locale and base route. Drop-in replacement for getRelativeLocaleUrl()
  * Tries to match the longest prefix first, then shorter, for most specific translation.
  * Uses the static routeTranslations object (not async).
  * @param locale - The target locale (e.g., "de")
@@ -64,9 +64,16 @@ export function getTranslatedData<T extends Locale, K extends DataKey<T>>(
  */
 export function getLocalizedRoute(
 	locale: (typeof locales)[number],
-	baseRoute: string,
+	baseRoute: string = "/",
 	options?: { baseLocale?: (typeof locales)[number] },
 ): string {
+	const isExternalLink = /^(https?:\/\/|mailto:|tel:|sms:)/i.test(baseRoute);
+	const isId = baseRoute.startsWith("#");
+	if (isExternalLink || isId) {
+		// base route is either external link or ID
+		return baseRoute;
+	}
+
 	const assumedBaseLocale = options?.baseLocale ?? defaultLocale;
 	const normalized = baseRoute.replace(/^\/?|\/?$/g, "");
 
