@@ -6,12 +6,9 @@
  */
 import { Icon } from "astro-icon/components";
 
-// utils
+import { languageSwitcherMap, locales } from "@/config/siteSettings.json";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedPathname } from "@/js/translationUtils";
-
-// config
-import { locales, languageSwitcherMap } from "@/config/siteSettings.json";
 
 interface Props {
 	class?: string; // any additional classes
@@ -32,7 +29,7 @@ const localizedPaths = Object.fromEntries(
 
 <div class:list={["mobile-lang__dropdown description group relative text-sm", className]} {...rest}>
 	<button
-		class="primary-focus mobile-lang__dropdown-button text-base-500 hover:text-base-600 dark:text-base-400 dark:hover:text-base-300 flex w-full flex-1 items-center justify-between gap-0.5 rounded-md px-4 py-2 text-left font-medium transition duration-300"
+		class="primary-focus mobile-lang__dropdown-button nav__link--base flex w-full flex-1 items-center justify-between gap-0.5 rounded-md px-4 py-2 text-left duration-300"
 		type="button"
 		aria-expanded="false"
 		aria-haspopup="true"
@@ -60,7 +57,7 @@ const localizedPaths = Object.fromEntries(
 				locales.map((lang) => (
 					<li class="flex w-full">
 						<a
-							class="primary-focus text-base-500 hover:text-base-600 dark:text-base-400 dark:hover:text-base-300 relative block w-full py-1 pl-8 leading-tight font-medium whitespace-nowrap transition"
+							class="primary-focus nav__link--base relative block w-full py-1 pl-8 leading-tight whitespace-nowrap"
 							href={localizedPaths[lang]}
 							aria-label={`Change language to ${lang.toUpperCase()}`}
 						>

@@ -1,12 +1,9 @@
 ---
-import { getLocalizedRoute } from "@/js/translationUtils";
 import { Icon } from "astro-icon/components";
 
-// utils
-import { getLocaleFromUrl } from "@/js/localeUtils";
-
-// data
 import { type navLinkItem } from "@/config/types/configDataTypes";
+import { getLocaleFromUrl } from "@/js/localeUtils";
+import { getLocalizedRoute } from "@/js/translationUtils";
 
 /**
  * Compares two paths ensuring they both have trailing slashes for consistency
@@ -49,7 +46,6 @@ const currentPath = comparePathsWithTrailingSlash(Astro.url.pathname, actualLink
 ---
 
 <a
-	role="menuitem"
 	class:list={[
 		`primary-focus nav__link--base relative flex h-10 w-full items-center gap-1.5 rounded-md px-4 py-2 ${className}`,
 		{

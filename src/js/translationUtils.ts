@@ -1,13 +1,14 @@
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { getCollection } from "astro:content";
 import type { DataEntryMap } from "astro:content";
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+import { defaultLocale, locales } from "@/config/siteSettings.json";
 import {
-	textTranslations,
 	dataTranslations,
-	routeTranslations,
 	localizedCollections,
+	routeTranslations,
+	textTranslations,
 } from "@/config/translationData.json";
-import { locales, defaultLocale } from "@/config/siteSettings.json";
 
 /**
  * * text translation helper function
@@ -74,8 +75,18 @@ export function getLocalizedRoute(
 		return baseRoute;
 	}
 
+	// Extract ID fragment if present
+	let fragment = "";
+	let routeWithoutFragment = baseRoute;
+	const fragmentIndex = baseRoute.indexOf("#");
+
+	if (fragmentIndex !== -1) {
+		fragment = baseRoute.slice(fragmentIndex);
+		routeWithoutFragment = baseRoute.slice(0, fragmentIndex);
+	}
+
 	const assumedBaseLocale = options?.baseLocale ?? defaultLocale;
-	const normalized = baseRoute.replace(/^\/?|\/?$/g, "");
+	const normalized = routeWithoutFragment.replace(/^\/?|\/?$/g, "");
 
 	// Special case: root route
 	if (normalized === "") {
@@ -110,7 +121,13 @@ export function getLocalizedRoute(
 		routePath = `${locale}/${routePath}`;
 	}
 
-	return `/${routePath.replace(/\\/g, "/")}/`;
+	// Combine the route path with the fragment
+	// If there's a fragment, ensure there's exactly one slash before it
+	if (fragment) {
+		return `/${routePath.replace(/\\/g, "/")}/` + fragment;
+	} else {
+		return `/${routePath.replace(/\\/g, "/")}/`;
+	}
 }
 
 // Module-level cache for dynamic route translations
