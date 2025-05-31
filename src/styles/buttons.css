@@ -11,12 +11,12 @@
 }
 
 .button--primary {
-	@apply text-primary-foreground bg-primary hover:bg-primary/80;
+	@apply text-primary-foreground bg-primary hover:bg-primary/90;
 }
 
 /* gradient version of primary button */
 .button--secondary {
-	@apply text-primary-foreground bg-secondary hover:bg-secondary/80;
+	@apply text-primary-foreground bg-secondary hover:bg-secondary/90;
 }
 
 .button--outline {
