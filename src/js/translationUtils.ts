@@ -90,6 +90,10 @@ export function getLocalizedRoute(
 
 	// Special case: root route
 	if (normalized === "") {
+		// If there's a fragment, make sure to include it
+		if (fragment) {
+			return locale === defaultLocale ? "/" + fragment : `/${locale}/` + fragment;
+		}
 		return locale === defaultLocale ? "/" : `/${locale}/`;
 	}
 
