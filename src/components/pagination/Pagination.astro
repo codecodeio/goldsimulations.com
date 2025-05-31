@@ -76,7 +76,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
 
 						if (pageNumber === currPage) {
 							return (
-								<div class="bg-primary-200/70 rounded-md p-2 font-medium">
+								<div class="bg-border rounded-md p-2 font-medium">
 									<div class="flex h-6 w-6 items-center justify-center">
 										{pageNumber.toString()}
 									</div>
@@ -88,7 +88,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
 							return (
 								<a
 									href={getLocalizedRoute(currLocale, basePath)}
-									class="hover:bg-primary-200/70 hidden rounded-md p-2 font-medium transition md:block"
+									class="hover:bg-border hidden rounded-md p-2 font-medium transition md:block"
 								>
 									<div class="flex h-6 w-6 items-center justify-center">
 										{pageNumber.toString()}
@@ -100,7 +100,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
 						return (
 							<a
 								href={getLocalizedRoute(currLocale, `${basePath}${pageNumber}/`)}
-								class="hover:bg-primary-200/70 hidden rounded-md p-2 font-medium transition md:block"
+								class="hover:bg-border hidden rounded-md p-2 font-medium transition md:block"
 							>
 								<div class="flex h-6 w-6 items-center justify-center">{pageNumber.toString()}</div>
 							</a>

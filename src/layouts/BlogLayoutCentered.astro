@@ -1,25 +1,23 @@
 ---
+import type { MarkdownHeading } from "astro";
 import { Image } from "astro:assets";
 import { type CollectionEntry, getEntries } from "astro:content";
 
 import Button from "@/components/button/Button.astro";
-import CategoryBadge from "@/components/category/CategoryBadge.astro";
-import ShareButtons from "@/components/share-buttons/ShareButtons.astro";
+import Category from "@/components/category/Category.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
-import { formatDate } from "@/js/textUtils";
-import { getLocalizedRoute } from "@/js/translationUtils";
-import { useTranslations } from "@/js/translationUtils";
+import { formatDate, humanize, slugify } from "@/js/textUtils";
+import { getLocalizedRoute, useTranslations } from "@/js/translationUtils";
 
-// main layout
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
 	post: CollectionEntry<"blog">;
-	headings?: import("astro").MarkdownHeading[];
+	headings: MarkdownHeading[];
 }
 
 const { post } = Astro.props as Props;
-const { title, description, authors, pubDate, categories, updatedDate, heroImage } = post.data;
+const { title, description, authors, categories, pubDate, updatedDate, heroImage } = post.data;
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(currLocale);
@@ -34,97 +32,95 @@ const authorsData = await getEntries(authors);
 	authorsData={authorsData}
 	postFrontmatter={post.data}
 >
-	<article class="site-container" aria-labelledby="article-title">
-		<!-- Hero Section -->
-		<div class="relative mx-auto max-w-4xl pt-10">
-			<div class="mb-8 flex flex-wrap justify-center gap-3">
-				{categories && categories.map((category) => <CategoryBadge category={category} />)}
-			</div>
+	<article class="site-container mt-24">
+		<!-- Blog post info -->
+		<div class="flex w-full flex-col items-center">
+			<div class="mx-auto flex w-full max-w-[800px]">
+				<div class="mx-auto text-center">
+					<!-- Categories -->
+					<div class="flex justify-center gap-4">
+						{categories.map((category) => <Category category={category} />)}
+					</div>
 
-			<h1 id="article-title" class="h2 mb-6 text-center text-pretty">
-				{title}
-			</h1>
+					<!-- title -->
+					<h1 class="h1 mt-6">{title}</h1>
 
-			<p class="text-muted-foreground mx-auto mb-8 max-w-3xl text-center md:text-lg">
-				{description}
-			</p>
-
-			<!-- Article Meta -->
-			<div class="mb-10 flex flex-col items-center justify-center">
-				<div class="flex items-center gap-4">
-					{
-						authorsData.map((author) => (
-							<a
-								href={author.data.authorLink}
-								class="group flex items-center gap-3"
-								aria-label={`Author: ${author.data.name}`}
-							>
-								<div class="size-12 overflow-hidden rounded-full border">
-									<Image
-										src={author.data.avatar}
-										alt={author.data.name}
-										loading="eager"
-										width={100}
-										class="h-full w-full object-cover"
-									/>
+					<div
+						class="text-muted-foreground mt-6 flex w-full flex-wrap items-center justify-center gap-3 font-medium"
+					>
+						<!-- author info -->
+						{
+							authorsData.map((authorData) => (
+								<div class="mb-auto flex">
+									<figure class="aspect-square size-8 overflow-clip rounded-full">
+										<Image
+											src={authorData.data.avatar}
+											alt={`${authorData.data.name} avatar`}
+											width={100}
+											quality="high"
+											loading="eager"
+											class="h-full w-full rounded-full object-cover"
+										/>
+									</figure>
+									<div class="my-auto ml-2">{authorData.data.name}</div>
 								</div>
-								<div>
-									<span class="group-hover:text-primary-text block font-medium transition-colors">
-										{author.data.name}
-									</span>
-									<div class="text-muted-foreground flex items-center gap-2 text-sm">
-										<time datetime={pubDate.toISOString()}>{formatDate(pubDate, currLocale)}</time>
-										{updatedDate && (
-											<>
-												<span>•</span>
-												<span>
-													{t("updated")}: {formatDate(updatedDate, currLocale)}
-												</span>
-											</>
-										)}
-									</div>
-								</div>
-							</a>
-						))
-					}
+							))
+						}
+
+						<span>&bull;</span>
+
+						<!-- Date -->
+						<time class="my-auto h-full" datetime={pubDate.toISOString()}
+							>{formatDate(pubDate, currLocale)}
+						</time>
+					</div>
 				</div>
 			</div>
+
+			<!-- blog post main image -->
+			{
+				heroImage && (
+					<div class="mt-6 max-w-[1000px] overflow-hidden rounded-lg md:rounded-xl">
+						<Image
+							src={heroImage}
+							alt={`Cover for ${title}`}
+							width={1000}
+							densities={[1.5, 2]}
+							quality="high"
+							class="max-h-[70vh] rounded-lg object-cover md:rounded-xl"
+							loading="eager"
+							format="webp"
+							transition:name={`post-image-${post.id}`}
+						/>
+					</div>
+				)
+			}
 		</div>
 
-		<!-- Featured Image -->
-		{
-			heroImage && (
-				<div class="mx-auto mb-12 max-w-4xl overflow-hidden rounded-2xl">
-					<Image
-						src={heroImage}
-						alt={`Featured image for article: ${title}`}
-						loading="eager"
-						class="h-auto w-full object-cover"
-						width={1000}
-						densities={[1.5, 2]}
-					/>
+		<!-- article content -->
+		<div class="mt-10 w-full">
+			<div class="mx-auto max-w-2xl">
+				<div class="text-base-content text-base">
+					{
+						updatedDate && (
+							<div class="text-muted-foreground mb-6 italic">
+								<time datetime={updatedDate.toISOString()}>
+									{t("updated")}: {formatDate(updatedDate, currLocale)}
+								</time>
+							</div>
+						)
+					}
+					<section id="blog-post-content" class="markdown-content mx-auto">
+						<slot />
+					</section>
+
+					<!-- button to go back to all posts -->
+					<div class="mt-16 flex justify-center">
+						<Button variant="primary" href={getLocalizedRoute(currLocale, "/blog")}>
+							{t("back_to_all_posts")}
+						</Button>
+					</div>
 				</div>
-			)
-		}
-
-		<!-- Content Section -->
-		<div class="mx-auto max-w-3xl pb-16">
-			<!-- Article Content -->
-			<div class="markdown-content">
-				<slot />
-			</div>
-
-			<!-- After Content Section -->
-			<div class="mt-16 flex justify-between border-t pt-8 text-center">
-				<!-- Share Links -->
-				<div class="mb-8 flex items-center gap-3">
-					<span class="text-muted-foreground text-sm">{t("share_this_article")}:</span>
-					<ShareButtons title={title} url={Astro.url} />
-				</div>
-
-				<Button href={getLocalizedRoute(currLocale, "/blog")} variant="secondary" arrow="left">
-					{t("back_to_all_posts")}
-				</Button>
 			</div>
 		</div>
 	</article>

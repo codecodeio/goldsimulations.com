@@ -20,7 +20,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
 			href={getLocalizedRoute(currLocale, `/categories/${slugify(category)}/`)}
 			class:list={["w-auto", className]}
 		>
-			<div class="bg-muted/50 hover:bg-primary-400 hover:text-primary-foreground/80 rounded-full px-4 py-3 text-sm tracking-tighter transition-colors duration-200 md:px-6 md:py-3.5">
+			<div class="bg-muted hover:bg-primary hover:text-primary-foreground rounded-md px-4 py-2 text-sm transition-colors duration-200 md:px-6 md:py-2.5">
 				{humanize(category)}
 				{count !== undefined && <span class="mt-0.5 ml-1 text-xs opacity-70">({count})</span>}
 			</div>
