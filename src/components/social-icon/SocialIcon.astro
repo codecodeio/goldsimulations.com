@@ -15,7 +15,7 @@ const { icon, social, href } = Astro.props as Props;
 	href={href}
 	target="_blank"
 	rel="noopener noreferrer"
-	class="hover:border-primary hover:text-primary border-muted-foreground/20 rounded-full border p-2 transition-colors"
+	class="hover:text-muted-foreground border-muted-foreground/20 rounded-full border p-2 transition-colors"
 >
 	<p class="sr-only">{social}</p>
 	<Icon name={icon} class="size-5 transition-colors" aria-hidden="true" />

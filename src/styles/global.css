@@ -45,6 +45,11 @@
 		--border: var(--color-base-200);
 		--input: var(--color-base-200);
 		--outline: var(--color-primary-600);
+
+		/* commonly used tailwind variables to change your whole design */
+		--default-transition-duration: 0.2s;
+		--radius: 0.65rem;
+		--spacing: 0.25rem;
 	}
 
 	.dark {

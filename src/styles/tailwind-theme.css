@@ -113,9 +113,4 @@
 	--radius-xl: calc(var(--radius) + 0.25rem);
 	--radius-2xl: calc(var(--radius) + 0.5rem);
 	--radius-3xl: calc(var(--radius) + 1rem);
-
-	/* commonly used tailwind variables to change your whole design */
-	--default-transition-duration: 0.2s;
-	--radius: 0.65rem;
-	--spacing: 0.25rem;
 }

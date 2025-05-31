@@ -20,7 +20,7 @@ const blogCollection = defineCollection({
 				.or(z.date())
 				.optional()
 				.transform((str) => (str ? new Date(str) : undefined)),
-			heroImage: image(),
+			heroImage: image().optional(),
 			categories: z.array(z.string()),
 			// mappingKey allows you to match entries across languages for SEO purposes
 			mappingKey: z.string().optional(),
@@ -42,6 +42,22 @@ const authorsCollection = defineCollection({
 		}),
 });
 
+// services collection
+const servicesCollection = defineCollection({
+	loader: glob({ pattern: "**/[^_]*{md,mdx}", base: "./src/data/services" }),
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			titleLong: z.string(),
+			description: z.string(),
+			icon: z.string(),
+			image: image(),
+			mappingKey: z.string().optional(),
+			order: z.number().optional(),
+			draft: z.boolean().optional(),
+		}),
+});
+
 // other pages
 const otherPagesCollection = defineCollection({
 	loader: glob({ pattern: "**/[^_]*{md,mdx}", base: "./src/data/otherPages" }),
@@ -59,4 +75,5 @@ export const collections = {
 	blog: blogCollection,
 	authors: authorsCollection,
 	otherPages: otherPagesCollection,
+	services: servicesCollection,
 };
