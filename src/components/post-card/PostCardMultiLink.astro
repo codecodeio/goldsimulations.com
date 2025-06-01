@@ -68,11 +68,10 @@ const authorsData = await getEntries(authors);
 
 		<!-- title -->
 		<div class="mt-2">
-			<a
-				href={getLocalizedRoute(currLocale, `/blog/${post.id}/`)}
-				class="hover:text-primary transition-colors"
-			>
-				<h2 class="font-heading text-lg font-semibold md:text-2xl">
+			<a href={getLocalizedRoute(currLocale, `/blog/${post.id}/`)} class="group transition-colors">
+				<h2
+					class="font-heading border-primary/0 group-hover:border-primary inline border-b-2 text-lg font-semibold transition-colors md:text-2xl"
+				>
 					{title}
 				</h2>
 			</a>

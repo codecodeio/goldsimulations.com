@@ -61,7 +61,7 @@
 		--popover: var(--color-base-950);
 		--popover-foreground: var(--color-base-50);
 		--primary: var(--color-primary-700);
-		--primary-text: var(--color-primary-300);
+		--primary-text: var(--color-primary-400);
 		--primary-foreground: var(--color-base-50);
 		--secondary: var(--color-fuchsia-300);
 		--secondary-foreground: var(--color-base-950);
@@ -103,7 +103,7 @@
 
 @layer components {
 	.site-container {
-		@apply mx-auto max-w-[90rem] px-4;
+		@apply mx-auto max-w-[86rem] px-4;
 	}
 
 	/* styles navbar links */
