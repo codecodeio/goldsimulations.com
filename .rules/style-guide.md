@@ -24,7 +24,7 @@ Tailwind generates utility classes for colors defined in your theme. For example
 
 - **Primary Actions (Buttons, Links)**:
   - Button: `<button class="bg-primary text-primary-foreground hover:bg-primary-dark px-4 py-2 rounded-md">Action</button>`
-  - Link: `<a href="#" class="text-primary hover:text-primary-dark underline">Primary Link</a>`
+  - Link: `<a href="#" class="text-primary-text hover:text-primary-dark underline">Primary Link</a>` (Note: Use `text-primary-text` for primary-colored text to ensure accessibility, especially in dark mode, instead of `text-primary` which is intended for backgrounds or borders.)
 - **Secondary Actions**:
   - Button: `<button class="bg-secondary text-secondary-foreground hover:bg-opacity-80 border border-border px-4 py-2 rounded-md">Secondary</button>`
 - **Muted Elements/Text**: `<p class="text-muted-foreground text-sm">This is help text.</p>`

@@ -3,7 +3,6 @@ import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
 
 import Button from "@/components/button/Button.astro";
-import Divider from "@/components/divider/Divider.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
 
@@ -18,8 +17,7 @@ const t = useTranslations(currLocale);
 ---
 
 <div class="flex" {...rest}>
-	<Divider orientation="vertical" />
-	<div class="ml-8">
+	<div class="border-l-primary border-l-2 pl-8">
 		<div class="relative mr-auto flex size-18 items-center justify-center">
 			<div
 				class="icon-gradient-border from-primary-500/80 via-primary-500/10 to-primary-500/80 absolute inset-0 rounded-full bg-gradient-to-r"

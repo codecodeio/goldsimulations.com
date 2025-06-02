@@ -3,7 +3,6 @@ import doctorImage from "@images/card_bg-min.png"; // Use a doctor image for the
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
-import Divider from "@/components/divider/Divider.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 
 const currLocale = getLocaleFromUrl(Astro.url);
@@ -58,21 +57,18 @@ const aboutCardsData = [
 
 		<div class="flex flex-col justify-between gap-8 md:py-10" data-aos="fade-left">
 			{
-				aboutCardsData.map((card, idx) => (
-					<>
-						{idx > 0 && <Divider />}
-						<div class="">
-							<div class="flex items-center gap-4">
-								<div class="shrink-0">
-									<Icon name={card.icon} class="text-accent-500/80 size-14" />
-								</div>
-								<div>
-									<h3 class="text-primary h2">{card.title}</h3>
-								</div>
+				aboutCardsData.map((card) => (
+					<div class="">
+						<div class="flex items-center gap-4">
+							<div class="shrink-0">
+								<Icon name={card.icon} class="text-accent-500/80 size-14" />
 							</div>
-							<p class="text-muted-foreground mt-4 md:text-lg">{card.description}</p>
+							<div>
+								<h3 class="text-primary h2">{card.title}</h3>
+							</div>
 						</div>
-					</>
+						<p class="text-muted-foreground mt-4 md:text-lg">{card.description}</p>
+					</div>
 				))
 			}
 		</div>

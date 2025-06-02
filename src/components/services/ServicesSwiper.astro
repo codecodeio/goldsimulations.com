@@ -6,7 +6,6 @@ import ArrowRight from "@tabler/icons/outline/arrow-right.svg";
 import { type CollectionEntry, getCollection } from "astro:content";
 
 import Button from "@/components/button/Button.astro";
-import Divider from "@/components/divider/Divider.astro";
 import { filterCollectionByLanguage, getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, useTranslations } from "@/js/translationUtils";
 
@@ -47,15 +46,14 @@ const orderedServices = filteredServices.sort((a, b) => {
 
 <section
 	id="services-swiper"
-	class="from-primary-500/20 to-background my-12 rounded-t-2xl bg-gradient-to-b py-12 md:rounded-t-3xl"
+	class="bg-background my-12 rounded-t-2xl py-12 md:rounded-t-3xl"
 >
 	<div class="site-container md:gap-12">
 		<div class="grid items-center gap-4 md:grid-cols-2 md:gap-8">
 			<h2 class="h2">Our Services</h2>
-			<Divider class="hidden md:block" />
 		</div>
 		<div class="mt-6 grid items-center gap-4 md:grid-cols-2 md:gap-8">
-			<h3 class="text-primary h1 mr-auto max-w-xl">
+			<h3 class="text-foreground h1 mr-auto max-w-xl">
 				A Team Of Expert Doctors Specializing In Primary Care
 			</h3>
 			<Button href="/services" class="mt-auto md:ml-auto" arrow="right"> View All Services </Button>
@@ -74,7 +72,7 @@ const orderedServices = filteredServices.sort((a, b) => {
 				<button
 					aria-label="Previous slide"
 					class:list={[
-						"services-swiper-button-prev border-primary text-primary not-disabled:hover:bg-primary not-disabled:hover:text-primary-foreground",
+						"services-swiper-button-prev border-border text-foreground not-disabled:hover:bg-muted not-disabled:hover:text-muted-foreground",
 						"rounded-full border-2 p-3 transition not-disabled:hover:text-base disabled:cursor-not-allowed disabled:opacity-50",
 					]}
 				>
@@ -83,7 +81,7 @@ const orderedServices = filteredServices.sort((a, b) => {
 				<button
 					aria-label="Next slide"
 					class:list={[
-						"services-swiper-button-next border-primary text-primary not-disabled:hover:bg-primary not-disabled:hover:text-primary-foreground",
+						"services-swiper-button-next border-border text-foreground not-disabled:hover:bg-muted not-disabled:hover:text-muted-foreground",
 						"rounded-full border-2 p-3 transition not-disabled:hover:text-base disabled:cursor-not-allowed disabled:opacity-50",
 					]}
 				>

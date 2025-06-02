@@ -2,7 +2,6 @@
 import building from "@images/building-2-min.png";
 import { Image } from "astro:assets";
 
-import Divider from "@/components/divider/Divider.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
 
@@ -46,7 +45,6 @@ const stats: StatItem[] = [
 			<div class="space-y-4">
 				<div class="flex items-center gap-4 md:gap-12">
 					<h2 class="h2 whitespace-nowrap">About Us</h2>
-					<Divider class="mr-16" />
 				</div>
 				<h2 class="text-primary h1 mr-auto max-w-lg">
 					To Improve Your <span class="text-accent-500/80">Health</span>

@@ -1,5 +1,4 @@
 ---
-import Divider from "@/components/divider/Divider.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
@@ -8,11 +7,6 @@ const t = useTranslations(currLocale);
 ---
 
 <section id="contact" class="site-container my-20 scroll-mt-20 md:my-32">
-	<!-- <div class="grid items-center gap-4 md:grid-cols-2 md:gap-8">
-		<h2 class="h2">We Are Accepting New Patients</h2>
-		<Divider class="hidden md:block" />
-	</div> -->
-
 	<div class="mt-6 grid gap-10 lg:grid-cols-2">
 		<div class="">
 			<h2 class="h1 text-primary">Book Your Appointment</h2>

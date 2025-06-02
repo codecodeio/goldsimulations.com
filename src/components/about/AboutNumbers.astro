@@ -2,7 +2,6 @@
 import background from "@images/about/numbers_bg-2-min.png";
 import { Image } from "astro:assets";
 
-import Divider from "@/components/divider/Divider.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
 
@@ -42,14 +41,14 @@ const stats: StatItem[] = [
 				alt="Space Coast Medicine Statistical Background"
 				width={1400}
 				densities={[1.5, 2]}
-				class="h-full w-full object-cover"
+				class="h-full w-full object-cover grayscale"
 			/>
 		</div>
-		<div class="bg-primary/60 absolute inset-0 z-10"></div>
+		<div class="bg-background/75 absolute inset-0 z-10"></div>
 		<div class="site-container relative z-20">
 			<div
 				id="about-numbers-trigger"
-				class="md:divide-background grid grid-cols-2 gap-6 text-center md:grid-cols-4 md:gap-0 md:divide-x"
+				class="grid grid-cols-2 gap-6 text-center md:grid-cols-4 md:gap-0 md:divide-x md:divide-border"
 			>
 				{
 					stats.map((stat, index) => (
@@ -59,8 +58,8 @@ const stats: StatItem[] = [
 							data-aos-trigger="#about-numbers-trigger"
 							data-aos-delay={index * 0.15}
 						>
-							<p class="text-base-50 text-5xl md:text-6xl">{stat.value}</p>
-							<p class="text-base-50 text-lg md:text-xl">{stat.label}</p>
+							<p class="text-foreground text-5xl md:text-6xl">{stat.value}</p>
+							<p class="text-foreground text-lg md:text-xl">{stat.label}</p>
 						</div>
 					))
 				}
