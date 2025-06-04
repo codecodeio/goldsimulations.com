@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
+import Badge from "@/components/badge/Badge.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(currLocale);
@@ -44,9 +45,10 @@ const stats: StatItem[] = [
 		<div class="order-1 md:order-2">
 			<div class="space-y-4">
 				<div class="flex items-center gap-4 md:gap-12">
-					<h2 class="h2 whitespace-nowrap">About Us</h2>
+					<!-- <h2 class="h2 ">About Us</h2> -->
+					<Badge class="whitespace-nowrap">About Us</Badge>
 				</div>
-				<h2 class="text-primary-text h1 mr-auto max-w-lg">To Improve Your Health</h2>
+				<h2 class="h1 mr-auto max-w-lg">To Improve Your Health</h2>
 			</div>
 
 			<p class="mt-6 leading-relaxed md:text-lg">
@@ -60,7 +62,7 @@ const stats: StatItem[] = [
 				{
 					stats.map((stat) => (
 						<div class="space-y-1.5 pr-6">
-							<p class="text-primary-text font-heading text-4xl font-extrabold md:text-5xl">
+							<p class="text-primary-text font-heading text-4xl font-semibold md:text-5xl">
 								{stat.value}
 							</p>
 							<p class="">{stat.label}</p>

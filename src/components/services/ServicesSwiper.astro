@@ -8,6 +8,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import Button from "@/components/button/Button.astro";
 import { filterCollectionByLanguage, getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, useTranslations } from "@/js/translationUtils";
+import Badge from "@/components/badge/Badge.astro";
 
 import SwiperSlide from "./ServicesSwiperSlide.astro";
 
@@ -44,13 +45,10 @@ const orderedServices = filteredServices.sort((a, b) => {
 });
 ---
 
-<section
-	id="services-swiper"
-	class="bg-background my-12 rounded-t-2xl py-12 md:rounded-t-3xl"
->
+<section id="services-swiper" class="bg-background my-12 rounded-t-2xl py-12 md:rounded-t-3xl">
 	<div class="site-container md:gap-12">
 		<div class="grid items-center gap-4 md:grid-cols-2 md:gap-8">
-			<h2 class="h2">Our Services</h2>
+			<Badge>Our Services</Badge>
 		</div>
 		<div class="mt-6 grid items-center gap-4 md:grid-cols-2 md:gap-8">
 			<h3 class="text-foreground h1 mr-auto max-w-xl">

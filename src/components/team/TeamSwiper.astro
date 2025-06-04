@@ -2,7 +2,6 @@
 import "swiper/css";
 
 // Import doctor images (adjust paths as needed)
-import doctor1 from "@images/team/doctor_1.png";
 import doctor2 from "@images/team/doctor_2.png";
 import doctor3 from "@images/team/doctor_3.png";
 import doctor4 from "@images/team/doctor_4.png";
@@ -14,6 +13,7 @@ import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
 
 import SwiperSlide from "./TeamSwiperSlide.astro";
+import Badge from "../badge/Badge.astro";
 
 const teamData: { name: string; specialty: string; description: string; image?: ImageMetadata }[] =
 	[
@@ -50,7 +50,7 @@ const t = useTranslations(currLocale);
 <section id="team-swiper">
 	<div class="site-container py-12 md:gap-12 lg:py-20">
 		<div class="grid items-center gap-4 md:grid-cols-2 md:gap-8">
-			<h2 class="h2">Meet Our Providers</h2>
+			<Badge>Meet Our Providers</Badge>
 		</div>
 		<div class="mt-6 grid items-center gap-4 md:grid-cols-2 md:gap-8">
 			<h3 class="text-foreground h1 mr-auto max-w-xl">

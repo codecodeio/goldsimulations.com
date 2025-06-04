@@ -124,8 +124,8 @@ const navConfig: navItem[] = [
 				link: "/",
 			},
 			{
-				text: "Landing Two",
-				link: "/examples/landing-2",
+				text: "Services Landing",
+				link: "/examples/landing-services",
 			},
 			{
 				text: "Landing Three",

@@ -48,12 +48,12 @@ const stats: StatItem[] = [
 		<div class="site-container relative z-20">
 			<div
 				id="about-numbers-trigger"
-				class="grid grid-cols-2 gap-6 text-center md:grid-cols-4 md:gap-0 md:divide-x md:divide-border"
+				class="md:divide-border grid grid-cols-2 gap-6 text-center md:grid-cols-4 md:gap-0 md:divide-x"
 			>
 				{
 					stats.map((stat, index) => (
 						<div
-							class="font-heading space-y-1.5 py-10 font-extrabold md:px-4"
+							class="font-heading space-y-1.5 py-10 font-semibold md:px-4"
 							data-aos="fade-up"
 							data-aos-trigger="#about-numbers-trigger"
 							data-aos-delay={index * 0.15}

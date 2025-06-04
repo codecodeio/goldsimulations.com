@@ -2,10 +2,8 @@
 import AboutNumbers from "@/components/about/AboutNumbersImage.astro";
 import Contact from "@/components/contact/Contact.astro";
 import ContactCentered from "@/components/contact/ContactCentered.astro";
-import FaqAccordionsLarge from "@/components/faq/FaqAccordionsLarge.astro";
 import FaqAccordionsSideImage from "@/components/faq/FaqAccordionsSideImage.astro";
 import HeroShapes from "@/components/hero/HeroShapes.astro";
-import HeroSquiggles from "@/components/hero/HeroSquiggles.astro";
 import ServicesCards from "@/components/services/ServicesCards.astro";
 import ServicesSwiper from "@/components/services/ServicesSwiper.astro";
 import TeamSwiper from "@/components/team/TeamSwiper.astro";
@@ -21,20 +19,18 @@ const siteData = getTranslatedData("siteData", currLocale);
 
 <BaseLayout title={siteData.title} description={siteData.description}>
 	<HeroShapes />
-	<HeroSquiggles />
 
 	<TeamSwiper />
 	<AboutNumbers />
 
-	<ServicesSwiper />
-	<!-- <ServicesCards /> -->
+	<!-- <ServicesSwiper /> -->
+	<ServicesCards />
 
-	<TestimonialsSideImage />
-	<!-- <TestimonialsSwiper /> -->
+	<!-- <TestimonialsSideImage /> -->
+	<TestimonialsSwiper />
 
-	<!-- <Contact /> -->
-	<ContactCentered />
+	<Contact />
+	<!-- <ContactCentered /> -->
 
-	<!-- <FaqAccordionsLarge /> -->
 	<FaqAccordionsSideImage />
 </BaseLayout>

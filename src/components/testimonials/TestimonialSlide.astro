@@ -13,11 +13,11 @@ const t = useTranslations(currLocale);
 ---
 
 <figure
-	class="bg-base border-primary-500 hover:border-primary group hover:bg-primary flex max-w-md flex-col gap-4 rounded-xl border-2 p-6 shadow-md transition-colors"
+	class="group hover:bg-muted flex max-w-md flex-col gap-4 rounded-xl border-2 p-6 shadow-md transition-colors"
 	aria-label="Testimonial"
 >
 	<!-- 5 star icons -->
-	<div class="text-primary group-hover:text-primary-foreground flex gap-1 transition-colors">
+	<div class="text-primary-text flex gap-1 transition-colors">
 		<Icon name="tabler/star-filled" />
 		<Icon name="tabler/star-filled" />
 		<Icon name="tabler/star-filled" />
@@ -25,17 +25,11 @@ const t = useTranslations(currLocale);
 		<Icon name="tabler/star-filled" />
 	</div>
 
-	<blockquote
-		class="group-hover:text-primary-foreground mt-3 max-w-xs italic transition-colors md:max-w-md"
-	>
+	<blockquote class="mt-3 max-w-xs italic transition-colors md:max-w-md">
 		<span>"{testimonial}"</span>
 	</blockquote>
 	<figcaption class="mt-2">
-		<div
-			class="text-primary font-heading group-hover:text-primary-foreground text-lg font-extrabold transition-colors"
-		>
-			{name}
-		</div>
-		<div class="group-hover:text-primary-foreground font-medium transition-colors">{title}</div>
+		<div class="text-primary-text font-heading text-lg font-semibold transition-colors">{name}</div>
+		<div class="font-medium transition-colors">{title}</div>
 	</figcaption>
 </figure>
