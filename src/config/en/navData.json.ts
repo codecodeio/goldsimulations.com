@@ -156,6 +156,10 @@ const navConfig: navItem[] = [
 				link: "/examples/blog-post-2",
 			},
 			{
+				text: "Authors",
+				link: "/authors/main-author",
+			},
+			{
 				text: "Categories",
 				link: "/categories",
 			},
