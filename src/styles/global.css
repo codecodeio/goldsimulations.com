@@ -46,8 +46,8 @@
 		--muted-foreground: var(--color-base-700);
 
 		/* Accents like hover effects on <SelectItem> */
-		--accent: var(--color-base-200);
-		--accent-foreground: var(--color-base-900);
+		--accent: var(--color-primary-600);
+		--accent-foreground: var(--color-base-50);
 
 		/* Various component colors for variant="info" */
 		--info: var(--color-sky-300);
@@ -99,8 +99,8 @@
 		--secondary-foreground: var(--color-base-950);
 		--muted: var(--color-base-900);
 		--muted-foreground: var(--color-base-400);
-		--accent: var(--color-base-900);
-		--accent-foreground: var(--color-base-100);
+		--accent: var(--color-primary-400);
+		--accent-foreground: var(--color-base-950);
 		--info: var(--color-sky-300);
 		--info-foreground: var(--color-sky-950);
 		--success: var(--color-green-300);
