@@ -38,10 +38,7 @@ const { name, avatar, about, email, authorLink } = author.data;
 			<div class="flex flex-wrap justify-center gap-4">
 				{
 					email && (
-						<a
-							href={`mailto:${email}`}
-							class="text-primary-text hover:text-primary-dark hover:underline"
-						>
+						<a href={`mailto:${email}`} class="text-accent hover:text-primary-dark hover:underline">
 							Email
 						</a>
 					)
@@ -52,7 +49,7 @@ const { name, avatar, about, email, authorLink } = author.data;
 							href={authorLink}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-primary-text hover:text-primary-dark hover:underline"
+							class="text-accent hover:text-primary-dark hover:underline"
 						>
 							Website
 						</a>

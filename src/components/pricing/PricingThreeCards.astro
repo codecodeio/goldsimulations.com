@@ -123,7 +123,7 @@ const plans: PricingPlan[] = [
 									Annual
 								</p>
 								<span
-									class="border-primary-text text-primary-text inline-flex rounded-full border px-2 py-0.5 text-xs font-medium uppercase sm:px-3 sm:py-1 sm:text-sm"
+									class="border-accent text-accent inline-flex rounded-full border px-2 py-0.5 text-xs font-medium uppercase sm:px-3 sm:py-1 sm:text-sm"
 									>-20%</span
 								>
 							</div>
@@ -182,7 +182,7 @@ const plans: PricingPlan[] = [
 										</p>
 									</div>
 									<div class="w-auto p-3">
-										<span class="border-primary-text text-primary-text rounded-full border px-3 py-1 text-sm font-medium">
+										<span class="border-accent text-accent rounded-full border px-3 py-1 text-sm font-medium">
 											-20%
 										</span>
 									</div>
@@ -215,9 +215,9 @@ const plans: PricingPlan[] = [
 							<ul>
 								{plan.features.map((feature) => (
 									<li class="mb-4 flex items-center">
-										<div class="border-primary-text mr-4 flex h-5 w-5 items-center justify-center rounded-full border">
+										<div class="border-accent mr-4 flex h-5 w-5 items-center justify-center rounded-full border">
 											{feature.included ? (
-												<Check class="text-primary-text size-3.5" />
+												<Check class="text-accent size-3.5" />
 											) : (
 												<span class="text-muted-foreground">×</span>
 											)}

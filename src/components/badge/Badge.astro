@@ -3,7 +3,7 @@ import type { HTMLTag, Polymorphic } from "astro/types";
 import { tv } from "tailwind-variants";
 
 const badge = tv({
-	base: "font-heading text-primary-text text-lg font-medium md:text-xl",
+	base: "font-heading text-accent text-lg font-medium md:text-xl",
 });
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>;

@@ -14,8 +14,8 @@ This style guide explains how to use Tailwind CSS utility classes, derived from 
 
 - **Overall Aesthetic**: The template primarily uses a black and white color scheme. The `primary` color is reserved for specific accents to draw attention or indicate interactivity.
 - **Primary Color Usage for Accents**:
-    - For non-text accents such as borders, background fills (e.g., on buttons or hover states where the text color provides contrast), and underlines, use Tailwind utilities with the `-primary` suffix (e.g., `border-primary`, `bg-primary`, `decoration-primary`).
-    - For text elements that are directly colored with the primary color (i.e., the text itself is the accent, not its background), always use `text-primary-text`. This ensures appropriate contrast and accessibility, especially in dark mode, distinguishing it from `text-primary` which might be intended for other uses or might not have the same contrast considerations for foreground text.
+  - For non-text accents such as borders, background fills (e.g., on buttons or hover states where the text color provides contrast), and underlines, use Tailwind utilities with the `-primary` suffix (e.g., `border-primary`, `bg-primary`, `decoration-primary`).
+  - For text elements that are directly colored with the primary color (i.e., the text itself is the accent, not its background), always use `text-accent`. This ensures appropriate contrast and accessibility, especially in dark mode, distinguishing it from `text-primary` which might be intended for other uses or might not have the same contrast considerations for foreground text.
 - **Hover Effects for Backgrounds**: When an element with a default background (implicitly `bg-background` or explicitly set) has a hover effect that changes its background, the hover state should transition to a muted gray shade, specifically `hover:bg-muted`. This provides a subtle visual feedback without relying on the primary accent color for all hover states.
 
 ## Applying Styles with Tailwind Utilities
@@ -32,7 +32,7 @@ Tailwind generates utility classes for colors defined in your theme. For example
 
 - **Primary Actions (Buttons, Links)**:
   - Button: `<button class="bg-primary text-primary-foreground hover:bg-primary-dark px-4 py-2 rounded-md">Action</button>`
-  - Link: `<a href="#" class="text-primary-text hover:text-primary-dark underline">Primary Link</a>` (Note: Use `text-primary-text` for primary-colored text to ensure accessibility, especially in dark mode, instead of `text-primary` which is intended for backgrounds or borders.)
+  - Link: `<a href="#" class="text-accent hover:text-primary-dark underline">Primary Link</a>` (Note: Use `text-accent` for primary-colored text to ensure accessibility, especially in dark mode, instead of `text-primary` which is intended for backgrounds or borders.)
 - **Secondary Actions**:
   - Button: `<button class="bg-secondary text-secondary-foreground hover:bg-opacity-80 border border-border px-4 py-2 rounded-md">Secondary</button>`
 - **Muted Elements/Text**: `<p class="text-muted-foreground text-sm">This is help text.</p>`

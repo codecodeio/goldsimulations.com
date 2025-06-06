@@ -103,7 +103,7 @@
 
 /* blockquotes */
 .markdown-content blockquote:not(:where(.not-content *)) {
-	@apply border-primary-text border-l-4 pl-4 font-medium italic;
+	@apply border-accent border-l-4 pl-4 font-medium italic;
 }
 
 /* images, videos, etc */
