@@ -148,6 +148,10 @@ const navConfig: navItem[] = [
 				link: "/careers/ux-designer",
 			},
 			{
+				text: "Projects",
+				link: "/projects",
+			},
+			{
 				text: "Blog",
 				link: "/blog",
 			},
