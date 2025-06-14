@@ -61,6 +61,7 @@ export const textTranslations = {
 		share_this_article: "Share this article",
 		table_of_contents: "Table of Contents",
 		tags: "Tags",
+		related_posts: "Related Posts",
 
 		// Authentication - Sign In
 		signin_title: "Log in to your account",
@@ -95,6 +96,7 @@ export const textTranslations = {
 		share_this_article: "Partager cet article",
 		table_of_contents: "Table des matières",
 		tags: "Tags",
+		related_posts: "Articles liés",
 
 		// Authentication - Sign In
 		signin_title: "Connectez-vous à votre compte",

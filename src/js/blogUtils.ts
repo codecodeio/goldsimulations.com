@@ -129,9 +129,9 @@ export function formatPosts(
  * @param postTwo: CollectionEntry<"blog">
  * @returns true if the posts are related, false if not
  *
- * note: this currently compares by categories
+ * note: this compares by categories and tags
  *
- * In a production site, you might want to implement a more robust algorithm, choosing related posts based on tags, categories, dates, authors, or keywords.
+ * In a production site, you might want to implement an even more robust algorithm, choosing related posts based on categories, tags, dates, authors, or keywords.
  * See example: https://blog.codybrunner.com/2024/adding-related-articles-with-astro-content-collections/
  */
 export function arePostsRelated(
@@ -141,29 +141,46 @@ export function arePostsRelated(
 	// if titles are the same, then they are the same post. return false
 	if (postOne.id === postTwo.id) return false;
 
-	// if either post has no categories, return false
+	// Check for category matches
+	let categoriesMatch = false;
 	if (
-		!postOne.data.categories ||
-		!postTwo.data.categories ||
-		postOne.data.categories.length === 0 ||
-		postTwo.data.categories.length === 0
-	)
-		return false;
+		postOne.data.categories &&
+		postTwo.data.categories &&
+		postOne.data.categories.length > 0 &&
+		postTwo.data.categories.length > 0
+	) {
+		const postOneCategories = postOne.data.categories
+			.filter((category): category is string => typeof category === "string")
+			.map((category) => slugify(category));
 
-	const postOneCategories = postOne.data.categories
-		.filter((category): category is string => typeof category === "string")
-		.map((category) => slugify(category));
+		const postTwoCategories = postTwo.data.categories
+			.filter((category): category is string => typeof category === "string")
+			.map((category) => slugify(category));
 
-	const postTwoCategories = postTwo.data.categories
-		.filter((category): category is string => typeof category === "string")
-		.map((category) => slugify(category));
+		categoriesMatch = postOneCategories.some((category) => postTwoCategories.includes(category));
+	}
 
-	// if any tags or categories match, return true
-	const categoriesMatch = postOneCategories.some((category) =>
-		postTwoCategories.includes(category),
-	);
+	// Check for tag matches
+	let tagsMatch = false;
+	if (
+		postOne.data.tags &&
+		postTwo.data.tags &&
+		postOne.data.tags.length > 0 &&
+		postTwo.data.tags.length > 0
+	) {
+		const postOneTags = postOne.data.tags
+			.filter((tag): tag is string => typeof tag === "string")
+			.map((tag) => slugify(tag));
 
-	return categoriesMatch;
+		const postTwoTags = postTwo.data.tags
+			.filter((tag): tag is string => typeof tag === "string")
+			.map((tag) => slugify(tag));
+
+		tagsMatch = postOneTags.some((tag) => postTwoTags.includes(tag));
+	}
+
+	// Return true if either categories or tags match
+	return categoriesMatch || tagsMatch;
 }
 
 // --------------------------------------------------------
