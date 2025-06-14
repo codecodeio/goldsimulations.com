@@ -141,16 +141,24 @@
 		@apply text-muted-foreground hover:text-foreground leading-tight transition;
 	}
 
+	/* various H1 styling used throughout the components */
 	.h1 {
 		@apply font-heading text-4xl leading-tight font-semibold lg:text-5xl;
 	}
 
+	/* various H2 styling used throughout the components */
 	.h2 {
 		@apply font-heading text-2xl leading-tight font-semibold md:text-3xl lg:text-4xl;
 	}
 
+	/* various H3 styling used throughout the components */
 	.h3 {
 		@apply font-heading text-lg leading-tight font-semibold md:text-xl lg:text-2xl;
+	}
+
+	/* text details immediately below a number of section headings */
+	.description {
+		@apply text-muted-foreground text-pretty md:text-lg;
 	}
 }
 
