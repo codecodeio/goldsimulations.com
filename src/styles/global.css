@@ -182,6 +182,11 @@
 		@apply focus-visible:outline-primary-500 focus-visible:rounded-xs focus-visible:outline-2;
 	}
 
+	/* use with "animate-pause" to pause a CSS animation */
+	.pause {
+		animation-play-state: paused !important;
+	}
+
 	/* transition-colors but without outline-color transition property */
 	.starwind-transition-colors {
 		transition-property:

@@ -19,10 +19,17 @@ import ProjectShowcaseCards from "@/components/project-showcase/ProjectShowcaseC
 import ProjectShowcaseSideImage from "@/components/project-showcase/ProjectShowcaseSideImage.astro";
 import TestimonialCards from "@/components/testimonials/TestimonialCards.astro";
 import TestimonialSwiper from "@/components/testimonials/TestimonialSwiper.astro";
+import TestimonialsMarquee from "@/components/testimonials/TestimonialsMarquee.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getTranslatedData } from "@/js/translationUtils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import FeatureCodeToggle from "@/components/feature/FeatureCodeToggle.astro";
+import FeatureSteps from "@/components/feature/FeatureSteps.astro";
+import FeatureCardsSmall from "@/components/feature/FeatureCardsSmall.astro";
+import FeatureNumbers from "@/components/feature/FeatureNumbers.astro";
+import FeatureSideImage from "@/components/feature/FeatureSideImage.astro";
+import FeatureCardsMedium from "@/components/feature/FeatureCardsMedium.astro";
+import FeatureVideo from "@/components/feature/FeatureVideo.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
@@ -35,27 +42,22 @@ const siteData = getTranslatedData("siteData", currLocale);
 	<LogoCloudMarquee />
 
 	<FeatureCodeToggle />
+	<FeatureSteps />
+	<FeatureCardsSmall />
+	<FeatureNumbers />
+	<FeatureSideImage />
+	<!-- <FeatureCardsMedium /> -->
+	<!-- <FeatureVideo /> -->
 
-	<AboutMe />
+	<TestimonialsMarquee />
+	<!-- <TestimonialSwiper /> -->
+	<!-- <TestimonialCards /> -->
 
-	<!-- <ProjectShowcaseCards /> -->
-	<ProjectShowcaseSideImage />
-
-	<ProcessSectionVertical />
-	<!-- <ProcessSectionHorizontal /> -->
-
-	<PricingOnePrice />
+	<!-- <PricingOnePrice /> -->
 	<!-- <PricingOnePriceSide /> -->
 	<!-- <PricingThreeCards /> -->
 	<!-- <PricingFourCards /> -->
-	<!-- <PricingTable /> -->
-
-	<TestimonialSwiper />
-	<!-- <TestimonialCards /> -->
-
-	<BlogSectionGrid />
-
-	<Contact />
+	<PricingTable />
 
 	<FaqAccordions />
 	<!-- <FaqCards /> -->

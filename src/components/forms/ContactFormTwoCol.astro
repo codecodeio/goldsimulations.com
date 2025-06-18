@@ -26,11 +26,18 @@ const t = useTranslations(currLocale);
 	<div class="grid gap-6 @md:grid-cols-2">
 		<div class="flex flex-col">
 			<Label for="full-name">Full Name</Label>
-			<Input type="text" name="full-name" class="min-h-12 px-4 py-3" placeholder="John Doe" />
+			<Input
+				id="full-name"
+				type="text"
+				name="full-name"
+				class="min-h-12 px-4 py-3"
+				placeholder="John Doe"
+			/>
 		</div>
 		<div class="flex flex-col">
 			<Label for="email">Email Address</Label>
 			<Input
+				id="email"
 				type="email"
 				name="email"
 				class="min-h-12 px-4 py-3"
@@ -43,11 +50,17 @@ const t = useTranslations(currLocale);
 	<div class="grid gap-6 @md:grid-cols-2">
 		<div class="flex flex-col">
 			<Label for="phone">Phone Number</Label>
-			<Input type="tel" name="phone" class="min-h-12 px-4 py-3" placeholder="(555) 123-4567" />
+			<Input
+				id="phone"
+				type="tel"
+				name="phone"
+				class="min-h-12 px-4 py-3"
+				placeholder="(555) 123-4567"
+			/>
 		</div>
 		<div class="flex flex-col">
 			<Label for="reason">Reason for Contact</Label>
-			<Select name="reason">
+			<Select id="reason" name="reason">
 				<SelectTrigger class="min-h-12 w-full px-4 py-3">
 					<SelectValue placeholder="Select a reason" />
 				</SelectTrigger>
@@ -73,6 +86,7 @@ const t = useTranslations(currLocale);
 	<div class="flex flex-col">
 		<Label for="message">Your Message</Label>
 		<Textarea
+			id="message"
 			name="message"
 			class="min-h-12 px-4 py-3"
 			placeholder="How can we help you?"
