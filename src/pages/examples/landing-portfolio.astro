@@ -7,10 +7,11 @@ import FaqCards from "@/components/faq/FaqCards.astro";
 import HeroCentered from "@/components/hero/HeroCentered.astro";
 import LogoCloudMarquee from "@/components/logo-cloud/LogoCloudMarquee.astro";
 import LogoCloudStatic from "@/components/logo-cloud/LogoCloudStatic.astro";
-import PricingOnePrice from "@/components/pricing/PricingOnePrice.astro";
-import PricingThreeCards from "@/components/pricing/PricingThreeCards.astro";
-import PricingOnePriceSide from "@/components/pricing/PricingOnePriceSide.astro";
 import PricingFourCards from "@/components/pricing/PricingFourCards.astro";
+import PricingOnePrice from "@/components/pricing/PricingOnePrice.astro";
+import PricingOnePriceSide from "@/components/pricing/PricingOnePriceSide.astro";
+import PricingTable from "@/components/pricing/PricingTable.astro";
+import PricingThreeCards from "@/components/pricing/PricingThreeCards.astro";
 import ProcessSectionHorizontal from "@/components/process/ProcessSectionHorizontal.astro";
 import ProcessSectionVertical from "@/components/process/ProcessSectionVertical.astro";
 import ProjectShowcaseCards from "@/components/project-showcase/ProjectShowcaseCards.astro";
@@ -20,7 +21,6 @@ import TestimonialSwiper from "@/components/testimonials/TestimonialSwiper.astro
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getTranslatedData } from "@/js/translationUtils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import PricingTable from "@/components/pricing/PricingTable.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
@@ -40,12 +40,11 @@ const siteData = getTranslatedData("siteData", currLocale);
 	<ProcessSectionVertical />
 	<!-- <ProcessSectionHorizontal /> -->
 
-	<!-- TODO: still need to add / adjust other pricing sections -->
-	<PricingThreeCards />
-	<PricingOnePriceSide />
 	<PricingOnePrice />
-	<PricingFourCards />
-	<PricingTable />
+	<!-- <PricingOnePriceSide /> -->
+	<!-- <PricingThreeCards /> -->
+	<!-- <PricingFourCards /> -->
+	<!-- <PricingTable /> -->
 
 	<TestimonialSwiper />
 	<!-- <TestimonialCards /> -->

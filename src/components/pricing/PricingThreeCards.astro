@@ -4,14 +4,14 @@
  * This is designed for 3 pricing items, but can be modified to support more
  */
 
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
 import Badge from "@/components/badge/Badge.astro";
 import Button from "@/components/button/Button.astro";
 import { Switch } from "@/components/starwind/switch";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { useTranslations } from "@/js/translationUtils";
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-
 import { getLocalizedRoute } from "@/js/translationUtils";
 
 interface pricingItem {

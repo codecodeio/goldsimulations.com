@@ -4,12 +4,12 @@
  * For those who like to keep it simple
  */
 
+import { Icon } from "astro-icon/components";
+
 import Badge from "@/components/badge/Badge.astro";
 import Button from "@/components/button/Button.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { useTranslations } from "@/js/translationUtils";
-import { Icon } from "astro-icon/components";
-
 import { getLocalizedRoute } from "@/js/translationUtils";
 
 const currLocale = getLocaleFromUrl(Astro.url);
