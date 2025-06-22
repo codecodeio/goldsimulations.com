@@ -2,7 +2,6 @@
  * * Simple preview component for the keystatic editor
  */
 
-// style import
 import "@/styles/keystatic.css";
 
 interface Props {

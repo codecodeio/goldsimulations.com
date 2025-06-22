@@ -1,15 +1,14 @@
 ---
-// style import
 import "@/styles/global.css";
 
 import type { ComponentProps } from "astro/types";
 import { type CollectionEntry } from "astro:content";
 
+import CookieConsent from "@/components/cookie-consent/CookieConsent.astro";
 import Footer from "@/components/footer/Footer.astro";
 import Nav from "@/components/nav/Nav.astro";
 import siteSettings from "@/config/siteSettings.json";
 import { getLocaleFromUrl } from "@/js/localeUtils";
-// component imports
 import BaseHead from "@/layouts/BaseHead.astro";
 
 // heroImage and authorData are defined on blog posts
@@ -53,6 +52,9 @@ const currLocale = getLocaleFromUrl(Astro.url);
 	</head>
 	<body id="body" class={` ${siteSettings.useAnimations === true ? "use-animations" : ""}`}>
 		<div id="page" class="">
+			<!-- put cookie consent at the top of the page so it is seen first by screen readers -->
+			<!-- <CookieConsent /> -->
+
 			<Nav {...navProps} />
 			<main class="relative min-h-[100lvh] overflow-x-clip">
 				<slot />
