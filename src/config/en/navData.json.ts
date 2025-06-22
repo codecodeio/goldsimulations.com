@@ -139,26 +139,6 @@ const navConfig: navItem[] = [
 		text: "Core Pages",
 		dropdown: [
 			{
-				text: "About",
-				link: "/about",
-			},
-			{
-				text: "Services",
-				link: "/services",
-			},
-			{
-				text: "Service Page",
-				link: "/services/pediatrics",
-			},
-			{
-				text: "Careers",
-				link: "/careers",
-			},
-			{
-				text: "Career Page",
-				link: "/careers/ux-designer",
-			},
-			{
 				text: "Projects",
 				link: "/projects",
 			},
@@ -169,6 +149,22 @@ const navConfig: navItem[] = [
 			{
 				text: "Resume",
 				link: "/resume",
+			},
+			{
+				text: "Careers",
+				link: "/careers",
+			},
+			{
+				text: "Career Page",
+				link: "/careers/ux-designer",
+			},
+			{
+				text: "Services",
+				link: "/services",
+			},
+			{
+				text: "Service Page",
+				link: "/services/pediatrics",
 			},
 			{
 				text: "Blog",
@@ -193,6 +189,10 @@ const navConfig: navItem[] = [
 			{
 				text: "Tags",
 				link: "/tags",
+			},
+			{
+				text: "About",
+				link: "/about",
 			},
 			{
 				text: "Elements",

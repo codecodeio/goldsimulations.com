@@ -1,5 +1,8 @@
 ---
 import Contact from "@/components/contact/Contact.astro";
+import CtaBgImage from "@/components/cta/CtaBgImage.astro";
+import CtaCardBgImage from "@/components/cta/CtaCardBgImage.astro";
+import CtaCenteredNewsletter from "@/components/cta/CtaCenteredNewsletter.astro";
 import FaqAccordions from "@/components/faq/FaqAccordions.astro";
 import FaqCards from "@/components/faq/FaqCards.astro";
 import FeatureCardsMedium from "@/components/feature/FeatureCardsMedium.astro";
@@ -51,6 +54,10 @@ const siteData = getTranslatedData("siteData", currLocale);
 	<!-- <PricingThreeCards /> -->
 	<!-- <PricingFourCards /> -->
 	<PricingTable />
+
+	<CtaCardBgImage />
+	<!-- <CtaBgImage /> -->
+	<!-- <CtaCenteredNewsletter /> -->
 
 	<FaqAccordions />
 	<!-- <FaqCards /> -->
