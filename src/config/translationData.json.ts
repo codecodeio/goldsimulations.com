@@ -100,6 +100,7 @@ export const routeTranslations = {
 		tagKey3: "tags",
 		blogKey: "blog",
 		servicesKey: "services",
+		projectsKey: "projects",
 	},
 	fr: {
 		aboutKey: "a-propos",
@@ -111,6 +112,7 @@ export const routeTranslations = {
 		tagKey3: "tags/*",
 		blogKey: "blog",
 		servicesKey: "services",
+		projectsKey: "projects",
 	},
 } as const;
 
@@ -132,6 +134,10 @@ export const localizedCollections = {
 	services: {
 		en: "services",
 		fr: "services",
+	},
+	projects: {
+		en: "projects",
+		fr: "projects",
 	},
 	// Add more collections/locales as needed
 } as const;

@@ -115,27 +115,121 @@ const navConfig: navItem[] = [
 	// 	],
 	// },
 
-	// regular dropdown
+	// dropdown
 	{
-		text: "Example dropdown",
+		text: "Landing Pages",
 		dropdown: [
 			{
-				text: "Example Item 1",
-				link: "/",
+				text: "SaaS Landing",
+				link: "/examples/landing-saas",
 			},
 			{
-				text: "Example Item 2",
-				link: "/",
+				text: "Portfolio Landing",
+				link: "/examples/landing-portfolio",
 			},
 			{
-				text: "Example Item 3",
-				link: "/",
+				text: "Services Landing",
+				link: "/examples/landing-services",
 			},
 		],
 	},
+
+	// dropdown
 	{
-		text: "Blog",
-		link: "/blog",
+		text: "Core Pages",
+		dropdown: [
+			{
+				text: "Projects",
+				link: "/projects",
+			},
+			{
+				text: "Project Page",
+				link: "/projects/ai-content-platform",
+			},
+			{
+				text: "Resume",
+				link: "/resume",
+			},
+			{
+				text: "Careers",
+				link: "/careers",
+			},
+			{
+				text: "Career Page",
+				link: "/careers/ux-designer",
+			},
+			{
+				text: "Services",
+				link: "/services",
+			},
+			{
+				text: "Service Page",
+				link: "/services/pediatrics",
+			},
+			{
+				text: "Blog",
+				link: "/blog",
+			},
+			{
+				text: "Blog Post One",
+				link: "/blog/tsconfig-paths-setup",
+			},
+			{
+				text: "Blog Post Two",
+				link: "/examples/blog-post-2",
+			},
+			{
+				text: "Authors",
+				link: "/authors/main-author",
+			},
+			{
+				text: "Categories",
+				link: "/categories",
+			},
+			{
+				text: "Tags",
+				link: "/tags",
+			},
+			{
+				text: "About",
+				link: "/about",
+			},
+			{
+				text: "Elements",
+				link: "/elements",
+			},
+			// {
+			// 	text: "404",
+			// 	link: "/not-a-link",
+			// },
+			// {
+			// 	text: "RSS Feed",
+			// 	link: "/rss.xml",
+			// },
+		],
+	},
+
+	// dropdown
+	{
+		text: "Forms",
+		dropdown: [
+			{
+				text: "Sign Up",
+				link: "/sign-up",
+			},
+			{
+				text: "Sign In",
+				link: "/sign-in",
+			},
+			{
+				text: "Password Reset",
+				link: "/password-reset",
+			},
+			{
+				text: "Contact",
+				link: "/services/pediatrics/#contact",
+			},
+		],
 	},
 ];
 

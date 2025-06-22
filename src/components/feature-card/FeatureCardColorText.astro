@@ -1,7 +1,7 @@
 ---
 /**
  * * These are medium cards with an icon, large colored text (title), and smaller description (text)
- * This has a border and background color
+ * This has no border or background color
  *
  * ! If you can an error for an icon like "Error: Not Found: "calendar-check" in pack "tabler",
  * ! You can copy to actual SVG into src/icons and name it however and use similar to below
@@ -20,14 +20,12 @@ const { icon, title, text, ...rest } = Astro.props as Props;
 ---
 
 <div {...rest}>
-	<div
-		class="border-base-200 bg-base-100 dark:border-base-800 dark:bg-base-950 flex h-full flex-col gap-4 rounded-xl border p-6 before:rounded-xl"
-	>
+	<div class="flex flex-col gap-3">
 		<!-- <Icon name={icon} class="mt-1 h-5 w-5" aria-hidden="true" /> -->
-		<h3 class="text-primary-600 dark:text-primary-400 text-5xl font-medium">
+		<h3 class="text-accent text-5xl font-medium tracking-tight">
 			{title}
 		</h3>
 
-		<p class="">{text}</p>
+		<p class="text-muted-foreground pr-2">{text}</p>
 	</div>
 </div>
