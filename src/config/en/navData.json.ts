@@ -225,6 +225,10 @@ const navConfig: navItem[] = [
 				text: "Password Reset",
 				link: "/password-reset",
 			},
+			{
+				text: "Contact",
+				link: "/services/pediatrics/#contact",
+			},
 		],
 	},
 ];
