@@ -111,7 +111,7 @@
 		--secondary-foreground: var(--color-base-950);
 		--muted: var(--color-base-900);
 		--muted-foreground: var(--color-base-400);
-		--accent: var(--color-primary-300);
+		--accent: var(--color-primary-400);
 		--accent-foreground: var(--color-base-950);
 		--info: var(--color-sky-300);
 		--info-foreground: var(--color-sky-950);
