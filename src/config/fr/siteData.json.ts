@@ -5,7 +5,7 @@ const siteData: SiteDataProps = {
 	name: "The Starter",
 	// Your website's title and description (meta fields)
 	title:
-		"The Starter - The kitchen sink starter for many types of sites like SaaS, business, and blogs. Remove what you don't need and deploy.",
+		"The Starter - The kitchen sink starter for SaaS, Services, Portfolio, Blog, and more websites. Remove what you don't need and deploy.",
 	description:
 		"Create an amazing website for your small business clients with our beautiful website theme designed using Astro and Tailwind CSS. Perfect for freelancers, developers, startups, and personal use.",
 

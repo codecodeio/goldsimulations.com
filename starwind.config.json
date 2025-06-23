@@ -12,10 +12,6 @@
 			"version": "2.0.1"
 		},
 		{
-			"name": "dropdown",
-			"version": "1.0.3"
-		},
-		{
 			"name": "accordion",
 			"version": "1.1.0"
 		},
@@ -82,6 +78,10 @@
 		{
 			"name": "tooltip",
 			"version": "1.1.2"
+		},
+		{
+			"name": "dropdown",
+			"version": "1.0.3"
 		}
 	]
 }
