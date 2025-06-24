@@ -1,16 +1,24 @@
-# Welcome to Starter!
+# Welcome to the "Kitchen Sink" Starter!
 
-This is a starter project with all the Cosmic Themes setup and utilities including:
+This is a massive starter project with landing pages and sections for SaaS, Portfolio, Services, and Blog websites, all with a more minimal design so you can delete what you don't need and use AI to update the designs. It comes with:
 
-- I18n capabilities
-- Keystatic CMS
+- Blog with pagination, categories, tags, two blog post layouts including one with a table of contents
+- Author pages
+- Services landing page example with various sections
+- Services Index and individual service pages
+- Portfolio landing page example with various sections
+- Projects index and individual project pages
+- Resume page
+- Career index and individual career posting pages
+- AI rule files for cursor / windsurf - specifically for general rules, a style guide, and internationalization features
+- Content collections / keystatic setup for blog posts, authors, services, projects, resume, career, and other pages (like legal)
+- Pricing sections
+- SaaS landing page example with various sections
+- sign up, login, and forgot password pages
+- Overview page and section demos
+- I18n capabilities with config script
 - Animations
-- Content collections setup
-- Basic Navbar
-- Basic Footer
-- BaseLayout with SEO setup
-
-Otherwise, this is a a plain project with no content, for those that want to bring their own UI.
+- SEO setup
 
 ## Getting Started
 
