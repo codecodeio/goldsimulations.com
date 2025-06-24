@@ -60,11 +60,12 @@ Use Tailwind's standard spacing (padding, margin, width, height), flexbox, and g
 - **Always use the Button component** where possible instead of raw HTML buttons or links. It is imported from `@/components/button/Button.astro`.
 - The Button component ensures consistent styling, proper accessibility attributes, and supports various variants like primary, secondary, and outline.
 - Example usage:
+
   ```astro
   ---
   import Button from "@/components/button/Button.astro";
   ---
-  
+
   <Button href="/contact">Contact Us</Button>
   <Button variant="outline">Learn More</Button>
   <Button variant="secondary" type="submit">Submit Form</Button>
