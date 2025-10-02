@@ -11,8 +11,8 @@ const resumes = await getCollection("resume");
 
 // get rid of pages from other languages and remove locale from slug
 const filteredResumes = filterCollectionByLanguage(
-	resumes,
-	currLocale,
+  resumes,
+  currLocale,
 ) as CollectionEntry<"resume">[];
 
 // should only be one resume
@@ -20,6 +20,6 @@ const resume = filteredResumes[0];
 ---
 
 <ResumeLayout title="Resume" description="My Professional Experience & Skills" {resume}>
-	<!-- extra sections at the end of the resume layout if desired -->
-	<Contact />
+  <!-- extra sections at the end of the resume layout if desired -->
+  <Contact />
 </ResumeLayout>

@@ -11,22 +11,22 @@ const countedTags = countItems(allTags);
 const processedTags = sortByValue(countedTags);
 
 interface Props {
-	showCount?: boolean;
+  showCount?: boolean;
 }
 
 const { showCount = false } = Astro.props as Props;
 ---
 
 <div class="flex flex-wrap gap-1">
-	{
-		processedTags.map(([tag, count]) => (
-			<a
-				href={getLocalizedRoute(currLocale, `/tags/${tag}/`)}
-				class="button button--ghost px-3 py-1"
-			>
-				#{tagify(tag)}
-				{showCount && <span class="text-muted-foreground text-xs">({count})</span>}
-			</a>
-		))
-	}
+  {
+    processedTags.map(([tag, count]) => (
+      <a
+        href={getLocalizedRoute(currLocale, `/tags/${tag}/`)}
+        class="button button--ghost px-3 py-1"
+      >
+        #{tagify(tag)}
+        {showCount && <span class="text-muted-foreground text-xs">({count})</span>}
+      </a>
+    ))
+  }
 </div>

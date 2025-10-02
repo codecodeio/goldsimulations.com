@@ -1,11 +1,13 @@
-import Avatar from "./Avatar.astro";
-import AvatarFallback from "./AvatarFallback.astro";
-import AvatarImage from "./AvatarImage.astro";
+import Avatar, { avatar } from "./Avatar.astro";
+import AvatarFallback, { avatarFallback } from "./AvatarFallback.astro";
+import AvatarImage, { avatarImage } from "./AvatarImage.astro";
 
-export { Avatar, AvatarFallback, AvatarImage };
+const AvatarVariants = { avatar, avatarFallback, avatarImage };
+
+export { Avatar, AvatarFallback, AvatarImage, AvatarVariants };
 
 export default {
-	Root: Avatar,
-	Image: AvatarImage,
-	Fallback: AvatarFallback,
+  Root: Avatar,
+  Image: AvatarImage,
+  Fallback: AvatarFallback,
 };

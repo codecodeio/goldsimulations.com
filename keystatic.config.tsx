@@ -15,39 +15,39 @@ import { config } from "@keystatic/core";
 import Collections from "@/components/keystatic-components/Collections";
 
 export default config({
-	// works in local mode in dev, then cloud mode in prod
-	storage: import.meta.env.DEV === true ? { kind: "local" } : { kind: "cloud" },
-	// cloud deployment is free to sign up (up to 3 users per team)
-	// docs: https://keystatic.com/docs/cloud
-	// create a Keystatic Cloud account here: https://keystatic.cloud/
-	cloud: { project: "cosmic-themes/starter" },
-	ui: {
-		brand: { name: "Cosmic Themes" },
-	},
-	collections: {
-		blogEN: Collections.Blog("en"),
-		blogFR: Collections.Blog("fr"),
+  // works in local mode in dev, then cloud mode in prod
+  storage: import.meta.env.DEV === true ? { kind: "local" } : { kind: "cloud" },
+  // cloud deployment is free to sign up (up to 3 users per team)
+  // docs: https://keystatic.com/docs/cloud
+  // create a Keystatic Cloud account here: https://keystatic.cloud/
+  cloud: { project: "cosmic-themes/starter" },
+  ui: {
+    brand: { name: "Cosmic Themes" },
+  },
+  collections: {
+    blogEN: Collections.Blog("en"),
+    blogFR: Collections.Blog("fr"),
 
-		// for now there is a limitation with keystatic where relationship fields don't work well with i18n features
-		// If you need multiple languages here (you might not) just create multiple variants of the same author
-		// this might look like "author-1-en" and "author-1-fr"
-		authors: Collections.Authors(""),
+    // for now there is a limitation with keystatic where relationship fields don't work well with i18n features
+    // If you need multiple languages here (you might not) just create multiple variants of the same author
+    // this might look like "author-1-en" and "author-1-fr"
+    authors: Collections.Authors(""),
 
-		servicesEN: Collections.Services("en"),
-		servicesFR: Collections.Services("fr"),
+    servicesEN: Collections.Services("en"),
+    servicesFR: Collections.Services("fr"),
 
-		careersEN: Collections.Careers("en"),
-		careersFR: Collections.Careers("fr"),
+    careersEN: Collections.Careers("en"),
+    careersFR: Collections.Careers("fr"),
 
-		otherPagesEN: Collections.OtherPages("en"),
-		otherPagesFR: Collections.OtherPages("fr"),
+    otherPagesEN: Collections.OtherPages("en"),
+    otherPagesFR: Collections.OtherPages("fr"),
 
-		projectsEN: Collections.Projects("en"),
-		projectsFR: Collections.Projects("fr"),
-	},
+    projectsEN: Collections.Projects("en"),
+    projectsFR: Collections.Projects("fr"),
+  },
 
-	singletons: {
-		resumeEN: Collections.Resume("en"),
-		resumeFR: Collections.Resume("fr"),
-	},
+  singletons: {
+    resumeEN: Collections.Resume("en"),
+    resumeFR: Collections.Resume("fr"),
+  },
 });

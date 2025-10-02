@@ -9,22 +9,22 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 const currLocale = getLocaleFromUrl(Astro.url);
 
 const careers: CollectionEntry<"careers">[] = await getCollection("careers", ({ data }) => {
-	// filter out draft careers
-	return data.draft !== true;
+  // filter out draft careers
+  return data.draft !== true;
 });
 
 // get rid of careers from other languages and remove locale from slug
 const filteredCareers = filterCollectionByLanguage(
-	careers,
-	currLocale,
+  careers,
+  currLocale,
 ) as CollectionEntry<"careers">[];
 
 // sort careers by publish date
 filteredCareers.sort(
-	(a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime(),
+  (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime(),
 );
 ---
 
 <BaseLayout title="Careers" description="See our open positions.">
-	<CareerGrid careers={filteredCareers} />
+  <CareerGrid careers={filteredCareers} />
 </BaseLayout>

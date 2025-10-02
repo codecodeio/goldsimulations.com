@@ -28,33 +28,33 @@ import { slugify } from "@/js/textUtils";
  * ```
  */
 export async function getAllPosts(
-	lang?: (typeof locales)[number],
+  lang?: (typeof locales)[number],
 ): Promise<CollectionEntry<"blog">[]> {
-	const posts = await getCollection("blog", ({ data }) => {
-		// filter out draft posts
-		return data.draft !== true;
-	});
+  const posts = await getCollection("blog", ({ data }) => {
+    // filter out draft posts
+    return data.draft !== true;
+  });
 
-	// if a language is passed, filter the posts by that language
-	let filteredPosts: CollectionEntry<"blog">[];
-	if (lang) {
-		// console.log("filtering by language", lang);
-		filteredPosts = filterCollectionByLanguage(posts, lang) as CollectionEntry<"blog">[];
-		// filteredPosts = posts;
-	} else {
-		// console.log("no language passed, returning all posts");
-		filteredPosts = posts;
-	}
+  // if a language is passed, filter the posts by that language
+  let filteredPosts: CollectionEntry<"blog">[];
+  if (lang) {
+    // console.log("filtering by language", lang);
+    filteredPosts = filterCollectionByLanguage(posts, lang) as CollectionEntry<"blog">[];
+    // filteredPosts = posts;
+  } else {
+    // console.log("no language passed, returning all posts");
+    filteredPosts = posts;
+  }
 
-	// filter out future posts and sort by date
-	const formattedPosts = formatPosts(filteredPosts, {
-		filterOutFuturePosts: true,
-		sortByDate: true,
-		limit: undefined,
-		removeLocale: true,
-	});
+  // filter out future posts and sort by date
+  const formattedPosts = formatPosts(filteredPosts, {
+    filterOutFuturePosts: true,
+    sortByDate: true,
+    limit: undefined,
+    removeLocale: true,
+  });
 
-	return formattedPosts;
+  return formattedPosts;
 }
 
 // --------------------------------------------------------
@@ -68,58 +68,58 @@ export async function getAllPosts(
  * @returns formatted blog posts according to passed parameters
  */
 interface FormatPostsOptions {
-	filterOutFuturePosts?: boolean;
-	sortByDate?: boolean;
-	limit?: number;
-	removeLocale?: boolean;
+  filterOutFuturePosts?: boolean;
+  sortByDate?: boolean;
+  limit?: number;
+  removeLocale?: boolean;
 }
 
 export function formatPosts(
-	posts: CollectionEntry<"blog">[],
-	{
-		filterOutFuturePosts = true,
-		sortByDate = true,
-		limit = undefined,
-		removeLocale = true,
-	}: FormatPostsOptions = {},
+  posts: CollectionEntry<"blog">[],
+  {
+    filterOutFuturePosts = true,
+    sortByDate = true,
+    limit = undefined,
+    removeLocale = true,
+  }: FormatPostsOptions = {},
 ): CollectionEntry<"blog">[] {
-	const filteredPosts = posts.reduce((acc: CollectionEntry<"blog">[], post) => {
-		const { pubDate } = post.data;
+  const filteredPosts = posts.reduce((acc: CollectionEntry<"blog">[], post) => {
+    const { pubDate } = post.data;
 
-		// filterOutFuturePosts if true
-		if (filterOutFuturePosts && new Date(pubDate) > new Date()) return acc;
+    // filterOutFuturePosts if true
+    if (filterOutFuturePosts && new Date(pubDate) > new Date()) return acc;
 
-		// add post to acc
-		acc.push(post);
+    // add post to acc
+    acc.push(post);
 
-		return acc;
-	}, []);
+    return acc;
+  }, []);
 
-	// now we have filteredPosts
-	// sortByDate or randomize
-	if (sortByDate) {
-		filteredPosts.sort(
-			(a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
-				new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
-		);
-	} else {
-		filteredPosts.sort(() => Math.random() - 0.5);
-	}
+  // now we have filteredPosts
+  // sortByDate or randomize
+  if (sortByDate) {
+    filteredPosts.sort(
+      (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+        new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
+    );
+  } else {
+    filteredPosts.sort(() => Math.random() - 0.5);
+  }
 
-	// remove locale from URL
-	if (removeLocale) {
-		filteredPosts.forEach((post) => {
-			// console.log("removing locale from slug for post", post.id);
-			post.id = removeLocaleFromSlug(post.id);
-		});
-	}
+  // remove locale from URL
+  if (removeLocale) {
+    filteredPosts.forEach((post) => {
+      // console.log("removing locale from slug for post", post.id);
+      post.id = removeLocaleFromSlug(post.id);
+    });
+  }
 
-	// limit if number is passed
-	if (typeof limit === "number") {
-		return filteredPosts.slice(0, limit);
-	}
+  // limit if number is passed
+  if (typeof limit === "number") {
+    return filteredPosts.slice(0, limit);
+  }
 
-	return filteredPosts;
+  return filteredPosts;
 }
 
 // --------------------------------------------------------
@@ -135,52 +135,52 @@ export function formatPosts(
  * See example: https://blog.codybrunner.com/2024/adding-related-articles-with-astro-content-collections/
  */
 export function arePostsRelated(
-	postOne: CollectionEntry<"blog">,
-	postTwo: CollectionEntry<"blog">,
+  postOne: CollectionEntry<"blog">,
+  postTwo: CollectionEntry<"blog">,
 ): boolean {
-	// if titles are the same, then they are the same post. return false
-	if (postOne.id === postTwo.id) return false;
+  // if titles are the same, then they are the same post. return false
+  if (postOne.id === postTwo.id) return false;
 
-	// Check for category matches
-	let categoriesMatch = false;
-	if (
-		postOne.data.categories &&
-		postTwo.data.categories &&
-		postOne.data.categories.length > 0 &&
-		postTwo.data.categories.length > 0
-	) {
-		const postOneCategories = postOne.data.categories
-			.filter((category): category is string => typeof category === "string")
-			.map((category) => slugify(category));
+  // Check for category matches
+  let categoriesMatch = false;
+  if (
+    postOne.data.categories &&
+    postTwo.data.categories &&
+    postOne.data.categories.length > 0 &&
+    postTwo.data.categories.length > 0
+  ) {
+    const postOneCategories = postOne.data.categories
+      .filter((category): category is string => typeof category === "string")
+      .map((category) => slugify(category));
 
-		const postTwoCategories = postTwo.data.categories
-			.filter((category): category is string => typeof category === "string")
-			.map((category) => slugify(category));
+    const postTwoCategories = postTwo.data.categories
+      .filter((category): category is string => typeof category === "string")
+      .map((category) => slugify(category));
 
-		categoriesMatch = postOneCategories.some((category) => postTwoCategories.includes(category));
-	}
+    categoriesMatch = postOneCategories.some((category) => postTwoCategories.includes(category));
+  }
 
-	// Check for tag matches
-	let tagsMatch = false;
-	if (
-		postOne.data.tags &&
-		postTwo.data.tags &&
-		postOne.data.tags.length > 0 &&
-		postTwo.data.tags.length > 0
-	) {
-		const postOneTags = postOne.data.tags
-			.filter((tag): tag is string => typeof tag === "string")
-			.map((tag) => slugify(tag));
+  // Check for tag matches
+  let tagsMatch = false;
+  if (
+    postOne.data.tags &&
+    postTwo.data.tags &&
+    postOne.data.tags.length > 0 &&
+    postTwo.data.tags.length > 0
+  ) {
+    const postOneTags = postOne.data.tags
+      .filter((tag): tag is string => typeof tag === "string")
+      .map((tag) => slugify(tag));
 
-		const postTwoTags = postTwo.data.tags
-			.filter((tag): tag is string => typeof tag === "string")
-			.map((tag) => slugify(tag));
+    const postTwoTags = postTwo.data.tags
+      .filter((tag): tag is string => typeof tag === "string")
+      .map((tag) => slugify(tag));
 
-		tagsMatch = postOneTags.some((tag) => postTwoTags.includes(tag));
-	}
+    tagsMatch = postOneTags.some((tag) => postTwoTags.includes(tag));
+  }
 
-	// Return true if either categories or tags match
-	return categoriesMatch || tagsMatch;
+  // Return true if either categories or tags match
+  return categoriesMatch || tagsMatch;
 }
 
 // --------------------------------------------------------
@@ -193,17 +193,17 @@ export function arePostsRelated(
  */
 
 export function countItems(items: string[]): object {
-	// get counts of each item in the array
-	const countedItems = items.reduce((acc, item) => {
-		const val = acc[slugify(item)] || 0;
+  // get counts of each item in the array
+  const countedItems = items.reduce((acc, item) => {
+    const val = acc[slugify(item)] || 0;
 
-		return {
-			...acc,
-			[slugify(item)]: val + 1,
-		};
-	}, {});
+    return {
+      ...acc,
+      [slugify(item)]: val + 1,
+    };
+  }, {});
 
-	return countedItems;
+  return countedItems;
 }
 
 // --------------------------------------------------------
@@ -216,15 +216,15 @@ export function countItems(items: string[]): object {
  * note: this is used for tag and category cloud ordering
  */
 export function sortByValue(jsObj: object): [string, number][] {
-	const array: [string, number][] = [];
-	for (const i in jsObj) {
-		array.push([i, jsObj[i]]);
-	}
+  const array: [string, number][] = [];
+  for (const i in jsObj) {
+    array.push([i, jsObj[i]]);
+  }
 
-	const sorted = array.sort((a, b) => {
-		return b[1] - a[1];
-	});
+  const sorted = array.sort((a, b) => {
+    return b[1] - a[1];
+  });
 
-	// looks like [ [ 'productivity', 2 ], [ 'cool-code', 1 ] ]
-	return sorted;
+  // looks like [ [ 'productivity', 2 ], [ 'cool-code', 1 ] ]
+  return sorted;
 }
