@@ -202,7 +202,7 @@ const marqueeBottom: MarqueeImages = {
 </section>
 
 <script>
-  import anime from "animejs";
+  import { animate } from "motion";
 
   const setupMarquee = () => {
     const marqueeTop = document.querySelector(".marquee-top");
@@ -357,34 +357,41 @@ const marqueeBottom: MarqueeImages = {
     };
 
     // Animate container to center with specified dimensions
-    const animateToCenter = (top, left, width, height) => {
-      if (!lightboxOverlay || !lightboxContainer || !lightboxImage || !activeElement) return;
+    const animateToCenter = async (top, left, width, height) => {
+      if (
+        !lightboxOverlay ||
+        !lightboxContainer ||
+        !lightboxImage ||
+        !activeElement ||
+        !originalRect
+      )
+        return;
 
       // Set overlay opacity
       lightboxBackdrop.style.opacity = "1";
 
-      // Animate container to center
-      anime({
-        targets: lightboxContainer,
-        top: top,
-        left: left,
-        width: width,
-        height: height,
-        duration: 400,
-        easing: "easeInOutCubic",
-        complete: () => {
-          // Switch to contain for proper viewing
-          lightboxImage.classList.remove("object-cover");
-          lightboxImage.classList.add("object-contain");
-        },
-      });
-
       // Hide the original image
       activeElement.style.opacity = "0";
+
+      // Explicitly define FROM and TO positions to prevent Motion from inferring wrong start values
+      await animate(
+        lightboxContainer,
+        {
+          top: [originalRect.top, top],
+          left: [originalRect.left, left],
+          width: [originalRect.width, width],
+          height: [originalRect.height, height],
+        },
+        { duration: 0.4, ease: "easeInOut" },
+      ).finished;
+
+      // Switch to contain for proper viewing
+      lightboxImage.classList.remove("object-cover");
+      lightboxImage.classList.add("object-contain");
     };
 
     // Close lightbox with animation
-    const closeLightbox = () => {
+    const closeLightbox = async () => {
       if (
         !activeElement ||
         !originalRect ||
@@ -407,44 +414,43 @@ const marqueeBottom: MarqueeImages = {
       // Keep a reference to activeElement since it will be nullified
       const imageToShow = activeElement;
 
+      // Ensure we're properly positioned before starting
+      lightboxContainer.style.zIndex = "100";
+
       // Animate back to original position
-      anime({
-        targets: lightboxContainer,
-        top: updatedRect.top,
-        left: updatedRect.left,
-        width: updatedRect.width,
-        height: updatedRect.height,
-        duration: 400,
-        easing: "easeInOutCubic",
-        begin: () => {
-          // Ensure we're properly positioned before starting
-          lightboxContainer.style.zIndex = "100";
+      await animate(
+        lightboxContainer,
+        {
+          top: updatedRect.top,
+          left: updatedRect.left,
+          width: updatedRect.width,
+          height: updatedRect.height,
         },
-        complete: () => {
-          // Add a small delay before hiding the lightbox
-          setTimeout(() => {
-            // Show the original image again before hiding the lightbox
-            imageToShow.style.opacity = "1";
+        { duration: 0.4, ease: "easeInOut" },
+      ).finished;
 
-            // Hide the lightbox
-            lightboxOverlay?.classList.replace("flex", "hidden");
+      // Add a small delay before hiding the lightbox
+      setTimeout(() => {
+        // Show the original image again before hiding the lightbox
+        imageToShow.style.opacity = "1";
 
-            // Reset styles
-            lightboxContainer.removeAttribute("style");
+        // Hide the lightbox
+        lightboxOverlay?.classList.replace("flex", "hidden");
 
-            // Reset variables
-            activeElement = null;
-            originalRect = null;
+        // Reset styles
+        lightboxContainer.removeAttribute("style");
 
-            // Reset lightbox active state
-            lightboxActive = false;
-            marqueeWrapper?.classList.remove("lightbox-active");
+        // Reset variables
+        activeElement = null;
+        originalRect = null;
 
-            // Resume marquee animations
-            resumeAllMarquees();
-          }, 410); // Delay longer than animation duration - this seems to be a bug that I need to do this.
-        },
-      });
+        // Reset lightbox active state
+        lightboxActive = false;
+        marqueeWrapper?.classList.remove("lightbox-active");
+
+        // Resume marquee animations
+        resumeAllMarquees();
+      }, 410); // Delay longer than animation duration - this seems to be a bug that I need to do this.
     };
 
     // Add click event listeners to all gallery images
