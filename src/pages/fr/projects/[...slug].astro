@@ -8,21 +8,21 @@ import { filterCollectionByLanguage } from "@/js/localeUtils";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
 
 export async function getStaticPaths() {
-	const projects = await getCollection("projects", ({ data }) => {
-		// filter out draft pages
-		return data.draft !== true;
-	});
+  const projects = await getCollection("projects", ({ data }) => {
+    // filter out draft pages
+    return data.draft !== true;
+  });
 
-	// get rid of pages from other languages and remove locale from slug
-	const filteredProjects = filterCollectionByLanguage(
-		projects,
-		"fr",
-	) as CollectionEntry<"projects">[];
+  // get rid of pages from other languages and remove locale from slug
+  const filteredProjects = filterCollectionByLanguage(
+    projects,
+    "fr",
+  ) as CollectionEntry<"projects">[];
 
-	return filteredProjects.map((project) => ({
-		params: { slug: project.id },
-		props: project,
-	}));
+  return filteredProjects.map((project) => ({
+    params: { slug: project.id },
+    props: project,
+  }));
 }
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
@@ -31,5 +31,5 @@ const { Content } = await render(project);
 ---
 
 <ProjectLayout project={project}>
-	<Content components={{ a: ExternalLink }} />
+  <Content components={{ a: ExternalLink }} />
 </ProjectLayout>

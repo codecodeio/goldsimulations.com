@@ -6,18 +6,18 @@ import { filterCollectionByLanguage } from "@/js/localeUtils";
 import CareerLayout from "@/layouts/CareerLayout.astro";
 
 export async function getStaticPaths() {
-	const careers = await getCollection("careers", ({ data }) => {
-		// filter out draft careers
-		return data.draft !== true;
-	});
+  const careers = await getCollection("careers", ({ data }) => {
+    // filter out draft careers
+    return data.draft !== true;
+  });
 
-	// get rid of pages from other languages and remove locale from slug
-	const filteredPages = filterCollectionByLanguage(careers, "fr");
+  // get rid of pages from other languages and remove locale from slug
+  const filteredPages = filterCollectionByLanguage(careers, "fr");
 
-	return filteredPages.map((career) => ({
-		params: { slug: career.id },
-		props: career,
-	}));
+  return filteredPages.map((career) => ({
+    params: { slug: career.id },
+    props: career,
+  }));
 }
 
 type Props = CollectionEntry<"careers">;
@@ -27,5 +27,5 @@ const { Content } = await render(career);
 ---
 
 <CareerLayout career={career}>
-	<Content />
+  <Content />
 </CareerLayout>
