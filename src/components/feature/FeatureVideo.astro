@@ -34,13 +34,17 @@ import Badge from "@/components/badge/Badge.astro";
           />
 
           <div class="absolute top-0 left-0 m-auto flex h-full w-full items-center justify-center">
-            <div class="relative m-auto aspect-square h-[20%] max-h-16 md:max-h-20">
+            <div
+              class="dark text-foreground relative m-auto aspect-square h-[20%] max-h-16 md:max-h-20"
+            >
               <!-- background glow of play button -->
-              <div class="bg-accent/70 absolute inset-2 z-10 rounded-full motion-safe:animate-ping">
+              <div
+                class="bg-primary-accent/70 absolute inset-2 z-10 rounded-full motion-safe:animate-ping"
+              >
               </div>
               <!-- play button -->
               <div
-                class="border-accent bg-background hover:bg-border relative z-20 h-full w-full rounded-full border-2 p-2 transition-all duration-300 sm:p-4"
+                class="border-primary-accent bg-card hover:bg-muted relative z-20 h-full w-full rounded-full border-2 p-2 transition-all duration-300 sm:p-4"
               >
                 <Icon
                   name="tabler/player-play"
@@ -81,11 +85,11 @@ import Badge from "@/components/badge/Badge.astro";
               <button
                 id="feature-video__close-button"
                 aria-label="close video"
-                class="group border-base-50 hover:border-primary-400 absolute top-0 right-0 z-30 h-7 w-7 rounded-full border-2 transition-all"
+                class="group border-base-50 hover:border-primary-accent absolute top-0 right-0 z-30 h-7 w-7 rounded-full border-2 transition-all"
               >
                 <Icon
                   name="tabler/x"
-                  class="text-base-50 group-hover:text-primary-400 m-auto aspect-square h-full max-h-14 w-full transition"
+                  class="text-base-50 group-hover:text-primary-accent m-auto aspect-square h-full max-h-14 w-full transition"
                   aria-hidden="true"
                 />
               </button>

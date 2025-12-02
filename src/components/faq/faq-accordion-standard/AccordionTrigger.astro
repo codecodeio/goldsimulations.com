@@ -9,9 +9,9 @@ const accordionTrigger = tv({
   base: [
     "starwind-accordion-trigger",
     "flex w-full items-center justify-between gap-4 rounded-md px-5 py-4",
-    "starwind-transition-colors hover:text-accent text-left font-medium",
+    "transition-all hover:text-primary-accent text-left font-medium",
     "[&[data-state=open]>svg]:rotate-180",
-    "focus-visible:outline-outline focus-visible:outline-2 focus-visible:outline-offset-0",
+    "focus-visible:border-outline focus-visible:ring-outline/50 outline-none focus-visible:ring-3",
   ],
 });
 

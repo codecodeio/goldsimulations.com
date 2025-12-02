@@ -78,7 +78,7 @@
 
 /* anchor tags */
 .markdown-content a:not(:where(.not-content *)) {
-  @apply text-foreground decoration-accent hover:text-accent underline underline-offset-2 transition-colors;
+  @apply text-foreground decoration-primary-accent hover:text-primary-accent underline underline-offset-2 transition-colors;
 }
 
 /* code */
@@ -103,7 +103,7 @@
 
 /* blockquotes */
 .markdown-content blockquote:not(:where(.not-content *)) {
-  @apply border-accent border-l-4 pl-4 font-medium italic;
+  @apply border-primary-accent border-l-4 pl-4 font-medium italic;
 }
 
 /* images, videos, etc */

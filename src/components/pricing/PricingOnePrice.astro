@@ -85,29 +85,31 @@ const {
       <span class="">Monthly</span>
       <Switch variant="primary" id="pricing-one-price__toggle" size="lg" />
       <span class="">
-        Yearly <span class="text-accent text-sm">(Save 20%)</span>
+        Yearly <span class="text-primary-accent text-sm">(Save 20%)</span>
       </span>
     </div>
 
     <div class="mx-auto max-w-xl">
       <div class="group relative">
         <div
-          class="bg-muted border-primary/30 hover:border-primary/50 relative rounded-2xl border p-8 transition-all duration-300 md:p-12"
+          class="bg-muted border-primary-accent relative rounded-3xl border p-8 shadow-md transition-all duration-300 md:p-12"
         >
           <div class="mb-8 text-center">
-            <h3 class="text-accent h2 mb-2">{name}</h3>
+            <h3 class="text-primary-accent h2 mb-2">{name}</h3>
             <p class="text-muted-foreground">{planDescription}</p>
           </div>
 
           <div class="mb-12 text-center">
             <div class="relative">
-              <p class="pricing-monthly text-accent text-5xl font-semibold md:text-7xl">
+              <p class="pricing-monthly text-primary-accent text-5xl font-semibold md:text-7xl">
                 ${monthlyPrice}
-                <span class="text-base-400 text-2xl font-normal">/mo</span>
+                <span class="text-muted-foreground text-2xl font-normal">/mo</span>
               </p>
-              <p class="pricing-yearly text-accent hidden text-5xl font-semibold md:text-7xl">
+              <p
+                class="pricing-yearly text-primary-accent hidden text-5xl font-semibold md:text-7xl"
+              >
                 ${yearlyPrice}
-                <span class="text-base-400 text-2xl font-normal">/yr</span>
+                <span class="text-muted-foreground text-2xl font-normal">/yr</span>
               </p>
             </div>
           </div>
@@ -116,7 +118,7 @@ const {
             {
               features.map((feature) => (
                 <li class="text-muted-foreground flex items-center gap-4 rounded-lg">
-                  <span class:list={[feature.included ? "text-accent" : "text-base-500"]}>
+                  <span class:list={[feature.included ? "text-primary-accent" : "text-base-500"]}>
                     <Icon name={feature.included ? "tabler/check" : "tabler/x"} class="h-5 w-5" />
                   </span>
                   <span class:list={[feature.included ? "" : "opacity-70"]}>{feature.text}</span>

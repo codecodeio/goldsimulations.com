@@ -33,20 +33,26 @@
     --popover-foreground: var(--color-base-950);
 
     /* Primary colors for <Button>, etc. when variant="primary" */
-    --primary: var(--color-primary-600);
+    --primary: var(--color-blue-600);
     --primary-foreground: var(--color-base-50);
+
+    /* Primary color used for text and other accents on top of the background color */
+    --primary-accent: var(--color-primary-600);
 
     /* Secondary colors for <Button>, etc. when variant="secondary" */
     --secondary: var(--color-base-950);
     --secondary-foreground: var(--color-base-50);
 
+    /* Secondary color used for text and other accents on top of the background color */
+    --secondary-accent: var(--color-base-950);
+
     /* Muted colors used for <TabsList>, <Avatar>, etc. */
     --muted: var(--color-base-100);
-    --muted-foreground: var(--color-base-700);
+    --muted-foreground: var(--color-base-600);
 
     /* Accents used throughout the site */
-    --accent: var(--color-primary-600);
-    --accent-foreground: var(--color-base-50);
+    --accent: var(--color-base-100);
+    --accent-foreground: var(--color-base-900);
 
     /* Various component colors for variant="info" */
     --info: var(--color-sky-300);
@@ -101,18 +107,20 @@
   .dark {
     --background: var(--color-base-950);
     --foreground: var(--color-base-50);
-    --card: var(--color-base-950);
+    --card: var(--color-base-900);
     --card-foreground: var(--color-base-50);
-    --popover: var(--color-base-950);
+    --popover: var(--color-base-900);
     --popover-foreground: var(--color-base-50);
-    --primary: var(--color-primary-700);
+    --primary: var(--color-blue-700);
     --primary-foreground: var(--color-base-50);
+    --primary-accent: var(--color-blue-400);
     --secondary: var(--color-base-50);
     --secondary-foreground: var(--color-base-950);
+    --secondary-accent: var(--color-base-200);
     --muted: var(--color-base-900);
     --muted-foreground: var(--color-base-400);
-    --accent: var(--color-primary-400);
-    --accent-foreground: var(--color-base-950);
+    --accent: var(--color-base-700);
+    --accent-foreground: var(--color-base-100);
     --info: var(--color-sky-300);
     --info-foreground: var(--color-sky-950);
     --success: var(--color-green-300);
@@ -121,17 +129,14 @@
     --warning-foreground: var(--color-amber-950);
     --error: var(--color-red-800);
     --error-foreground: var(--color-base-50);
-    --border: var(--color-base-800);
-    --input: var(--color-base-800);
-    --outline: var(--color-primary-600);
+    --border: --alpha(var(--color-base-50) / 10%);
+    --input: --alpha(var(--color-base-50) / 15%);
+    --outline: var(--color-primary-400);
   }
 
   /* starwind preflight merged with Cosmic Themes */
   * {
-    @apply border-border;
-  }
-  *:focus-visible {
-    @apply outline-outline !transition-none;
+    @apply border-border outline-outline/50;
   }
   html {
     @apply bg-background text-foreground leading-[1.6rem] scheme-light dark:scheme-dark;

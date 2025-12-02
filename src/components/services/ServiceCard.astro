@@ -18,13 +18,13 @@ const t = useTranslations(currLocale);
 
 <div class="flex" {...rest}>
   <div
-    class="hover:border-accent bg-muted flex flex-col justify-between rounded-lg border p-8 transition-colors md:rounded-xl"
+    class="hover:border-primary-accent bg-muted flex flex-col justify-between rounded-lg border p-8 transition-colors md:rounded-xl"
   >
     <div>
       <div
-        class="border-accent relative mr-auto flex size-18 items-center justify-center rounded-full border-2"
+        class="border-primary-accent relative mr-auto flex size-18 items-center justify-center rounded-full border-2"
       >
-        <Icon name={service.data.icon} class="text-accent h-full w-full p-3" />
+        <Icon name={service.data.icon} class="text-primary-accent h-full w-full p-3" />
       </div>
       <h3 class="font-heading mt-6 text-xl font-semibold">{service.data.title}</h3>
       <p class="text-muted-foreground mt-4 text-base">{service.data.description}</p>

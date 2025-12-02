@@ -22,7 +22,7 @@ const { number, title, description, icon, ...rest } = Astro.props;
       </div>
       <!-- Icon (Absolute Positioned) -->
       <div
-        class="text-accent bg-background dark:bg-base-900 absolute -right-1 -bottom-1 flex h-8 w-8 items-center justify-center rounded-full shadow-sm"
+        class="text-primary-accent bg-background dark:bg-base-900 absolute -right-1 -bottom-1 flex h-8 w-8 items-center justify-center rounded-full shadow-sm"
         aria-hidden="true"
       >
         <Icon name={icon} class="h-4 w-4" />
@@ -31,7 +31,7 @@ const { number, title, description, icon, ...rest } = Astro.props;
 
     <!-- Content -->
     <div class="flex-1 pt-3">
-      <h3 class="group-hover:text-accent mb-2 text-xl font-semibold transition-colors">
+      <h3 class="group-hover:text-primary-accent mb-2 text-xl font-semibold transition-colors">
         {title}
       </h3>
       <p class="text-muted-foreground text-base">

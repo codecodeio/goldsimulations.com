@@ -16,7 +16,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
     <p class="text-muted-foreground">
       Don’t have an account?
       <a
-        class="text-accent whitespace-nowrap hover:underline"
+        class="text-primary-accent whitespace-nowrap hover:underline"
         href={getLocalizedRoute(currLocale, "/sign-up")}>Create a free account</a
       >
     </p>
@@ -44,7 +44,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
             required
           />
           <a
-            class="text-accent inline-block pb-4 text-sm tracking-tight sm:absolute sm:top-1/2 sm:right-4 sm:-translate-y-1/2 sm:transform sm:p-0 sm:px-1"
+            class="text-primary-accent inline-block pb-4 text-sm tracking-tight sm:absolute sm:top-1/2 sm:right-4 sm:-translate-y-1/2 sm:transform sm:p-0 sm:px-1"
             href={getLocalizedRoute(currLocale, "/password-reset")}>Forgot Password?</a
           >
         </div>

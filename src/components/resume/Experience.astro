@@ -14,7 +14,7 @@ const { experience } = Astro.props;
   <div class="space-y-6">
     {
       experience.map((exp) => (
-        <div class="dark:bg-base-900 hover:border-accent/50 rounded-lg border bg-white p-6 transition-all">
+        <div class="dark:bg-base-900 hover:border-primary-accent/50 rounded-lg border bg-white p-6 transition-all">
           <div class="flex items-start gap-4">
             <div class="h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg">
               <Image
@@ -29,7 +29,7 @@ const { experience } = Astro.props;
                 <div>
                   <h3 class="text-lg font-semibold">{exp.title}</h3>
                 </div>
-                <div class="text-accent text-sm">{exp.dates}</div>
+                <div class="text-primary-accent text-sm">{exp.dates}</div>
               </div>
               <div class="mb-4 flex items-center gap-1 text-sm">
                 <p class="font-medium opacity-70">{exp.company}</p>
@@ -38,7 +38,7 @@ const { experience } = Astro.props;
               <ul class="space-y-2">
                 {exp.responsibilities.map((responsibility) => (
                   <li class="flex items-start gap-2">
-                    <span class="text-accent">•</span>
+                    <span class="text-primary-accent">•</span>
                     <span class="opacity-70">{responsibility}</span>
                   </li>
                 ))}

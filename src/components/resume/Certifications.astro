@@ -13,9 +13,9 @@ const { certifications } = Astro.props;
   <div class="space-y-4">
     {
       certifications.map((cert) => (
-        <div class="dark:bg-base-900 hover:border-accent/50 flex items-center justify-between rounded-lg border bg-white p-4 transition-all">
+        <div class="dark:bg-base-900 hover:border-primary-accent/50 flex items-center justify-between rounded-lg border bg-white p-4 transition-all">
           <h3 class="font-medium">{cert.title}</h3>
-          <span class="text-accent">{cert.year}</span>
+          <span class="text-primary-accent">{cert.year}</span>
         </div>
       ))
     }

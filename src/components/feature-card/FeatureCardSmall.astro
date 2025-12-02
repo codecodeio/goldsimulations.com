@@ -22,10 +22,10 @@ const { icon, title, text, ...rest } = Astro.props as Props;
 
 <div {...rest}>
   <div
-    class="bg-muted hover:border-accent flex h-full flex-col rounded-lg border p-4 transition-colors md:rounded-xl md:p-6"
+    class="bg-card hover:border-primary-accent flex h-full flex-col rounded-lg border p-4 shadow-sm transition-colors md:rounded-xl md:p-6"
   >
     <div class="flex items-start">
-      <Icon name={icon} class="text-accent size-8" aria-hidden="true" />
+      <Icon name={icon} class="text-primary-accent size-8" aria-hidden="true" />
     </div>
 
     <h3 class="mt-4 text-lg font-medium tracking-tight">

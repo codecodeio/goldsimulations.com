@@ -16,14 +16,14 @@ const { languages } = Astro.props;
         <div class="space-y-2">
           <div class="flex justify-between">
             <span class="font-medium opacity-70">{lang.language}</span>
-            <span class="text-accent">{lang.level}/10</span>
+            <span class="text-primary-accent">{lang.level}/10</span>
           </div>
           <div class="flex gap-1">
             {Array.from({ length: 10 }).map((_, i) => (
               <div
                 class:list={[
                   "h-2 flex-1 rounded-full transition-colors",
-                  i < lang.level ? "bg-accent" : "bg-base-200/50 dark:bg-base-900",
+                  i < lang.level ? "bg-primary-accent" : "bg-base-200/50 dark:bg-base-900",
                 ]}
               />
             ))}
