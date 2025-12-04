@@ -7,7 +7,6 @@ import OverviewLayout from "@/layouts/OverviewLayout.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
-const t = useTranslations(currLocale);
 ---
 
 <OverviewLayout title={siteData.title} description={siteData.description}>

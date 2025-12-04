@@ -5,7 +5,6 @@ import { Icon } from "astro-icon/components";
 import Badge from "@/components/badge/Badge.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { formatDate } from "@/js/textUtils";
-import { getLocalizedRoute } from "@/js/translationUtils";
 
 import BaseLayout from "./BaseLayout.astro";
 
@@ -61,7 +60,7 @@ const formattedDate = formatDate(publishDate, currLocale);
               <Icon name="tabler/external-link" class="size-4" />
             </a>
             <a
-              href={getLocalizedRoute(currLocale, `/careers/`)}
+              href={`/careers/`}
               class="button button--outline flex w-full items-center gap-2 py-3"
             >
               View All Positions

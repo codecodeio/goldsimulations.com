@@ -9,9 +9,6 @@ import { Icon } from "astro-icon/components";
 import Button from "@/components/button/Button.astro";
 import { Switch } from "@/components/starwind/switch";
 import { getLocaleFromUrl } from "@/js/localeUtils";
-import { useTranslations } from "@/js/translationUtils";
-import { getLocalizedRoute } from "@/js/translationUtils";
-
 interface planInfo {
   name: string; // plan name
   featured?: boolean; // if true, will be highlighted or otherwise featured
@@ -135,7 +132,6 @@ const pricingData: pricingTable = {
 };
 
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 ---
 
 <section id="pricing-table" class="py-16 md:py-20">
@@ -246,7 +242,7 @@ const t = useTranslations(currLocale);
                     <div class="mt-auto">
                       <Button
                         variant={plan.featured === true ? "primary" : "outline"}
-                        href={getLocalizedRoute(currLocale, "/sign-up")}
+                        href={"/sign-up"}
                         class="mt-4 w-full py-1.5"
                       >
                         Get Started

@@ -1,7 +1,6 @@
 ---
 import Button from "@/components/button/Button.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
-import { getLocalizedRoute } from "@/js/translationUtils";
 
 interface Props {
   basePath: string;
@@ -87,7 +86,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
             if (pageNumber === 1) {
               return (
                 <a
-                  href={getLocalizedRoute(currLocale, basePath)}
+                  href={basePath}
                   class="hover:bg-border hidden rounded-md p-2 font-medium transition md:block"
                 >
                   <div class="flex h-6 w-6 items-center justify-center">
@@ -99,7 +98,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
 
             return (
               <a
-                href={getLocalizedRoute(currLocale, `${basePath}${pageNumber}/`)}
+                href={`${basePath}${pageNumber}/`}
                 class="hover:bg-border hidden rounded-md p-2 font-medium transition md:block"
               >
                 <div class="flex h-6 w-6 items-center justify-center">{pageNumber.toString()}</div>

@@ -101,7 +101,7 @@ const overviewSections = [
             <h3 class="h3">{section.title}</h3>
             <div class="mt-4 flex flex-col gap-2">
               {section.links.map((item) => (
-                <a href={getLocalizedRoute(currLocale, item.href)} class="nav__link--base py-1">
+                <a href={item.href} class="nav__link--base py-1">
                   {item.text}
                 </a>
               ))}

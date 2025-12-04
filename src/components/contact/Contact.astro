@@ -3,7 +3,6 @@ import ContactForm from "@/components/forms/ContactForm.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 ---
 
 <section id="contact" class="site-container my-20 scroll-mt-20 md:my-32">
@@ -30,7 +29,7 @@ const t = useTranslations(currLocale);
           <span class="font-semibold">Email:</span>
           <a
             class="text-foreground hover:text-primary-accent hover:decoration-primary-accent underline"
-            href={getLocalizedRoute(currLocale, `mailto:info@medicaloffice.com`)}
+            href={`mailto:info@medicaloffice.com`}
             >info@medicaloffice.com</a
           >
         </p>

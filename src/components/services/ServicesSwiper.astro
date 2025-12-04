@@ -13,8 +13,6 @@ import { getLocalizedRoute, useTranslations } from "@/js/translationUtils";
 import SwiperSlide from "./ServicesSwiperSlide.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
-
 const services = await getCollection("services", ({ data }) => {
   // filter out draft services
   return data.draft !== true;

@@ -11,10 +11,6 @@ import faqDataEn from "./en/faqData.json";
 import navDataEn from "./en/navData.json";
 import siteDataEn from "./en/siteData.json";
 import testimonialDataEn from "./en/testimonialData.json";
-import faqDataFr from "./fr/faqData.json";
-import navDataFr from "./fr/navData.json";
-import siteDataFr from "./fr/siteData.json";
-import testimonialDataFr from "./fr/testimonialData.json";
 
 export const dataTranslations = {
   en: {
@@ -23,12 +19,7 @@ export const dataTranslations = {
     testimonialData: testimonialDataEn,
     faqData: faqDataEn,
   },
-  fr: {
-    siteData: siteDataFr,
-    navData: navDataFr,
-    testimonialData: testimonialDataFr,
-    faqData: faqDataFr,
-  },
+  
 } as const;
 
 /**
@@ -38,16 +29,12 @@ export const dataTranslations = {
  *
  * ```ts
  * import { getLocaleFromUrl } from "@/js/localeUtils";
- * import { useTranslations } from "@/js/translationUtils";
- * const currLocale = getLocaleFromUrl(Astro.url);
- * const t = useTranslations(currLocale);
- * t("back_to_all_posts"); // this would be "Retour à tous les articles" if the current locale is "fr"
+ * * const currLocale = getLocaleFromUrl(Astro.url);
+ * * t("back_to_all_posts"); // this would be "Retour à tous les articles" if the current locale is "fr"
  * ```
  * or
  * ```ts
- * import { useTranslations } from "@/js/translationUtils";
- * const t = useTranslations("fr");
- * t("back_to_all_posts"); // this would be "Retour à tous les articles"
+ * * * t("back_to_all_posts"); // this would be "Retour à tous les articles"
  * ```
  */
 export const textTranslations = {
@@ -63,19 +50,7 @@ export const textTranslations = {
     tags: "Tags",
     related_posts: "Related Posts",
   },
-  fr: {
-    hero_text: "Tout ce dont vous avez besoin pour un site Web incroyable.",
-    hero_description:
-      "Je ne parle pas vraiment français donc j'utilise Google Translate pour quelques parties de cette démo.",
-
-    // blog
-    back_to_all_posts: "Retour à tous les articles",
-    updated: "Mis à jour",
-    share_this_article: "Partager cet article",
-    table_of_contents: "Table des matières",
-    tags: "Tags",
-    related_posts: "Articles liés",
-  },
+  
 } as const;
 
 /**
@@ -102,18 +77,7 @@ export const routeTranslations = {
     servicesKey: "services",
     projectsKey: "projects",
   },
-  fr: {
-    aboutKey: "a-propos",
-    categoryKey: "categories",
-    categoryKey2: "categories",
-    categoryKey3: "categories/*",
-    tagKey: "tags",
-    tagKey2: "tags",
-    tagKey3: "tags/*",
-    blogKey: "blog",
-    servicesKey: "services",
-    projectsKey: "projects",
-  },
+  
 } as const;
 
 /**
@@ -128,16 +92,13 @@ export const routeTranslations = {
  */
 export const localizedCollections = {
   blog: {
-    en: "blog",
-    fr: "blog",
-  },
+		en: "blog"
+	},
   services: {
-    en: "services",
-    fr: "services",
-  },
+		en: "services"
+	},
   projects: {
-    en: "projects",
-    fr: "projects",
-  },
+		en: "projects"
+	},
   // Add more collections/locales as needed
 } as const;

@@ -9,9 +9,6 @@ import { Icon } from "astro-icon/components";
 import Button from "@/components/button/Button.astro";
 import { Switch } from "@/components/starwind/switch";
 import { getLocaleFromUrl } from "@/js/localeUtils";
-import { useTranslations } from "@/js/translationUtils";
-import { getLocalizedRoute } from "@/js/translationUtils";
-
 interface pricingItem {
   name: string; // plan name
   description: string; // plan description
@@ -75,7 +72,6 @@ const pricingData: pricingItem[] = [
 ];
 
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 ---
 
 <section id="pricing-four-cards" class="py-16 md:py-20">
@@ -186,7 +182,7 @@ const t = useTranslations(currLocale);
               <Button
                 class="mb-0 w-full"
                 variant={plan.featured === true ? "primary" : "outline"}
-                href={getLocalizedRoute(currLocale, plan.href)}
+                href={plan.href}
               >
                 {plan.linkText}
               </Button>

@@ -2,7 +2,7 @@ import rss from "@astrojs/rss";
 import { type CollectionEntry, getCollection } from "astro:content";
 
 import { defaultLocale } from "@/config/siteSettings.json";
-import { getLocalizedRoute } from "@/js/translationUtils";
+
 import { getTranslatedData } from "@/js/translationUtils";
 
 const siteData = getTranslatedData("siteData", defaultLocale);
@@ -57,7 +57,7 @@ export async function GET(context) {
         : "",
 
       // Compute RSS link from post `slug`
-      link: getLocalizedRoute(rssLocale, `/blog/${post.id}/`),
+      link: `/blog/${post.id}/`,
     })),
   });
 }

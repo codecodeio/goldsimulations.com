@@ -9,7 +9,6 @@ type Props = TestimonialItem;
 const { avatar, name, title, testimonial } = Astro.props as Props;
 
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 ---
 
 <figure

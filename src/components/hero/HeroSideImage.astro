@@ -8,11 +8,7 @@ import { Image } from "astro:assets";
 
 import Button from "@/components/button/Button.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
-import { useTranslations } from "@/js/translationUtils";
-import { getLocalizedRoute } from "@/js/translationUtils";
-
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 ---
 
 <!-- "dark" class forces dark mode for this section -->
@@ -26,7 +22,7 @@ const t = useTranslations(currLocale);
           <h1
             class="mb-6 text-5xl leading-tight font-medium tracking-tight text-pretty md:text-6xl md:leading-tight"
           >
-            {t("hero_text")}
+            Hero text
           </h1>
         </div>
         <p
@@ -35,7 +31,7 @@ const t = useTranslations(currLocale);
           data-mos-delay=".1"
           data-mos-anchor="#hero-side"
         >
-          {t("hero_description")}
+          Hero description
         </p>
         <div
           class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
@@ -43,7 +39,7 @@ const t = useTranslations(currLocale);
           data-mos-delay=".2"
           data-mos-anchor="#hero-side"
         >
-          <Button variant="primary" href={getLocalizedRoute(currLocale, "/sign-up")}>
+          <Button variant="primary" href={"/sign-up"}>
             Create Your Account
           </Button>
           <Button

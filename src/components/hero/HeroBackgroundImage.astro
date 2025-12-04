@@ -8,7 +8,6 @@ import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
 
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 ---
 
 <section
@@ -46,7 +45,7 @@ const t = useTranslations(currLocale);
       </p>
       <Button
         type="button"
-        href={getLocalizedRoute(currLocale, `#contact`)}
+        href={`#contact`}
         variant="primary"
         class="md:text-lg"
         aria-label="Book An Appointment"

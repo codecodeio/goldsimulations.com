@@ -2,7 +2,6 @@
 import { countItems, getAllPosts, sortByValue } from "@/js/blogUtils";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { tagify } from "@/js/textUtils";
-import { getLocalizedRoute } from "@/js/translationUtils";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const posts = await getAllPosts(currLocale);
@@ -21,7 +20,7 @@ const { showCount = false } = Astro.props as Props;
   {
     processedTags.map(([tag, count]) => (
       <a
-        href={getLocalizedRoute(currLocale, `/tags/${tag}/`)}
+        href={`/tags/${tag}/`}
         class="button button--ghost px-3 py-1"
       >
         #{tagify(tag)}

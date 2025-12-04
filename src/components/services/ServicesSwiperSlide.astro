@@ -12,7 +12,6 @@ interface Props {
 const { service } = Astro.props;
 
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 ---
 
 <div class="swiper-slide p-4">
@@ -22,7 +21,7 @@ const t = useTranslations(currLocale);
     <a
       class="absolute inset-0"
       aria-label={service.data.title}
-      href={getLocalizedRoute(currLocale, `/services/${service.id}`)}
+      href={`/services/${service.id}`}
     >
       <span class="sr-only">{service.data.title}</span>
     </a>

@@ -5,7 +5,6 @@ import Button from "@/components/button/Button.astro";
 import { Input } from "@/components/starwind/input";
 import { Label } from "@/components/starwind/label";
 import { getLocaleFromUrl } from "@/js/localeUtils";
-import { getLocalizedRoute } from "@/js/translationUtils";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 ---
@@ -17,7 +16,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
       Don’t have an account?
       <a
         class="text-primary-accent whitespace-nowrap hover:underline"
-        href={getLocalizedRoute(currLocale, "/sign-up")}>Create a free account</a
+        href={"/sign-up"}>Create a free account</a
       >
     </p>
   </div>
@@ -45,7 +44,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
           />
           <a
             class="text-primary-accent inline-block pb-4 text-sm tracking-tight sm:absolute sm:top-1/2 sm:right-4 sm:-translate-y-1/2 sm:transform sm:p-0 sm:px-1"
-            href={getLocalizedRoute(currLocale, "/password-reset")}>Forgot Password?</a
+            href={"/password-reset"}>Forgot Password?</a
           >
         </div>
       </div>

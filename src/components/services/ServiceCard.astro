@@ -13,7 +13,6 @@ interface Props {
 const { service, ...rest } = Astro.props as Props;
 
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 ---
 
 <div class="flex" {...rest}>
@@ -32,7 +31,7 @@ const t = useTranslations(currLocale);
     <Button
       variant="ghost"
       arrow="right"
-      href={getLocalizedRoute(currLocale, `/services/${service.id}`)}
+      href={`/services/${service.id}`}
       class="mt-2 pl-0 font-medium hover:bg-transparent"
     >
       Learn More <span class="sr-only">about {service.data.title}</span>

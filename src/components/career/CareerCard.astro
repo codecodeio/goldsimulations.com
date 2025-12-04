@@ -2,7 +2,6 @@
 import { type CollectionEntry } from "astro:content";
 
 import { getLocaleFromUrl } from "@/js/localeUtils";
-import { getLocalizedRoute } from "@/js/translationUtils";
 
 interface Props {
   post: CollectionEntry<"careers">;
@@ -21,11 +20,11 @@ const currLocale = getLocaleFromUrl(Astro.url);
     <div>
       <a
         class="border-primary-accent text-primary-accent hover:bg-primary hover:text-primary-foreground hover:border-primary mb-4 inline-block rounded-full border-2 px-4 py-3 text-xs font-medium uppercase transition"
-        href={getLocalizedRoute(currLocale, `/careers/${post.id}/`)}>{category}</a
+        href={`/careers/${post.id}/`}>{category}</a
       >
       <a
         class="group mx-auto mb-40 block max-w-xs"
-        href={getLocalizedRoute(currLocale, `/careers/${post.id}/`)}
+        href={`/careers/${post.id}/`}
       >
         <h3 class="tracking-3xl text-3xl group-hover:underline">{title}</h3>
       </a>

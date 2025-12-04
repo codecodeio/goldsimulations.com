@@ -5,7 +5,6 @@ import { getTranslatedData, useTranslations } from "@/js/translationUtils";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
-const t = useTranslations(currLocale);
 ---
 
 <section class="relative py-32 md:py-40">
@@ -32,7 +31,7 @@ const t = useTranslations(currLocale);
 
   <div class="site-container">
     <h1 class="text-3xl font-medium text-pretty md:text-5xl" data-mos="fade-right">
-      {t("hero_text")}
+      Hero text
     </h1>
     <div class="mt-10 flex flex-col justify-between gap-6 md:flex-row md:gap-10">
       <p class="text-muted-foreground max-w-xl" data-mos="fade-right">

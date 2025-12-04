@@ -3,7 +3,6 @@ import ContactForm from "@/components/forms/ContactFormTwoCol.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 ---
 
 <section id="contact" class="site-container scroll-mt-20 py-12">

@@ -15,7 +15,6 @@ interface Props {
 const { name, specialty, description, image } = Astro.props;
 
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 ---
 
 <div class="swiper-slide pb-4">

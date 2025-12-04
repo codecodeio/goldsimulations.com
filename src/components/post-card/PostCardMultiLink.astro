@@ -6,7 +6,6 @@ import { Icon } from "astro-icon/components";
 import Category from "@/components/category/Category.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { formatDate, humanize, slugify } from "@/js/textUtils";
-import { getLocalizedRoute } from "@/js/translationUtils";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -24,7 +23,7 @@ const authorsData = await getEntries(authors);
 
 <article class=`${className}` {...rest}>
   <a
-    href={getLocalizedRoute(currLocale, `/blog/${post.id}/`)}
+    href={`/blog/${post.id}/`}
     class="flex aspect-video max-h-96 shrink-0 justify-center overflow-hidden rounded-md sm:justify-normal"
   >
     {
@@ -68,7 +67,7 @@ const authorsData = await getEntries(authors);
 
     <!-- title -->
     <div class="mt-2">
-      <a href={getLocalizedRoute(currLocale, `/blog/${post.id}/`)} class="group transition-colors">
+      <a href={`/blog/${post.id}/`} class="group transition-colors">
         <h2
           class="font-heading border-primary-accent/0 group-hover:border-primary-accent inline border-b-2 text-lg font-semibold transition-colors md:text-2xl"
         >

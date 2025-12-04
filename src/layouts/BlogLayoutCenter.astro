@@ -23,7 +23,6 @@ const { title, description, authors, categories, tags, pubDate, updatedDate, her
   post.data;
 
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 const authorsData = await getEntries(authors);
 ---
 
@@ -108,7 +107,7 @@ const authorsData = await getEntries(authors);
             updatedDate && (
               <div class="text-muted-foreground mb-6 italic">
                 <time datetime={updatedDate.toISOString()}>
-                  {t("updated")}: {formatDate(updatedDate, currLocale)}
+                  Updated: {formatDate(updatedDate, currLocale)}
                 </time>
               </div>
             )
@@ -122,20 +121,20 @@ const authorsData = await getEntries(authors);
             {
               tags && tags.length > 0 && (
                 <div class="flex flex-wrap items-center gap-2">
-                  <span>{t("tags")}:</span>
+                  <span>Tags:</span>
                   {tags.map((tag: string) => (
                     <Tag tag={tag} />
                   ))}
                 </div>
               )
             }
-            <Button variant="primary" href={getLocalizedRoute(currLocale, "/blog")}>
-              {t("back_to_all_posts")}
+            <Button variant="primary" href={"/blog"}>
+              Back to all posts
             </Button>
           </div>
 
           <div class="mt-12">
-            <h3 class="h3 mb-4">{t("related_posts")}</h3>
+            <h3 class="h3 mb-4">Related posts</h3>
             <div class="grid gap-x-4 gap-y-8 sm:grid-cols-2">
               <RelatedPosts post={post} postLimit={2} />
             </div>
