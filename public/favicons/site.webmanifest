@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "GoldSimulations",
+  "short_name": "GoldSim",
   "icons": [
     {
       "src": "/favicons/web-app-manifest-192x192.png",
