@@ -2,18 +2,18 @@ import { type SiteDataProps } from "../types/configDataTypes";
 
 // Update this file with your site specific information
 const siteData: SiteDataProps = {
-  name: "The Starter",
+  name: "Gold Simulations",
   // Your website's title and description (meta fields)
   title:
-    "The Starter - The kitchen sink starter for SaaS, Services, Portfolio, Blog, and more websites. Remove what you don't need and deploy.",
+    "Immersive simulations that bring your classroom to life.",
   description:
-    "Create an amazing website for your small business clients with our beautiful website theme designed using Astro and Tailwind CSS. Perfect for freelancers, developers, startups, and personal use.",
+    "Turn economic concepts into hands-on learning with immersive simulations that bring your classroom to life. Let students explore, experiment, and truly understand how economies work. Built for high schools, colleges, and MBA programs.",
 
   // Your information for blog post purposes
   author: {
-    name: "Cosmic Themes",
-    email: "creator@cosmicthemes.com",
-    twitter: "Cosmic_Themes",
+    name: "Gold Simulations",
+    email: "blog@goldsimulations.com",
+    twitter: "GoldSimulations",
   },
 
   // default image for meta tags if the page doesn't have an image already

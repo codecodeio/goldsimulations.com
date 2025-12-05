@@ -1,14 +1,25 @@
 ---
 import HeroBasic from "@/components/hero/HeroBasic.astro";
 import HeroOverview from "@/components/hero/HeroOverview.astro";
+import HeroSideImage from "@/components/hero/HeroSideImage.astro";
+import TestimonialsMarquee from "@/components/testimonials/TestimonialsMarquee.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getTranslatedData, useTranslations } from "@/js/translationUtils";
-import OverviewLayout from "@/layouts/OverviewLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import FaqAccordions from "@/components/faq/FaqAccordions.astro";
+import FaqAccordionsSideImage from "@/components/faq/FaqAccordionsSideImage.astro";
+import FeatureCardsSmall from "@/components/feature/FeatureCardsSmall.astro";
+import LogoCloudMarquee from "@/components/logo-cloud/LogoCloudMarquee.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
 ---
 
-<OverviewLayout title={siteData.title} description={siteData.description}>
-  <HeroOverview slot="above-overview" />
-</OverviewLayout>
+<BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
+  <HeroSideImage />
+  <LogoCloudMarquee />
+  <FeatureCardsSmall /> 
+  <TestimonialsMarquee/>
+  <FaqAccordions/>
+  <FaqAccordionsSideImage />
+</BaseLayout>
