@@ -3,46 +3,28 @@ import { type FaqItem } from "../types/configDataTypes";
 // replace this data with whatever you want in your FAQ section
 export const faqData: FaqItem[] = [
   {
-    question: "Who are the themes for?",
-    answer: `These themes are for developers who want to have pre-created templates to use in their projects,
-    and have the hard stuff taken care of. Whether that is personal projects, a new SaaS business, a website for a client, etc.
-    They offer speed, customizability with swappable 
-    components, built-in SEO, and image optimization. Instead of spending hours figuring out 
-    how to do this yourself, you can leverage the themes to save weeks of time and effort. You can easily 
-    mix and match sections, update the copy, and change the color theme with just one line of code.`,
+    question: "What is GoldSimulations?",
+    answer: `GoldSimulations makes browser-based interactive economics simulations for classrooms. Our simulations are designed to engage students in learning microeconomic concepts through immersive gameplay. By navigating various market structures and economic scenarios, students can apply theoretical knowledge in a practical context, enhancing their understanding and retention of key economic principles.`,
   },
   {
-    question: "What all components are included?",
-    answer: `60+ components. Including 6 feature sections, 3 hero sections, 2 services sections, 2 testimonial sections, 
-    2 faq sections, 404, contact, legal, 2 blog indexes, blog post layout, and a cookie banner.`,
+    question: "How do the simulations fit into my economics course?",
+    answer: `Our simulations are designed to complement your existing curriculum. They provide a hands-on way for students to apply theoretical concepts learned in class, enhancing their understanding through interactive gameplay.`,
   },
   {
-    question: 'What do you mean by "free updates"?',
-    answer: `When you purchase any of our themes, you get lifetime updates for free. 
-      We regularly update our themes to ensure compatibility with the latest version of Astro, 
-      and to add new features or bug fixes.`,
+    question: 'What is EconRunes?',
+    answer: `EconRunes is an economics game that takes students on a journey through five realms, where they encounter all four major market structures—Perfect Competition, Monopolistic Competition, Oligopoly, and Monopoly. On their journey through these realms, players learn key concepts tied to each market structure (such as cost curves, pricing, market power, strategic behavior, and many more). It provides an immersive and interactive way for students to learn and apply microeconomic principles.`,
   },
   {
-    question: "Why Astro?",
-    answer: `Astro is an excellent framework for content-focused websites, with a great developer
-      experience. It also allows you to use any UI framework you want within it, such as React, Vue,
-      and Svelte. This means you can use any of your existing components, or any of the thousands of 
-      components available online. `,
+    question: "How do I sign up as an instructor and get started?",
+    answer: `Start by creating an account on GoldSimulations.com, explore the EconRunes game, and review the provided course materials, syllabi, and assignments to see how the game fits into your course. When ready invite students by sharing a course link that will connect their accounts to yours.`,
   },
   {
-    question: "Can I use a theme for multiple projects?",
-    answer: `Yes, you can use any of our themes for as many projects as you like.
-      You can even sell websites you create with them to your clients. As long as you
-      don't resell the theme itself, you're likely to go! See our
-      <a href="https://cosmicthemes.com/license/" target="_blank" rel="noopener noreferrer">License</a> 
-      page for more details.`,
+    question: "What kinds of courses are economics games appropriate for?",
+    answer: `Our games are suitable for college Microeconomics, Managerial Economics, and high school Economics. They have also been used in various business, MBA, and finance courses.`,
   },
   {
-    question: "How do I download new versions of the themes?",
-    answer: `You can download any new versions of the themes by accessing
-      your lemonsqueezy library. When you first purchase the theme, I recommend 
-      creating a lemonsqueezy account at app.lemonsqueezy.com. Then you will have
-      access to any theme updates from that page.`,
+    question: "How does pricing work—do students pay individually or can my department license it?",
+    answer: `We offer both individual student subscriptions and institutional licensing options. Individual students can subscribe on a monthly or annual basis, while institutions can pay for licensing plans that suit their needs. Review our <a href="/pricing">pricing page</a> for more details.`,
   },
 ];
 
