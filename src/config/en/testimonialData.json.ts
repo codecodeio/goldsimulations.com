@@ -5,10 +5,20 @@ import SGU from "@images/testimonials/SGU.webp";
 import USCB from "@images/testimonials/uscb.webp";
 import ColumbiaHS from "@images/testimonials/ColumbiaHS.webp";
 import LanderValleyHS from "@images/testimonials/LanderValleyHS.webp";
+import Merlot from "@images/testimonials/merlot.webp";
 
 import { type TestimonialItem } from "../types/configDataTypes";
 
 export const testimonialData: TestimonialItem[] = [
+    {
+    avatar: IndianaUniversity,
+    name: "Indiana University",
+    title: "Southeast",
+    testimonial: `I love using the Beat the Market simulation. 
+    For me, it's about application. Students are learning about Price elasticity & profit maximization, but it doesn't really "hit home" or make sense until they utilize these ideas in the simulation. 
+    The students learned what MC=MR is really about. because the decisions they made in the game had demand & profit consequences.
+    `,
+  },
   {
     avatar: USCB,
     name: "University of South Carolina",
@@ -18,15 +28,12 @@ export const testimonialData: TestimonialItem[] = [
     `,
   },
   {
-    avatar: IndianaUniversity,
-    name: "Indiana University",
-    title: "Southeast",
-    testimonial: `I love using the Beat the Market simulation. 
-    For me, it's about application. Students are learning about Price elasticity & profit maximization, but it doesn't really "hit home" or make sense until they utilize these ideas in the simulation. 
-    The students learned what MC=MR is really about. because the decisions they made in the game had demand & profit consequences.
+    avatar: Merlot,
+    name: "MERLOT",
+    title: "Multimedia Education Resource for Learning and Online Teaching",
+    testimonial: `Exceptional gaming simulation that students can interactively learn the microeconomic cause/effect relationships and learning outcomes. Very engaging and effective game simulation for students in high school to college.
     `,
   },
-
   {
     avatar: OCUM,
     name: "Oklahoma City University",
