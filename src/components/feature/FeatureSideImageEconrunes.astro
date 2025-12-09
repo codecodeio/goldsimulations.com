@@ -1,0 +1,89 @@
+---
+/**
+ * * These are alternating side cards with titles, text, and images
+ * Recommend using 2 or 3 cards in a row
+ */
+import realm1 from "@images/econrunes/realm-1-the-plains-of-many-paths.webp";
+import realm2 from "@images/econrunes/realm-2-the-baaar-of-colors.webp";
+import realm3 from "@images/econrunes/realm-3-citadel-of-houses.webp";
+import realm4 from "@images/econrunes/realm-4-obsidian-peak.webp";
+import realm5 from "@images/econrunes/realm-5-council-of-runes.webp";
+import FeatureCard from "@/components/feature-card/FeatureCardSideImage.astro";
+
+interface FeatureItem {
+  badge: string; // badge text
+  image: ImageMetadata; // an imported image
+  title: string;
+  description: string;
+  href: string; // link to learn more
+  buttonText: string; // button text
+}
+
+const featureData: FeatureItem[] = [
+  {
+    badge: "Realm 1: Perfect Competition",
+    image: realm1,
+    title: "Plains of Many Paths",
+    description:
+      "Realm 1 introduces players to the simplest and most foundational market structure, Perfect Competition where: Firms are price takers, Each firm is small relative to the market, Products are identical, There are many sellers, Firms can freely enter and exit, Profit motivates short-run decisions, and entry/exit drives long-run equilibrium",
+    href: "/games/econrunes/play/",
+    buttonText: "Play Now",
+  },
+  {
+    badge: "Realm 2: Monopolistic Competition",
+    image: realm2,
+    title: "Bazaar of Colors",
+    description:
+      "Realm 2 explores Monopolistic Competition, where: Many sellers exist, Products are differentiated, Firms have some price-setting power, There is free entry and exit in the long run, Firms use advertising to differentiate products, and Long-run equilibrium results in zero economic profit.",
+    href: "/games/econrunes/play/",
+    buttonText: "Play Now",
+  },
+  {
+    badge: "Realm 3: Oligopoly",
+    image: realm3,
+    title: "The Citadel of Houses",
+    description:
+      "Realm 3 delves into Oligopoly, characterized by: A few dominant firms, Interdependent decision-making, Barriers to entry, Potential for collusion, Use of game theory in strategy, and Outcomes that can vary widely based on firm behavior.",
+    href: "/games/econrunes/play/",
+    buttonText: "Play Now",
+  },
+  {
+    badge: "Realm 4: Monopoly",
+    image: realm4,
+    title: "Obsidian Peak",
+    description:
+      "Realm 4 focuses on Monopoly, where: A single firm dominates the market, High barriers to entry exist, The monopolist is a price maker, Profit maximization occurs where MR=MC, There are  no close substitutes for the product, and Monopolies can lead to allocative inefficiency.",
+    href: "/games/econrunes/play/",
+    buttonText: "Play Now",
+  },
+  {
+    badge: "The Final Realm",
+    image: realm5,
+    title: "The Council of Runes",
+    description:
+      "In the final realm, players present their acquired knowledge to the Council of Runes. This culmination tests their understanding of all market structures and economic principles learned throughout their journey in Econterra. Will they succeed in restoring balance and prosperity to Econterra? Only those who have mastered the EconRunes stand a chance.",
+    href: "/games/econrunes/play/",
+    buttonText: "Play Now",
+  },
+];
+---
+
+<section id="realms" class="my-12 overflow-hidden py-12">
+  <div class="site-container">
+    <div class="flex flex-col gap-16 md:gap-24">
+      {
+        featureData.map((feature, idx) => (
+          <FeatureCard
+            badge={feature.badge}
+            title={feature.title}
+            description={feature.description}
+            image={feature.image}
+            imageSide={idx % 2 === 0 ? "right" : "left"}
+            href={feature.href}
+            buttonText={feature.buttonText}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

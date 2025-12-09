@@ -22,7 +22,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
           <h1
             class="mb-6 text-5xl leading-tight font-medium tracking-tight text-pretty md:text-5xl md:leading-tight"
           >
-            Where Economics Becomes Adventure
+            EconRunes
           </h1>
         </div>
         <p
@@ -31,7 +31,23 @@ const currLocale = getLocaleFromUrl(Astro.url);
           data-mos-delay=".1"
           data-mos-anchor="#hero-side"
         >
-          Turn economic concepts into hands-on learning with immersive simulations that bring your classroom to life. Let students explore, experiment, and truly understand how economies work. Built for high schools, colleges, and MBA programs.
+          In the land of Econterra, knowledge is power, and the greatest knowledge of all lies within the ancient EconRunes.
+        </p>
+        <p
+          class="description mb-8 text-pretty lg:text-lg"
+          data-mos="fade-up"
+          data-mos-delay=".1"
+          data-mos-anchor="#hero-side"
+        >
+           You are a young apprentice of the Guild of Analysts. To restore the balance, you must journey across Econterra, mastering the forces that govern each market.
+        </p>
+        <p
+          class="description mb-8 text-pretty lg:text-lg"
+          data-mos="fade-up"
+          data-mos-delay=".1"
+          data-mos-anchor="#hero-side"
+        >
+           Collect the Runes from each realm and harness their power. Unlock the secrets of the EconRunes to learn how the forces of economics shape the world and present your wisdom to the Council of Runes to bring prosperity back to Econterra.
         </p>
         <div
           class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
@@ -40,14 +56,14 @@ const currLocale = getLocaleFromUrl(Astro.url);
           data-mos-anchor="#hero-side"
         >
           <Button variant="primary" href={"/sign-up"}>
-            Create Your Account
+            Start Your Quest 
           </Button>
           <Button
             variant="ghost"
             arrow="right"
-            href="/games/econrunes/"  
+            href="#realms"  
           >
-            Learn More
+            Learn About Each Realm 
           </Button>
         </div>
       </div>
@@ -59,7 +75,6 @@ const currLocale = getLocaleFromUrl(Astro.url);
         data-mos-delay=".5"
       >
         <div class="relative h-full overflow-hidden rounded-xl border">
-          <a href="/games/econrunes/">
             <Image
             src={heroImage}
             class="min-h-full w-auto object-cover"
@@ -67,7 +82,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
             loading="eager"
             width={500}
             densities={[1.5, 2]}
-          /></a>
+          />
         </div>
       </div>
     </div>
