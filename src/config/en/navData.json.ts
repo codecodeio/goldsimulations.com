@@ -12,13 +12,17 @@ import { type navItem } from "../types/configDataTypes";
 
 // note: 1 level of dropdown is supported
 const navConfig: navItem[] = [
-   // dropdown
+  {
+    text: "Features",
+    link: "/features/",
+  }, 
+  // dropdown
   {
     text: "Products",
     dropdown: [
       {
         text: "Econ runes",
-        link: "/games/econ-runes/",
+        link: "/games/econrunes/",
         icon: "tabler/triangle-square-circle",
       },
       {
@@ -52,13 +56,13 @@ const navConfig: navItem[] = [
   },
   {
     text: "News",
-    link: "/news/",
+    link: "/blog/",
   },
 
-  {
-    text: "Overview",
-    link: "/overview",
-  },
+  // {
+  //   text: "Overview",
+  //   link: "/overview",
+  // },
 
   // mega menu
   // {

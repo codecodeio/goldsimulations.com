@@ -7,7 +7,7 @@ import { getTranslatedData, useTranslations } from "@/js/translationUtils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import FaqAccordions from "@/components/faq/FaqAccordions.astro";
 import FeatureCardsSmall from "@/components/feature/FeatureCardsSmall.astro";
-import LogoCloudMarquee from "@/components/logo-cloud/LogoCloudMarquee.astro";
+import AboutNumbers from "@/components/about/AboutNumbers.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
@@ -15,8 +15,8 @@ const siteData = getTranslatedData("siteData", currLocale);
 
 <BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
   <HeroSideImage />
-  <LogoCloudMarquee />
   <FeatureCardsSmall /> 
+  <AboutNumbers />
   <TestimonialsMarquee/>
   <FaqAccordions/>
   <HeroBasic/>

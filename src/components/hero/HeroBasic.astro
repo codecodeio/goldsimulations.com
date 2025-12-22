@@ -16,15 +16,28 @@ const siteData = getTranslatedData("siteData", currLocale);
   <p class="text-muted-foreground mx-auto mt-6 max-w-xl" data-mos="fade-up" data-mos-delay=".2">
     {siteData.title}
   </p>
-  <Button
-    href="/pricing/"
-    target="_blank"
-    rel="noreferrer"
-    variant="primary"
-    class="mt-10"
+  <div
+    class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
     data-mos="fade-up"
     data-mos-delay=".4"
+    data-mos-anchor="#hero-basic-cta"
   >
-    Get Started
-  </Button>
+    <Button variant="primary" href={"/coming-soon"}>
+      Get Started
+    </Button>
+    <Button
+      variant="secondary"
+      arrow="right"
+      href="/features/"  
+    >
+      Features
+    </Button>
+    <Button
+      variant="outline"
+      arrow="right"
+      href="/games/econrunes/"  
+    >
+      Explore The Game
+    </Button>
+  </div>
 </section>

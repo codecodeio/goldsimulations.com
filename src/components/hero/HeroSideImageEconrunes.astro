@@ -5,7 +5,7 @@
 
 import heroImage from "@images/econrunes/EconRunesWorldMap.webp";
 import { Image } from "astro:assets";
-
+import Badge from "@/components/starwind/badge/Badge.astro";
 import Button from "@/components/button/Button.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 const currLocale = getLocaleFromUrl(Astro.url);
@@ -22,7 +22,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
           <h1
             class="mb-6 text-5xl leading-tight font-medium tracking-tight text-pretty md:text-5xl md:leading-tight"
           >
-            EconRunes
+            EconRunes: An <br><span class="text-primary-accent">Epic Quest </span> through Microeconomic Realms
           </h1>
         </div>
         <p
@@ -39,7 +39,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
           data-mos-delay=".1"
           data-mos-anchor="#hero-side"
         >
-           You are a young apprentice of the Guild of Analysts. To restore the balance, you must journey across Econterra, mastering the forces that govern each market.
+           You are a young apprentice of the Guild of Analysts. To restore balance to the realms, you must journey across Econterra, mastering the forces that govern each market.
         </p>
         <p
           class="description mb-8 text-pretty lg:text-lg"
@@ -49,6 +49,11 @@ const currLocale = getLocaleFromUrl(Astro.url);
         >
            Collect the Runes from each realm and harness their power. Unlock the secrets of the EconRunes to learn how the forces of economics shape the world and present your wisdom to the Council of Runes to bring prosperity back to Econterra.
         </p>
+        <div data-mos="fade-up"
+          data-mos-delay=".2"
+          data-mos-anchor="#hero-side-coming-soon">
+        <Badge variant="warning">Coming Soon!</Badge>
+        </div>
         <div
           class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
           data-mos="fade-up"
@@ -61,7 +66,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
           <Button
             variant="ghost"
             arrow="right"
-            href="#realms"  
+            href="#feature-side-image"  
           >
             Learn About Each Realm 
           </Button>
@@ -74,13 +79,13 @@ const currLocale = getLocaleFromUrl(Astro.url);
         data-mos-anchor="#hero-side"
         data-mos-delay=".5"
       >
-        <div class="relative h-full overflow-hidden rounded-xl border">
+        <div class="relative overflow-hidden rounded-xl border">
             <Image
             src={heroImage}
             class="min-h-full w-auto object-cover"
             alt="hero"
             loading="eager"
-            width={500}
+            width={700}
             densities={[1.5, 2]}
           />
         </div>

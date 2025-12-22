@@ -1,0 +1,50 @@
+---
+import { Alert, AlertDescription, AlertTitle } from "@/components/starwind/alert";
+import Button from "@/components/button/Button.astro";
+import ButtonStarwind from "@/components/starwind/button";
+import { getLocaleFromUrl } from "@/js/localeUtils";
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const currLocale = getLocaleFromUrl(Astro.url);
+---
+
+<BaseLayout title="Coming Soon" description="This item is coming soon." noindex={true}>
+  <section
+    class="site-container flex min-h-[90vh] flex-col items-center justify-center py-24 text-center"
+  >
+    <h1 class="mb-4 text-6xl font-semibold">Coming Soon!</h1>
+    <p class="mb-6 text-xl">EconRunes Realm 1 is coming soon. Subscribe to our newsletter for updates!</p>
+    <!-- <Button href={"/subscribe/"} variant="primary"> Subscribe </Button> -->
+    <div
+    class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
+    data-mos="fade-up"
+    data-mos-delay=".2"
+    data-mos-anchor="#hero-basic-cta"
+  >
+    <Button variant="primary" href={"/subscribe/"}>
+      Subscribe
+    </Button>
+    <Button
+      variant="secondary"
+      arrow="right"
+      href="/features/"  
+    >
+      Features
+    </Button>
+    <Button
+      variant="outline"
+      arrow="right"
+      href="/games/econrunes/"  
+    >
+      Explore The Game
+    </Button>
+  </div>
+    <Alert variant="warning" class="mt-12 max-w-xl"  data-mos="fade-up"
+    data-mos-delay=".3">
+        <AlertDescription>
+            Looking for our legacy game Beat The Market? <ButtonStarwind class="mt-2" href="/games/beat-the-market/" variant="warning"> Go To Beat The Market </ButtonStarwind>
+        </AlertDescription>
+    </Alert>
+  </section>
+</BaseLayout>

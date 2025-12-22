@@ -8,6 +8,8 @@ import { Image } from "astro:assets";
 
 import Button from "@/components/button/Button.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
+import Badge from "@/components/starwind/badge/Badge.astro";
+
 const currLocale = getLocaleFromUrl(Astro.url);
 ---
 
@@ -22,32 +24,39 @@ const currLocale = getLocaleFromUrl(Astro.url);
           <h1
             class="mb-6 text-5xl leading-tight font-medium tracking-tight text-pretty md:text-5xl md:leading-tight"
           >
-            Where Economics Becomes Adventure
+            Where Economics Becomes <span class="text-primary-accent">Adventure</span>
           </h1>
         </div>
         <p
           class="description mb-8 text-pretty lg:text-lg"
           data-mos="fade-up"
           data-mos-delay=".1"
-          data-mos-anchor="#hero-side"
+          data-mos-anchor="#hero-side-overview"
         >
-          Turn economic concepts into hands-on learning with immersive simulations that bring your classroom to life. Let students explore, experiment, and truly understand how economies work. Built for high schools, colleges, and MBA programs.
+          Turn economic concepts into hands-on learning with our immersive simulation game, EconRunes, that brings your classroom to life. Let students explore, experiment, and truly understand how economies work. Built for colleges, MBA programs, and high schools.
         </p>
+        <div data-mos="fade-up"
+          data-mos-delay=".2"
+          data-mos-anchor="#hero-side-coming-soon">
+        <Badge variant="warning">Coming Soon!</Badge>
+        </div>
+        
         <div
           class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
           data-mos="fade-up"
-          data-mos-delay=".2"
-          data-mos-anchor="#hero-side"
+          data-mos-delay=".3"
+          data-mos-anchor="#hero-side-cta"
         >
-          <Button variant="primary" href={"/sign-up"}>
-            Create Your Account
+          <Button variant="primary" arrow="right" href={"/features/"}>
+            Features
           </Button>
+          
           <Button
-            variant="ghost"
+            variant="secondary"
             arrow="right"
             href="/games/econrunes/"  
           >
-            Learn More
+            Explore The Game
           </Button>
         </div>
       </div>
