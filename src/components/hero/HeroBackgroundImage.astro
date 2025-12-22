@@ -1,5 +1,5 @@
 ---
-import doctorImage from "@images/hero/doctor_2-min.png";
+import doctorImage from "@images/hero/btmgame.webp";
 import backgroundImage from "@images/hero/hero_bg_3-min.png";
 import { Image } from "astro:assets";
 
@@ -22,7 +22,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
   />
 
   <div
-    class="site-container relative flex h-full min-h-full grow flex-col items-center justify-between gap-8 md:flex-row"
+    class="site-container relative flex h-full min-h-full grow flex-col items-center md:items-start justify-between gap-8 md:flex-row"
   >
     <div id="hero-shapes-trigger" class="max-w-2xl flex-1 pt-30 md:py-44 lg:pb-50">
       <h1
@@ -30,9 +30,9 @@ const currLocale = getLocaleFromUrl(Astro.url);
         data-mos="fade-right"
         class="text-foreground leading-tighter font-heading mb-4 text-4xl font-semibold md:text-5xl xl:text-7xl"
       >
-        We Help Patients Live Longer,
-        <span class="text-primary-accent">Healthier </span>
-        Lives
+        Beat The Market: An
+        <span class="text-primary-accent">Interactive </span>
+        Microeconomics Game
       </h1>
       <p
         data-mos-anchor="#hero-shapes-trigger"
@@ -40,8 +40,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
         data-mos-delay=".2"
         class="text-muted-foreground mb-8 text-lg md:text-xl"
       >
-        Experience exceptional healthcare with our dedicated team of medical professionals. We're
-        committed to your well-being and providing personalized care.
+        Run a firm. Compete through multiple periods. Learn microeconomics from your results—backed by graphs, reports, and assignable exercises.
       </p>
       <Button
         type="button"
@@ -57,13 +56,14 @@ const currLocale = getLocaleFromUrl(Astro.url);
       </Button>
     </div>
     <div
-      class="xs:h-[360px] mt-auto flex h-[300px] justify-end md:h-[500px] md:pt-20 lg:h-[600px] xl:h-[700px]"
+      class="xs:h-[360px] mt-auto md:mt-0 flex h-[300px] justify-end md:h-[500px] md:pt-0 lg:h-[600px] xl:h-[700px]"
     >
       <Image
         src={doctorImage}
         alt="Smiling healthcare professional with stethoscope"
-        class="m-0 h-full w-auto object-contain p-0 align-bottom"
+        class="m-0 h-auto max-h-full w-[220px] xs:w-[260px] md:w-[340px] lg:w-[400px] xl:w-[460px] object-contain p-0"
         width={700}
+        sizes="(min-width: 1280px) 460px, (min-width: 1024px) 400px, (min-width: 768px) 340px, (min-width: 475px) 260px, 220px"
         densities={[1.5, 2]}
         loading="eager"
       />

@@ -1,0 +1,73 @@
+---
+import backgroundImage from "@images/hero/hero_bg_3-min.png";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+import { getLocaleFromUrl } from "@/js/localeUtils";
+
+const currLocale = getLocaleFromUrl(Astro.url);
+
+const aboutCardsData = [
+  {
+    title: "Gameplay Experience",
+    description:
+      "Make your firm decisions each period, such as pricing, production levels, and marketing spend. After each round, receive detailed feedback through graphs and reports to understand your performance and improve your strategy.",
+    icon: "tabler/clipboard-heart",
+  },
+  {
+    title: "Course Setup",
+    description:
+      "Set up your course your way. Use it as a capstone or run it throughout the termCreate individual or team-based games, assign exercises, and track student progress with our integrated online gradebook. Our platform is designed to make teaching economics engaging and effective.",
+    icon: "tabler/heart-check",
+  },
+  {
+    title: "Track progress",
+    description:
+      "Monitor student performance with our integrated online gradebook. Easily track individual and team progress, making it simple to assess understanding and provide targeted feedback.",
+    icon: "tabler/nurse",
+  },
+];
+---
+
+<section id="about-side-cards-btm-instructor" class="my-12 py-12">
+  <div class="site-container mt-12 grid gap-8 lg:grid-cols-2 lg:gap-20">
+    <div
+      class="relative flex aspect-7/8 items-center justify-center rounded-2xl p-6 pt-20 md:px-10"
+      data-mos="fade-right"
+    >
+      <div class="bg-primary absolute inset-0 h-full w-full overflow-hidden rounded-xl">
+        <Image
+          src={backgroundImage}
+          alt="About background"
+          width={500}
+          densities={[1.5, 2]}
+          class="h-full w-full object-cover mix-blend-overlay"
+        />
+      </div>
+
+      <div class="text-muted relative mb-auto flex flex-col items-center text-center">
+        <div>
+          <h2 class="h1 text-pretty text-white">How It Works: For Instructors</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-between gap-8 md:py-10" data-mos="fade-left">
+      {
+        aboutCardsData.map((card) => (
+          <div class="">
+            <div class="flex items-center gap-4">
+              <div class="shrink-0">
+                <Icon name={card.icon} class="text-primary-accent size-14" />
+              </div>
+              <div>
+                <h3 class="h2">{card.title}</h3>
+              </div>
+            </div>
+            <p class="text-muted-foreground mt-4 md:text-lg">{card.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,80 @@
+---
+import heroImage from "@images/hero/btmgame.webp";
+import { Image } from "astro:assets";
+
+import Button from "@/components/button/Button.astro";
+import { getLocaleFromUrl } from "@/js/localeUtils";
+const currLocale = getLocaleFromUrl(Astro.url);
+---
+
+<!-- "dark" class forces dark mode for this section -->
+<section id="hero-side" class="mt-14 overflow-x-clip">
+  <div class="site-container py-16 md:py-20">
+    <div
+      class="mx-auto grid max-w-md gap-10 text-center md:max-w-none md:grid-cols-2 md:text-left xl:items-center"
+    >
+      <div class="mx-auto my-auto w-full pt-4 md:ml-0 md:max-w-[560px] md:py-10 lg:pr-10">
+        <div class="" data-mos="fade-up" data-mos-anchor="#hero-side">
+          <h1
+            class="mb-6 text-4xl leading-tight font-medium tracking-tight text-pretty md:text-5xl md:leading-tight"
+          >
+            Beat The Market: <br> An
+        <span class="text-primary-accent">Interactive </span>
+        Microeconomics Game
+          </h1>
+        </div>
+        <p
+          class="description mb-8 text-pretty lg:text-lg"
+          data-mos="fade-up"
+          data-mos-delay=".1"
+          data-mos-anchor="#hero-side"
+        >
+          Run a firm. Compete through multiple periods. Learn microeconomics from your results—backed by graphs, reports, and assignable exercises.
+        </p>
+        <p
+          class="description mb-8 text-pretty lg:text-lg"
+          data-mos="fade-up"
+          data-mos-delay=".1"
+          data-mos-anchor="#hero-side"
+        >
+           Beat The Market is a web-based economics simulation where students run a firm, make decisions each period, and learn from outcomes using built-in feedback, graphs, and reports. It supports both individual and team play, and it includes assignable exercises and online gradebooks.
+        </p>
+        <div
+          class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
+          data-mos="fade-up"
+          data-mos-delay=".2"
+          data-mos-anchor="#hero-side"
+        >
+          <Button variant="primary" href={"https://www.btmgame.com/"} target="_blank" rel="noopener">
+            Sign In
+          </Button>
+          <Button
+            variant="ghost"
+            arrow="right"
+            href="#about-side-cards-btm-instructor"  
+          >
+            Learn More
+          </Button>
+        </div>
+      </div>
+
+      <div
+        class="flex h-full w-full flex-grow items-center"
+        data-mos="fade-in"
+        data-mos-anchor="#hero-side"
+        data-mos-delay=".5"
+      >
+        <div class="relative overflow-hidden rounded-xl border">
+            <Image
+            src={heroImage}
+            class="min-h-full w-auto object-cover"
+            alt="hero"
+            loading="eager"
+            width={600}
+            densities={[1.5, 2]}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

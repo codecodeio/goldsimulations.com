@@ -1,5 +1,7 @@
 ---
-import background from "@images/about/numbers_bg-2-min.png";
+//import background from "@images/about/numbers_bg-2-min.png";
+import background from "@images/hero/btmgame.webp";
+import backgroundImage from "@images/hero/hero_bg_3-min.png";
 import { Image } from "astro:assets";
 
 import { getLocaleFromUrl } from "@/js/localeUtils";
@@ -13,20 +15,20 @@ interface StatItem {
 
 const stats: StatItem[] = [
   {
-    value: "7",
+    value: "21",
     label: "Years In Business",
   },
   {
     value: "500+",
-    label: "Happy Patients",
+    label: "Players",
   },
   {
-    value: "6",
-    label: "Expert Doctors",
+    value: "30+",
+    label: "Universities",
   },
   {
     value: "1",
-    label: "Convenient Location",
+    label: "Amazing Game",
   },
 ];
 ---
@@ -35,8 +37,8 @@ const stats: StatItem[] = [
   <div class="site-container relative overflow-hidden rounded-xl py-6 md:rounded-2xl md:py-12">
     <div class="absolute inset-0 z-0">
       <Image
-        src={background}
-        alt="Space Coast Medicine Statistical Background"
+        src={backgroundImage}
+        alt="Beat The Market background"
         width={1400}
         densities={[1.5, 2]}
         class="h-full w-full object-cover"
@@ -56,7 +58,7 @@ const stats: StatItem[] = [
               data-mos-anchor="#about-numbers-trigger"
               data-mos-delay={index * 0.15}
             >
-              <p class="text-base-50 text-5xl md:text-6xl">{stat.value}</p>
+              <p class="text-base-70 text-5xl md:text-6xl">{stat.value}</p>
               <p class="text-base-50 text-lg md:text-xl">{stat.label}</p>
             </div>
           ))

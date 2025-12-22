@@ -24,7 +24,11 @@ export const faqData: FaqItem[] = [
   },
   {
     question: "How does pricing work—do students pay individually or can my department license it?",
-    answer: `We offer both individual student subscriptions and institutional licensing options. Individual students can subscribe on a monthly or annual basis, while institutions can pay for licensing plans that suit their needs. Review our <a href="/pricing">pricing page</a> for more details.`,
+    answer: `We offer both individual student subscriptions and institutional licensing options. Individual students pay a one time fee, while institutions can pay for licensing plans that suit their needs. Review our <a href="/pricing">pricing page</a> for more details.`,
+  },
+  {
+    question: "Can I continue to use Beat The Market?",
+    answer: `Yes, you can continue to use Beat The Market. However, we recommend transitioning to EconRunes for a more comprehensive and engaging learning experience, as it covers a wider range of microeconomic concepts through its immersive gameplay. Eventually, Beat The Market will be phased out to focus on developing and enhancing EconRunes.`,
   },
 ];
 

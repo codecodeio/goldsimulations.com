@@ -1,0 +1,73 @@
+---
+import backgroundImage from "@images/hero/hero_bg_3-min.png";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+import { getLocaleFromUrl } from "@/js/localeUtils";
+
+const currLocale = getLocaleFromUrl(Astro.url);
+
+const aboutCardsData = [
+  {
+    title: "What You Do",
+    description:
+      "Step into the shoes of a firm manager in a competitive market. Make strategic decisions on pricing, production, and marketing to outperform your rivals. Experience the thrill of real-time competition as you adapt to market changes and strive for success.",
+    icon: "tabler/clipboard-heart",
+  },
+  {
+    title: "Sound Advice",
+    description:
+      "Receive expert guidance from our in-game advisor, who provides valuable insights and tips to help you navigate the complexities of the market. Learn from your decisions and refine your strategies to achieve better outcomes in future rounds.",
+    icon: "tabler/heart-check",
+  },
+  {
+    title: "Gradebook & Practice",
+    description:
+      "Hone your skills with practice exercises and resources to deepen your understanding of microeconomic concepts before doing graded activities. Track your performance with our integrated gradebook, which records your results and provides feedback on your decisions.",
+    icon: "tabler/nurse",
+  },
+];
+---
+
+<section id="about-side-cards-btm-student" class="my-12 py-12">
+  <div class="site-container mt-12 grid gap-8 lg:grid-cols-2 lg:gap-20">
+    <div
+      class="relative flex aspect-7/8 items-center justify-center rounded-2xl p-6 pt-20 md:px-10"
+      data-mos="fade-right"
+    >
+      <div class="bg-primary absolute inset-0 h-full w-full overflow-hidden rounded-xl">
+        <Image
+          src={backgroundImage}
+          alt="About background"
+          width={500}
+          densities={[1.5, 2]}
+          class="h-full w-full object-cover mix-blend-overlay"
+        />
+      </div>
+
+      <div class="text-muted relative mb-auto flex flex-col items-center text-center">
+        <div>
+          <h2 class="h1 text-pretty text-white">How It Works: For Students</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-between gap-8 md:py-10" data-mos="fade-left">
+      {
+        aboutCardsData.map((card) => (
+          <div class="">
+            <div class="flex items-center gap-4">
+              <div class="shrink-0">
+                <Icon name={card.icon} class="text-primary-accent size-14" />
+              </div>
+              <div>
+                <h3 class="h2">{card.title}</h3>
+              </div>
+            </div>
+            <p class="text-muted-foreground mt-4 md:text-lg">{card.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
