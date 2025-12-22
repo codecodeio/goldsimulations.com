@@ -63,3 +63,14 @@ export interface SiteSettingsProps {
   useViewTransitions?: boolean;
   useAnimations?: boolean;
 }
+
+// --------------------------------------------------------
+// feature data types
+export interface FeatureItem {
+  badge: string; // badge text
+  image: ImageMetadata; // an imported image
+  title: string;
+  description: string;
+  href: string; // link to learn more
+  buttonText: string; // button text
+}

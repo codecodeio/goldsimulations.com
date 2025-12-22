@@ -1,0 +1,20 @@
+---
+import HeroSideImageBTM from "@/components/hero/HeroSideImageBTM.astro";
+import { getLocaleFromUrl } from "@/js/localeUtils";
+import { getTranslatedData, useTranslations } from "@/js/translationUtils";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import AboutNumbers from "@/components/about/AboutNumbers.astro";
+import AboutSideCardsBTMInstructor from "@/components/about/AboutSideCardsBTMInstructor.astro";
+import AboutSideCardsBTMStudent from "@/components/about/AboutSideCardsBTMStudent.astro";
+
+const currLocale = getLocaleFromUrl(Astro.url);
+const siteData = getTranslatedData("siteData", currLocale);
+
+---
+
+<BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
+  <HeroSideImageBTM />
+  <AboutNumbers />
+  <AboutSideCardsBTMInstructor/>
+  <AboutSideCardsBTMStudent/>
+</BaseLayout>

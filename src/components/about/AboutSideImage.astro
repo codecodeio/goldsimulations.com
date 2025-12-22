@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
+import heroImage from "@images/econrunes/EconRunesWorldMap.webp";
 const currLocale = getLocaleFromUrl(Astro.url);
 interface Props {
   class?: string;
@@ -15,7 +16,7 @@ const { class: className } = Astro.props as Props;
 <section class:list={["py-16 md:py-24", className]}>
   <div class="site-container grid gap-8 md:grid-cols-2 md:gap-16">
     <div class="" id="about-side-image-trigger">
-      <h2 data-mos="fade-up" class="h1">Space Coast Medicine</h2>
+      <h2 data-mos="fade-up" class="h1">Interactive Economics Simulations for <span class="text-primary-accent">Modern </span> Classrooms</h2>
 
       <div class="text-muted-foreground mt-6">
         <p
@@ -24,10 +25,7 @@ const { class: className } = Astro.props as Props;
           data-mos-anchor="#about-side-image-trigger"
           data-mos-delay=".2"
         >
-          At Space Coast Medicine, our doctors believe in treating the whole person, not just the
-          symptoms. We prioritize holistic primary care and work with our patients to create
-          personalized care plans. We empower our patients to take an active role in their health
-          journey.
+          EconRunes is designed to transform the way economics is taught and learned. By integrating interactive simulations into the curriculum, EconRunes allows students to actively engage with economic concepts, making learning more dynamic and effective. 
         </p>
 
         <p
@@ -36,10 +34,7 @@ const { class: className } = Astro.props as Props;
           data-mos-anchor="#about-side-image-trigger"
           data-mos-delay=".4"
         >
-          At Space Coast Medicine, our doctors believe in treating the whole person, not just the
-          symptoms. We prioritize holistic primary care and work with our patients to create
-          personalized care plans. We empower our patients to take an active role in their health
-          journey.
+          Our simulations are meticulously crafted based on educational research to ensure they meet the needs of modern classrooms.
         </p>
 
         <p
@@ -48,17 +43,15 @@ const { class: className } = Astro.props as Props;
           data-mos-anchor="#about-side-image-trigger"
           data-mos-delay=".6"
         >
-          At Space Coast Medicine, our doctors believe in treating the whole person, not just the
-          symptoms. We prioritize holistic primary care and work with our patients to create
-          personalized care plans.
+          Turn economic concepts into hands-on learning with immersive digital simulations built for high schools, colleges, and MBA programs.
         </p>
       </div>
     </div>
 
-    <div class="aspect-square overflow-clip rounded-2xl">
+    <div class="overflow-clip rounded-2xl">
       <Image
-        src={building}
-        alt="Space Coast Medicine Building"
+        src={heroImage}
+        alt="Interactive Economics Simulations for Modern Classrooms"
         width={1001}
         densities={[1.5, 2]}
         class="h-full w-full object-cover"

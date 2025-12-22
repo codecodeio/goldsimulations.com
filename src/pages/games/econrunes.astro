@@ -1,22 +1,70 @@
 ---
-import HeroBasic from "@/components/hero/HeroBasic.astro";
-import HeroOverview from "@/components/hero/HeroOverview.astro";
 import HeroSideImageEconrunes from "@/components/hero/HeroSideImageEconrunes.astro";
-import TestimonialsMarquee from "@/components/testimonials/TestimonialsMarquee.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getTranslatedData, useTranslations } from "@/js/translationUtils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import FaqAccordions from "@/components/faq/FaqAccordions.astro";
-import FaqAccordionsSideImage from "@/components/faq/FaqAccordionsSideImage.astro";
-import FeatureCardsSmall from "@/components/feature/FeatureCardsSmall.astro";
-import LogoCloudMarquee from "@/components/logo-cloud/LogoCloudMarquee.astro";
-import FeatureSideImageEconrunes from "@/components/feature/FeatureSideImageEconrunes.astro";
+import FeatureSideImageProps from "@/components/feature/FeatureSideImageProps.astro";
+import { type FeatureItem } from "@/config/types/configDataTypes";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
+
+import realm1 from "@images/econrunes/realm-1-the-plains-of-many-paths.webp";
+import realm2 from "@images/econrunes/realm-2-the-baaar-of-colors.webp";
+import realm3 from "@images/econrunes/realm-3-citadel-of-houses.webp";
+import realm4 from "@images/econrunes/realm-4-obsidian-peak.webp";
+import realm5 from "@images/econrunes/realm-5-council-of-runes.webp";
+
+const featureData: FeatureItem[] = [
+  {
+    badge: "Realm 1: Perfect Competition",
+    image: realm1,
+    title: "Plains of Many Paths",
+    description:
+      "Realm 1 introduces players to the simplest and most foundational market structure, Perfect Competition where: Firms are price takers, Each firm is small relative to the market, Products are identical, There are many sellers, Firms can freely enter and exit, Profit motivates short-run decisions, and entry/exit drives long-run equilibrium",
+    href: "/games/econrunes/play/",
+    buttonText: "Play Now",
+  },
+  {
+    badge: "Realm 2: Monopolistic Competition",
+    image: realm2,
+    title: "Bazaar of Colors",
+    description:
+      "Realm 2 explores Monopolistic Competition, where: Many sellers exist, Products are differentiated, Firms have some price-setting power, There is free entry and exit in the long run, Firms use advertising to differentiate products, and Long-run equilibrium results in zero economic profit.",
+    href: "/games/econrunes/play/",
+    buttonText: "Play Now",
+  },
+  {
+    badge: "Realm 3: Oligopoly",
+    image: realm3,
+    title: "The Citadel of Houses",
+    description:
+      "Realm 3 delves into Oligopoly, characterized by: A few dominant firms, Interdependent decision-making, Barriers to entry, Potential for collusion, Use of game theory in strategy, and Outcomes that can vary widely based on firm behavior.",
+    href: "/games/econrunes/play/",
+    buttonText: "Play Now",
+  },
+  {
+    badge: "Realm 4: Monopoly",
+    image: realm4,
+    title: "Obsidian Peak",
+    description:
+      "Realm 4 focuses on Monopoly, where: A single firm dominates the market, High barriers to entry exist, The monopolist is a price maker, Profit maximization occurs where MR=MC, There are  no close substitutes for the product, and Monopolies can lead to allocative inefficiency.",
+    href: "/games/econrunes/play/",
+    buttonText: "Play Now",
+  },
+  {
+    badge: "The Final Realm",
+    image: realm5,
+    title: "The Council of Runes",
+    description:
+      "In the final realm, players present their acquired knowledge to the Council of Runes. This culmination tests their understanding of all market structures and economic principles learned throughout their journey in Econterra. Will they succeed in restoring balance and prosperity to Econterra? Only those who have mastered the EconRunes stand a chance.",
+    href: "/games/econrunes/play/",
+    buttonText: "Play Now",
+  },
+];
 ---
 
 <BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
   <HeroSideImageEconrunes/>
-  <FeatureSideImageEconrunes/>
+  <FeatureSideImageProps featureData={featureData} />
 </BaseLayout>
