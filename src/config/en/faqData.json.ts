@@ -16,7 +16,7 @@ export const faqData: FaqItem[] = [
   },
   {
     question: "How do I sign up as an instructor and get started?",
-    answer: `Start by creating an account on GoldSimulations.com, explore the EconRunes game, and review the provided course materials, syllabi, and assignments to see how the game fits into your course. When ready invite students by sharing a course link that will connect their accounts to yours.`,
+    answer: `Start by creating an account on GoldSimulations.com, explore the EconRunes game, and review the provided course materials, syllabus, and assignments to see how the game fits into your course. When ready invite students by sharing a course link that will connect their accounts to yours.`,
   },
   {
     question: "What kinds of courses are economics games appropriate for?",

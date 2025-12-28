@@ -37,16 +37,14 @@ const navConfig: navItem[] = [
     text: "Resources",
     dropdown: [
       {
-        text: "Syllabi",
-        link: "/resources/syllabi/",
-      },
-      {
-        text: "Assignments",
-        link: "/resources/assignments/",
+        text: "Syllabus",
+        link: "/resources/syllabus/",
+        icon: "tabler/file-description",
       },
       {
         text: "Learning Objectives",
         link: "/resources/learning-objectives/",
+        icon: "tabler/target-arrow",
       },
     ],
   },

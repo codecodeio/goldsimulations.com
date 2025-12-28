@@ -1,0 +1,178 @@
+---
+import { getLocaleFromUrl } from "@/js/localeUtils";
+import { getTranslatedData, useTranslations } from "@/js/translationUtils";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/button/Button.astro";
+
+const currLocale = getLocaleFromUrl(Astro.url);
+const siteData = getTranslatedData("siteData", currLocale);
+---
+
+<BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
+	<!-- Hero / Intro -->
+	<section class="site-container pt-10 pb-8 md:pt-16 md:pb-8 mt-14 overflow-x-clip" data-mos="fade-up"
+          data-mos-delay=".1"
+          data-mos-anchor="#ayllabus-title">
+		<div class="max-w-3xl">
+			<h1 class="text-3xl md:text-5xl font-medium text-pretty">Syllabus for EconRunes </h1>
+			<p class="text-muted-foreground mt-4 md:text-lg">
+				Recommended Course Outline (used throughout the course + optional capstone)
+			</p>
+		</div>
+	</section>
+
+	<!-- Content -->
+	<section class="site-container markdown-content pb-20" data-mos="fade-up"
+          data-mos-delay=".2"
+          data-mos-anchor="#ayllabus-content">
+		<h2>What EconRunes Covers</h2>
+		<p>
+			EconRunes is a story-driven journey through market structures. Students make decisions, see outcomes instantly,
+			and connect choices to core models and graphs.
+		</p>
+		<ul>
+			<li><strong>Realm 1: Perfect Competition</strong> — costs, price-taking, MR = MC, SR profit/loss, LR entry/exit</li>
+			<li><strong>Realm 2: Monopolistic Competition</strong> — differentiation, firm demand, SR vs LR, advertising/positioning</li>
+			<li><strong>Realm 3: Oligopoly</strong> — strategic interdependence, basic game theory, rival response intuition</li>
+			<li><strong>Realm 4: Monopoly</strong> — market power, MR &lt; P, welfare, deadweight loss, regulation themes</li>
+			<li><strong>Optional Capstone: Council of Runes</strong> — synthesis across structures</li>
+		</ul>
+
+		<hr />
+
+		<h2><span class="text-primary-accent">Part 1</span> — Setup Week</h2>
+		<p><strong>Goal:</strong> get every student comfortable with the game and encourage experimentation.</p>
+		<ol>
+			<li><strong>Assign Realm 1</strong></li>
+			<li><strong>Play one low-stakes practice round in Realm 1</strong></li>
+			<li>
+				<strong>Review Outcomes:</strong>
+				<ul>
+					<li>“What decision did you change?”</li>
+					<li>“What happened to price/quantity/profit?”</li>
+					<li>“Which curve or concept explains it?”</li>
+				</ul>
+			</li>
+		</ol>
+		<p><strong>Instructor tip:</strong> Grade this as completion only.</p>
+
+		<h2><span class="text-primary-accent">Part 2</span> — The Repeatable Weekly Loop</h2>
+		<p><strong>Goal:</strong> keep EconRunes aligned with what you’re teaching without adding prep burden.</p>
+		<p>Each time you use EconRunes, follow the same 4 steps:</p>
+		<ol>
+			<li><strong>Teach the concept</strong> (your normal lecture/readings)</li>
+			<li><strong>Play the Game</strong> — students play the Realm tied to that concept</li>
+			<li><strong>Debrief</strong> — 3 questions (use the same ones every time)</li>
+			<li><strong>Quick Grade</strong> — pick one concept</li>
+		</ol>
+
+		<h3>The 3 debrief questions (reuse every time)</h3>
+		<ul>
+			<li>What choice did you make, and why?</li>
+			<li>What changed in the outcome (price, quantity, profit), and what concept explains it?</li>
+			<li>What would you do next round—and what do you predict will happen?</li>
+		</ul>
+
+		<h3>The 3 easy grading options</h3>
+		<ul>
+			<li><strong>Option A: Exit Ticket</strong> (3 short answers)</li>
+			<li><strong>Option B: Screenshot + 3 sentences</strong> (what it shows + why it happened)</li>
+			<li><strong>Option C: Mini-quiz</strong> (5 questions)</li>
+		</ul>
+
+		<hr />
+
+		<h2><span class="text-primary-accent">Part 3</span> — Recommended Roadmap</h2>
+		<p>
+			Use EconRunes when these topics appear in your course. You don’t need to match weeks perfectly—just follow the order.
+		</p>
+
+		<h3>Realm 1 — Perfect Competition (Costs + profit maximization)</h3>
+		<p><strong>Run when you teach:</strong> production, costs, SR vs LR, profit maximization (MR = MC)</p>
+		<h4>Steps</h4>
+		<ol>
+			<li><strong>Teach:</strong> cost curves + MR=MC idea</li>
+			<li><strong>Play:</strong> Realm 1 segment (price-taking decisions)</li>
+			<li><strong>Debrief:</strong> connect SR profit/loss to cost structure</li>
+			<li><strong>Quick grade:</strong> screenshot + explanation</li>
+		</ol>
+
+		<h3>Realm 2 — Monopolistic Competition (Demand + differentiation)</h3>
+		<p><strong>Run when you teach:</strong> demand shifts, elasticity intuition, differentiation</p>
+		<h4>Steps</h4>
+		<ol>
+			<li><strong>Teach:</strong> downward-sloping firm demand + product differentiation</li>
+			<li><strong>Play:</strong> Realm 2 segment (positioning/advertising choices if included)</li>
+			<li><strong>Debrief:</strong> what moved demand vs what changed costs</li>
+			<li><strong>Quick grade:</strong> exit ticket</li>
+		</ol>
+
+		<h3>Realm 3 — Oligopoly (Strategy + rivals)</h3>
+		<p><strong>Run when you teach:</strong> interdependence, pricing/quantity competition, basic game theory</p>
+		<h4>Steps</h4>
+		<ol>
+			<li><strong>Teach:</strong> why rivals matter + strategic response</li>
+			<li><strong>Play:</strong> Realm 3 segment (multi-firm competition)</li>
+			<li><strong>Debrief:</strong> “What do you think rivals did? What will you do next?”</li>
+			<li><strong>Quick grade:</strong> mini-quiz or short reflection</li>
+		</ol>
+
+		<h3>Realm 4 — Monopoly (Market power + welfare)</h3>
+		<p><strong>Run when you teach:</strong> market power, MR &lt; P, welfare, deadweight loss</p>
+		<h4>Steps</h4>
+		<ol>
+			<li><strong>Teach:</strong> monopoly profit rule + welfare impacts</li>
+			<li><strong>Play:</strong> Realm 4 segment</li>
+			<li><strong>Debrief:</strong> relate choices to surplus + DWL</li>
+			<li><strong>Quick grade:</strong> screenshot + explanation</li>
+		</ol>
+
+		<hr />
+
+		<h1><span class="text-primary-accent">Part 4</span> — Optional Capstone Event</h1>
+		<p><strong>Goal:</strong> create a memorable finish with teamwork and synthesis—without adding complexity.</p>
+
+		<h2>Capstone Steps (1–2 class sessions)</h2>
+		<ol>
+			<li><strong>Form teams</strong> (3–5 students)</li>
+			<li>
+				<strong>Team strategy plan:</strong>
+				<ul>
+					<li>What market structure are we in?</li>
+					<li>What’s our strategy and why?</li>
+					<li>What do we predict competitors/market conditions will do?</li>
+				</ul>
+			</li>
+			<li><strong>Team run:</strong> play Realm 5 - Council of Runes</li>
+			<li>
+				<strong>Team deliverable (choose one):</strong>
+				<ul>
+					<li><strong>One-page memo</strong> (strategy → results → what changed → what you learned)</li>
+					<li><strong>5-slide deck</strong> (same structure, more visual)</li>
+				</ul>
+			</li>
+			<li><strong>Wrap-up discussion:</strong> compare strategies across teams</li>
+		</ol>
+
+		<h3>Capstone grading (simple rubric)</h3>
+		<ul>
+			<li>Completion + clarity of economic explanation (not “winning”)</li>
+		</ul>
+
+		<hr />
+
+		<h2>Instructor Quick Start</h2>
+		<ol>
+			<li>Assign <strong>Realm 1 tutorial + practice</strong> in week 1–2.</li>
+			<li>Repeat the loop all semester: <strong>Teach → Play → Debrief → Quick Grade</strong>.</li>
+			<li>Run Realms in order as your course reaches each topic: <strong>1 → 2 → 3 → 4</strong>.</li>
+			<li>If you want a finale, run the <strong>Capstone</strong> with teams and a one-page memo.</li>
+		</ol>
+
+		<div class="mt-10 flex flex-wrap gap-3 not-content">
+			<Button variant="primary" href="/games/econrunes/">Explore EconRunes</Button>
+			<Button variant="secondary" href="/features/" arrow="right">Features</Button>
+			<Button variant="outline" href="/coming-soon" arrow="right">Request Access</Button>
+		</div>
+	</section>
+</BaseLayout>

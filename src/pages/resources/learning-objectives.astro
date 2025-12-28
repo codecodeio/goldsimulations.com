@@ -1,0 +1,248 @@
+---
+import { getLocaleFromUrl } from "@/js/localeUtils";
+import { getTranslatedData, useTranslations } from "@/js/translationUtils";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/button/Button.astro";
+
+const currLocale = getLocaleFromUrl(Astro.url);
+const siteData = getTranslatedData("siteData", currLocale);
+--- 
+
+<BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
+	<!-- Hero / Intro -->
+	<section class="site-container pt-10 pb-8 md:pt-16 md:pb-8 mt-14 overflow-x-clip" data-mos="fade-up"
+          data-mos-delay=".1"
+          data-mos-anchor="#learning-objectives-title">
+		<div class="max-w-3xl">
+			<h1 class="text-3xl md:text-5xl font-medium text-pretty">Learning Objectives — EconRunes</h1>
+			<p class="text-muted-foreground mt-4 md:text-lg">
+				Core outcomes students achieve across Realms and the capstone.
+			</p>
+		</div>
+	</section>
+
+	<!-- Content -->
+	<section class="site-container markdown-content pb-20" data-mos="fade-up"
+          data-mos-delay=".2"
+          data-mos-anchor="#learning-objectives-content">
+		<p>
+			EconRunes is a story-driven journey through four Realms—each one representing a different market structure—so students learn core microeconomics by making decisions, seeing outcomes, and connecting results back to models and graphs.
+		</p>
+
+		<hr />
+
+		<h2>1) Big-Picture Objectives (Across the Whole Journey)</h2>
+		<ol>
+			<li>
+				<strong>Apply marginal thinking</strong>
+				<ul>
+					<li>Use “change at the margin” to explain firm decisions.</li>
+					<li>Justify choices using “what changes if we produce/price one more unit?”</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Connect decisions to outcomes</strong>
+				<ul>
+					<li>Predict how a change in <strong>price, output, costs, or strategy</strong> affects <strong>quantity sold, profit, and consumer response</strong>.</li>
+					<li>Explain outcomes using the relevant curves and concepts.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Interpret the standard graphs</strong>
+				<ul>
+					<li>Read and use cost curves (MC, ATC), demand, and (when relevant) MR.</li>
+					<li>Relate equilibrium ideas to what happens in the game.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Compare market structures</strong>
+				<ul>
+					<li>Identify which structure a scenario resembles and why.</li>
+					<li>Describe how <strong>competition level</strong> changes behavior, pricing power, and efficiency.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Communicate economic reasoning clearly</strong>
+				<ul>
+					<li>Write short, concrete explanations that connect: <strong>choice → outcome → concept</strong> (the same repeatable debrief logic used throughout the course).</li>
+				</ul>
+			</li>
+		</ol>
+
+		<hr />
+
+		<h2>2) Realm Objectives</h2>
+
+		<h3>Realm 1 — Perfect Competition (The Plains of Many Paths)</h3>
+		<ol>
+			<li>
+				<strong>Price-taking behavior</strong>
+				<ul>
+					<li>Explain why an individual firm cannot set price in a competitive market.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Profit maximization rule</strong>
+				<ul>
+					<li>Choose output using the condition <strong>MR = MC</strong> (with MR = market price for a price-taking firm).</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Short-run outcomes</strong>
+				<ul>
+					<li>Distinguish <strong>profit</strong>, <strong>break-even</strong>, and <strong>loss</strong> in the short run using cost and revenue.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Long-run adjustment</strong>
+				<ul>
+					<li>Explain how <strong>entry/exit</strong> drives <strong>long-run zero economic profit</strong>.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Graph mastery</strong>
+				<ul>
+					<li>Use MC and ATC (and the firm’s demand/price line) to justify output choices and outcomes.</li>
+				</ul>
+			</li>
+		</ol>
+
+		<h3>Realm 2 — Monopolistic Competition (The Bazaar of Colors)</h3>
+		<ol>
+			<li>
+				<strong>Differentiation and downward-sloping demand</strong>
+				<ul>
+					<li>Explain why firms face a downward-sloping demand curve when products are differentiated.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Price/quantity tradeoffs</strong>
+				<ul>
+					<li>Describe how pricing or positioning decisions affect quantity sold and profit.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Short-run vs long-run</strong>
+				<ul>
+					<li>Explain how short-run profits attract entry and why long-run outcomes trend toward <strong>zero economic profit</strong>.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Non-price competition</strong>
+				<ul>
+					<li>Identify how <strong>advertising/positioning/variety</strong> shifts a firm’s demand (and how that changes results).</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Interpret elasticity intuition</strong>
+				<ul>
+					<li>Use “more/less price-sensitive customers” to explain why demand response differs across choices.</li>
+				</ul>
+			</li>
+		</ol>
+
+		<h3>Realm 3 — Oligopoly (The Citadel of Houses)</h3>
+		<ol>
+			<li>
+				<strong>Strategic interdependence</strong>
+				<ul>
+					<li>Explain why a firm’s best move depends on what rivals do.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Predict rival response</strong>
+				<ul>
+					<li>Make and defend a prediction about competitor behavior, then compare it to outcomes.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Basic game theory intuition</strong>
+				<ul>
+					<li>Use payoff logic (not heavy math) to explain competition vs cooperation outcomes.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Cournot vs. Bertrand intuition (as introduced)</strong>
+				<ul>
+					<li>Describe how outcomes differ when firms compete mainly on <strong>quantity</strong> vs <strong>price</strong>.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Strategic communication</strong>
+				<ul>
+					<li>Summarize decisions as: <strong>my strategy → expected rival response → expected result → what happened</strong>.</li>
+				</ul>
+			</li>
+		</ol>
+
+		<h3>Realm 4 — Monopoly (The Obsidian Peak)</h3>
+		<ol>
+			<li>
+				<strong>Market power</strong>
+				<ul>
+					<li>Explain why the monopoly can influence price (and why quantity is restricted relative to competition).</li>
+				</ul>
+			</li>
+			<li>
+				<strong>MR vs price</strong>
+				<ul>
+					<li>Describe the key idea <strong>MR &lt; P</strong> and how that affects profit-maximizing choices.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Profit-maximizing decision</strong>
+				<ul>
+					<li>Choose output/price consistent with monopoly logic (produce where MR = MC, then price from demand, as applicable to your implementation).</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Welfare and efficiency</strong>
+				<ul>
+					<li>Explain deadweight loss in plain language (who loses, what’s reduced, why it matters).</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Policy/regulation themes</strong>
+				<ul>
+					<li>Interpret how regulation-like constraints would change outcomes and tradeoffs.</li>
+				</ul>
+			</li>
+		</ol>
+
+		<hr />
+
+		<h2>3) Optional Capstone — Council of Runes (Synthesis)</h2>
+		<ol>
+			<li>
+				<strong>Identify the structure</strong>
+				<ul>
+					<li>Determine which market structure best fits the scenario and justify it using evidence.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Build a strategy</strong>
+				<ul>
+					<li>Create a simple plan: goals, key decision(s), prediction, and what data will confirm/deny the plan.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Integrate concepts</strong>
+				<ul>
+					<li>Combine costs, demand, rivalry, and market power reasoning into one explanation.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Communicate results</strong>
+				<ul>
+					<li>Deliver a short memo or slides that clearly connect: <strong>strategy → results → what changed → what was learned</strong> (graded on clarity of economic explanation, not “winning”).</li>
+				</ul>
+			</li>
+		</ol>
+
+		<div class="mt-10 flex flex-wrap gap-3 not-content">
+			<Button variant="primary" href="/games/econrunes/">Explore EconRunes</Button>
+			<Button variant="secondary" href="/features/" arrow="right">Features</Button>
+			<Button variant="outline" href="/coming-soon" arrow="right">Request Access</Button>
+		</div>
+	</section>
+</BaseLayout>

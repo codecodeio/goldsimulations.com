@@ -1,9 +1,8 @@
 ---
-import building from "@images/building-2-min.png";
 import { Image } from "astro:assets";
-
+import Button from "@/components/button/Button.astro";
+import Badge from "@/components/starwind/badge/Badge.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
-import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
 import heroImage from "@images/econrunes/EconRunesWorldMap.webp";
 const currLocale = getLocaleFromUrl(Astro.url);
 interface Props {
@@ -46,6 +45,30 @@ const { class: className } = Astro.props as Props;
           Turn economic concepts into hands-on learning with immersive digital simulations built for high schools, colleges, and MBA programs.
         </p>
       </div>
+      <div class="pt-8" data-mos="fade-up"
+          data-mos-delay=".6"
+          data-mos-anchor="#hero-side-coming-soon">
+        <Badge variant="warning">Coming Soon!</Badge>
+        </div>
+        
+        <div
+          class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
+          data-mos="fade-up"
+          data-mos-delay=".6"
+          data-mos-anchor="#hero-side-cta"
+        >
+          <Button variant="primary" arrow="right" href={"/resources/syllabus/"}>
+            Resources
+          </Button>
+          
+          <Button
+            variant="secondary"
+            arrow="right"
+            href="/games/econrunes/"  
+          >
+            Explore The Game
+          </Button>
+        </div>
     </div>
 
     <div class="overflow-clip rounded-2xl">
