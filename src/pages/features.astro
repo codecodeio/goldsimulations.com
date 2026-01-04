@@ -8,6 +8,7 @@ import heroImage from "@images/econrunes/EconRunesWorldMap.webp";
 import AboutSideImage from "@/components/about/AboutSideImage.astro";
 import FeatureSideImageProps from "@/components/feature/FeatureSideImageProps.astro";
 import { type FeatureItem } from "@/config/types/configDataTypes";
+import HeroBasicWhatsLearned from "@/components/hero/HeroBasicWhatsLearned.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
@@ -37,4 +38,5 @@ const featureData: FeatureItem[] = [
 <BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
   <AboutSideImage />
   <FeatureSideImageProps featureData={featureData} start="left" />
+  <HeroBasicWhatsLearned />
 </BaseLayout>

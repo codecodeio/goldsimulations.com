@@ -1,0 +1,74 @@
+---
+import Button from "@/components/button/Button.astro";
+import { getLocaleFromUrl } from "@/js/localeUtils";
+import { getTranslatedData, useTranslations } from "@/js/translationUtils";
+
+const currLocale = getLocaleFromUrl(Astro.url);
+const siteData = getTranslatedData("siteData", currLocale);
+
+const bullets = [
+  "Law of Demand",
+"Price Elasticity",
+"Shifts in Demand",
+"Revenue Maximization",
+"Monopoly",
+"Market Equilibrium",
+"Demand & Supply Analysis",
+"Perfect Competition",
+"Monopolistic Competition",
+"Oligopoly & Gaming Theory",
+"Short-run Production",
+"Short-run Costs",
+"Long-run Production",
+"Long-run Costs",
+"Profit Maximizing Rule"
+];
+---
+
+<section
+  class="site-container flex min-h-[40lvh] flex-col items-center justify-center pt-10 pb-24 text-center md:pt-16 md:pb-32"
+>
+  <h1 class="text-3xl font-medium text-pretty md:text-5xl" data-mos="fade-up">
+    What Students Learn
+  </h1>
+  <p class="text-muted-foreground mx-auto mt-6 max-w-xxl" data-mos="fade-up" data-mos-delay=".2">
+    A much better understanding of microeconomic concepts is gained when students apply what they have learned through reading and lecture by managing a firm to maximize profits in a competitive market environment. 
+    Experiential learning provides an excellent opportunity for students to develop their critical thinking skills by going through the decision-making process of observing simulation results, analyzing, planning and then implementing economic theories.
+  </p>
+  <div data-mos="fade-up" data-mos-delay=".3">
+    <ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-left">
+        {
+          bullets.map((item) => (
+            <li class="flex items-start">
+              <span class="bg-primary-accent mt-1.5 mr-3 inline-block size-3 shrink-0 rounded-full md:mt-2" />
+              <span class="text-muted-foreground md:text-lg">{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+  </div>
+  <div
+    class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
+    data-mos="fade-up"
+    data-mos-delay=".4"
+    data-mos-anchor="#hero-basic-cta"
+  >
+    <Button variant="primary" href={"/coming-soon"}>
+      Get Started
+    </Button>
+    <Button
+      variant="secondary"
+      arrow="right"
+      href="/resources/"  
+    >
+      Resources
+    </Button>
+    <Button
+      variant="outline"
+      arrow="right"
+      href="/games/econrunes/"  
+    >
+      Explore The Game
+    </Button>
+  </div>
+</section>
