@@ -54,7 +54,7 @@ const navConfig: navItem[] = [
   },
   {
     text: "News",
-    link: "/blog/",
+    link: "/news/",
   },
 
   // {

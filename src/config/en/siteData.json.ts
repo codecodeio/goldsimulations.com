@@ -12,7 +12,7 @@ const siteData: SiteDataProps = {
   // Your information for blog post purposes
   author: {
     name: "Gold Simulations",
-    email: "blog@goldsimulations.com",
+    email: "news@goldsimulations.com",
     twitter: "GoldSimulations",
   },
 

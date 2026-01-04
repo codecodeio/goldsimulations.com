@@ -21,16 +21,15 @@ const { page } = Astro.props as { page: Page };
 ---
 
 <BaseLayout
-  title="Our Blog Posts"
-  description="Learn from our blog posts about web development, design, and more."
+  title="GoldSimulations News"
+  description="The latest news about GoldSimulations, and articles on economics education."
 >
   <section class="site-container py-24 md:pt-40">
     <div class="overflow-x-clip">
       <div class="mr-auto flex max-w-5xl flex-col">
-        <h1 class="h1">Our Latest News and Articles</h1>
+        <h1 class="h1">The Latest <span class="text-primary-accent">News</span> in Economics Education</h1>
         <p class="text-muted-foreground mt-2 md:text-lg">
-          Lorem ipsum dolor sit amet, consectetury adipiscing elit. Volutpat, tempor to after
-          condimentum commodo
+          The latest news about GoldSimulations, and articles on economics education.
         </p>
       </div>
 
@@ -45,7 +44,7 @@ const { page } = Astro.props as { page: Page };
 
     <div class="mt-10 flex justify-center md:mt-16">
       <Pagination
-        basePath={`/blog/`}
+        basePath={`/news/`}
         prevUrl={page.url.prev}
         currPage={page.currentPage}
         nextUrl={page.url.next}
