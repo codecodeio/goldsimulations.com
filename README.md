@@ -1,66 +1,72 @@
-# Welcome to the "Kitchen Sink" Starter!
+# Gold Simulations
 
-This is a massive starter project with landing pages and sections for SaaS, Portfolio, Services, and Blog websites, all with a more minimal design so you can delete what you don't need and use AI to update the designs. It comes with:
-
-- Blog with pagination, categories, tags, two blog post layouts including one with a table of contents
-- Author pages
-- Services landing page example with various sections
-- Services Index and individual service pages
-- Portfolio landing page example with various sections
-- Projects index and individual project pages
-- Resume page
-- Career index and individual career posting pages
-- AI rule files for cursor / windsurf - specifically for general rules, a style guide, and internationalization features
-- Content collections / keystatic setup for blog posts, authors, services, projects, resume, career, and other pages (like legal)
-- Pricing sections
-- SaaS landing page example with various sections
-- sign up, login, and forgot password pages
-- Overview page and section demos
-- I18n capabilities with config script
-- Animations
-- SEO setup
+[goldsimulations.com](https://www.goldsimulations.com) — Economic simulation games for education and personal learning, built with EconRunes.
 
 ## Getting Started
 
-1. To get started, first install all necessary packages with `npm install` or `pnpm install`, then run an initial build to make sure the setup works `npm run build` or `pnpm build`.
-2. Next, you'll want to configure your site i18n setup (one language, or multiple). Simply run the command `npm run config-i18n` and follow the script instructions to get setup! For further information, see the [i18n documentation](https://cosmicthemes.com/docs/i18n/).
-3. Now you can setup the site to your liking!
-   - [Style customization](https://cosmicthemes.com/docs/styles/)
-   - [Content editing](https://cosmicthemes.com/docs/content/)
-   - [Animations](https://cosmicthemes.com/docs/animations/)
-   - [Keystatic CMS](https://cosmicthemes.com/docs/keystatic/) - if you don't want Keystatic you can run `npm run remove-keystatic`
-   - [Forms](https://cosmicthemes.com/docs/contact-form/)
+1. Install dependencies: `pnpm install`
+2. Run an initial build: `pnpm build`
+3. Configure i18n (one or multiple languages): `pnpm config-i18n`
+4. Start the dev server: `pnpm dev`
 
-Should you need any assistance, send me a message at support@cosmicthemes.com
+## Commands
 
-## More Resources
+All commands are run from the root of the project:
 
-- See my blog post on [recommended Astro web development setup](https://cosmicthemes.com/blog/astro-web-development-setup/).
-- You can learn more information from the [theme docs](https://cosmicthemes.com/docs/) page on the [Cosmic Themes Website](https://cosmicthemes.com/).
-- For support, see the [support page](https://cosmicthemes.com/support/).
-- [License details](https://cosmicthemes.com/license/)
+| Command              | Action                                           |
+| :------------------- | :----------------------------------------------- |
+| `pnpm install`       | Install dependencies                             |
+| `pnpm dev`           | Start local dev server at `localhost:4321`        |
+| `pnpm build`         | Build production site to `./dist/`               |
+| `pnpm preview`       | Preview production build locally                 |
+| `pnpm lint`          | Run ESLint checks                                |
+| `pnpm format`        | ESLint fix + Prettier formatting                 |
+| `pnpm astro ...`     | Run Astro CLI commands (`astro add`, `astro check`) |
 
-## General Astro Info
+## Tech Stack
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- **[Astro](https://astro.build)** v5 — Static site framework
+- **TypeScript** — Type-safe development
+- **[Tailwind CSS](https://tailwindcss.com)** v4 — Utility-first styling
+- **[Starwind UI](https://starwind.dev)** — Component library
+- **[React](https://react.dev)** — Interactive components
+- **[Keystatic](https://keystatic.com)** — Content management (accessible at `/admin`)
+- **[Netlify](https://netlify.com)** — Deployment
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Project Structure
 
-Any static assets, like images, can be placed in the `public/` directory. I also frequently use `src/assets` for images when using Astro asssets for image optimization.
+```
+src/
+├── pages/          # File-based routing
+├── components/     # Astro components organized by feature
+├── layouts/        # BaseLayout and specialized layouts
+├── data/           # Content collections (blog, authors, services, etc.)
+├── config/         # Site settings, translations
+├── styles/         # Tailwind theme and global styles
+├── js/             # Utility functions
+└── assets/         # Images and videos
+```
 
-### Commands
+## Content Management
 
-All commands are run from the root of the project, from a terminal:
+Content is managed through [Keystatic CMS](https://keystatic.com) or by editing MDX/Markdown files directly in `src/data/`. Collections include blog posts, authors, services, projects, careers, and resume data.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+To remove Keystatic: `pnpm remove-keystatic`
 
-### Want to learn more?
+## Customization
 
-Feel free to check [the documentation](https://docs.astro.build) or jump into the [Discord server](https://astro.build/chat).
+- **Theme & colors**: `src/styles/tailwind-theme.css` and `src/styles/global.css`
+- **Site settings**: `src/config/siteSettings.json.ts`
+- **AI rules**: `.rules/` directory contains style guide, general rules, and i18n conventions
+
+## Documentation
+
+- [Style customization](https://cosmicthemes.com/docs/styles/)
+- [Content editing](https://cosmicthemes.com/docs/content/)
+- [Animations](https://cosmicthemes.com/docs/animations/)
+- [Keystatic CMS](https://cosmicthemes.com/docs/keystatic/)
+- [Forms](https://cosmicthemes.com/docs/contact-form/)
+- [i18n](https://cosmicthemes.com/docs/i18n/)
+- [Astro docs](https://docs.astro.build)
+
+Built on the [Kitchen Sink Starter](https://cosmicthemes.com/) by Cosmic Themes.
