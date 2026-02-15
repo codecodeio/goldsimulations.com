@@ -1,7 +1,7 @@
 ---
 /**
- * * pricing sections with toggle for monthly or yearly payments
- * This is designed for 3 pricing items, but can be modified to support more
+ * Pricing section with 4 tiers and a per-student / per-class-section toggle.
+ * Personal-use tiers (Free, Adventurer) display static prices unaffected by the toggle.
  */
 
 import { Icon } from "astro-icon/components";
@@ -12,62 +12,99 @@ import { getLocaleFromUrl } from "@/js/localeUtils";
 interface pricingItem {
   name: string; // plan name
   description: string; // plan description
-  featured?: boolean; // if true, will be highlighted or otherwise featured
+  personalUse?: boolean; // if true, price doesn't change with toggle
+  note?: string; // optional note displayed below the price
   price: {
     custom?: boolean; // if true, will show "contact us" instead of price
-    monthly?: number; // monthly price if paid by month
-    yearly?: number; // monthly price if paid by year
+    monthly?: number; // per student price (or static price for personal use)
+    yearly?: number; // per class section price
   };
+  priceLabel?: string; // label shown below price for personal use tiers
   features: string[]; // list of features
   href: string; // button link to sign up or other page
   linkText: string; // text for the button
 }
 
-// This is designed for 3 pricing items, but can be modified to support more
 const pricingData: pricingItem[] = [
   {
-    name: "Basic",
-    description: "Essential features for beginners. Get started with ease",
+    name: "Free",
+    description:
+      "Start your journey with EconRunes Realm 1. Explore core economic concepts at your own pace.",
+    personalUse: true,
+    priceLabel: "(personal use)",
     price: {
-      monthly: 29,
-      yearly: 19,
+      monthly: 0,
     },
-    features: ["Basic Features", "1 user", "2 GB Free Access", "Limited Support"],
+    features: [
+      "EconRunes Realm 1",
+      "Solo play",
+      "Basic tutorials",
+    ],
     href: "/sign-up",
     linkText: "Get Started",
   },
   {
-    name: "Professional",
-    description: "Perfect for solo professionals. Unlock advanced features",
-    featured: true,
+    name: "Adventurer",
+    description:
+      "Unlock all Realms and master the full EconRunes experience. Perfect for curious minds and self-learners.",
+    personalUse: true,
+    priceLabel: "(one-time purchase)",
+    note: "Personal use only — classroom features not included",
     price: {
-      monthly: 49,
-      yearly: 39,
+      monthly: 19,
     },
-    features: ["Pro features", "Up to 10 users", "50 GB Free Access", "Priority support"],
+    features: [
+      "All EconRunes Realms (as released)",
+      "Multiplayer with friends",
+      "Leaderboards & achievements",
+      "Progress tracking",
+      "Priority support",
+    ],
     href: "/sign-up",
-    linkText: "Get Started",
+    linkText: "Buy Now",
   },
   {
-    name: "Enterprise",
-    description: "Scale your business faster. Comprehensive plan",
+    name: "High Schools",
+    description:
+      "Bring economics to life in your classroom. Affordable, curriculum-aligned simulations for high school educators.",
     price: {
-      monthly: 99,
-      yearly: 79,
+      monthly: 8,
+      yearly: 149,
     },
-    features: ["Pro features", "Unlimited Users", "200 GB Free Access", "Premium Support"],
+    features: [
+      "All EconRunes Realms",
+      "Classroom management dashboard",
+      "Student progress reports",
+      "Class assignments & scenarios",
+      "Up to 35 students per section",
+      "Teacher resources & guides",
+      "Email support",
+    ],
     href: "/sign-up",
-    linkText: "Get Started",
+    linkText: "Start Free Trial",
   },
   {
-    name: "Contact Us",
-    description: "For bespoke solutions tailored to your business needs",
+    name: "Colleges",
+    description:
+      "Advanced economic simulations for higher education. Research-grade tools for rigorous academic environments.",
     price: {
-      custom: true,
+      monthly: 15,
+      yearly: 299,
     },
-    features: ["White Glove Onboarding", "All Features", "unlimited Users", "Dedicated support"],
-    href: "/contact",
-    linkText: "Contact Us",
+    features: [
+      "All EconRunes Realms",
+      "Classroom management dashboard",
+      "Student progress reports",
+      "Class assignments & scenarios",
+      "Data export for research",
+      "Custom scenario builder",
+      "LMS integration (Canvas, Blackboard)",
+      "Unlimited students per section",
+      "Email support",
+      "Onboarding assistance",
+    ],
+    href: "/sign-up",
+    linkText: "Start Free Trial",
   },
 ];
 
@@ -80,7 +117,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
       <!-- <Badge>Pricing</Badge> -->
     </div>
     <div class="flex justify-center">
-      <h2 class="h2 inline text-center">A plan for every business</h2>
+      <h2 class="h2 inline text-center"><span class="text-primary-accent">Choose  </span> Your Economics Adventure</h2>
     </div>
 
     <!-- Toggle switch for monthly or yearly pricing -->
@@ -89,9 +126,9 @@ const currLocale = getLocaleFromUrl(Astro.url);
         for="pricing-four-cards__toggle"
         class="relative inline-flex cursor-pointer items-center gap-4 select-none"
       >
-        <span class="description flex items-center">Monthly</span>
+        <span class="description flex items-center">Per Student</span>
         <Switch id="pricing-four-cards__toggle" variant="primary" padding={4} />
-        <span class="description flex items-center">Yearly</span>
+        <span class="description flex items-center">Per Class Section</span>
       </label>
     </div>
 
@@ -102,77 +139,61 @@ const currLocale = getLocaleFromUrl(Astro.url);
           <div class="pricing-plan w-full">
             <div
               class="bg-muted relative flex h-full flex-col justify-between rounded-xl border p-8 text-center shadow-sm"
-              class:list={[
-                {
-                  "border-primary-accent": plan.featured === true,
-                },
-              ]}
             >
-              <div class="">
-                <h3
-                  class="mb-8 text-lg font-medium"
-                  class:list={[
-                    {
-                      "text-primary-accent": plan.featured === true,
-                    },
-                    {
-                      "text-muted-foreground": plan.featured !== true,
-                    },
-                  ]}
-                >
+              <div>
+                <h3 class="text-muted-foreground mb-8 text-lg font-medium">
                   {plan.name}
                 </h3>
-                {plan.price.custom === true ? (
-                  // if custom price, show "Custom" instead of price
-                  <>
-                    <h4>
-                      <span class="text-4xl font-medium">Custom</span>
-                    </h4>
-                    <span aria-hidden="true" class="text-muted-foreground invisible inline-block">
-                      per user, per month
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <div class="pricing-monthly">
-                      <h4 class="text-4xl font-medium">${plan.price.monthly} / mo</h4>
-                      <span class="text-muted-foreground inline-block text-sm">(paid monthly)</span>
-                    </div>
-                    <div class="pricing-yearly hidden">
-                      <h4 class="text-4xl font-medium">${plan.price.yearly} / mo</h4>
-                      <span class="text-muted-foreground inline-block text-sm">(paid yearly)</span>
-                    </div>
-                  </>
-                )}
+                <div class="min-h-[6.5rem] flex flex-col items-center justify-center">
+                  {plan.price.custom === true ? (
+                    <>
+                      <h4>
+                        <span class="text-4xl font-medium">Custom</span>
+                      </h4>
+                      <span aria-hidden="true" class="text-muted-foreground invisible inline-block">
+                        per student
+                      </span>
+                    </>
+                  ) : plan.personalUse === true ? (
+                    <>
+                      <h4 class="text-4xl font-medium">
+                        {plan.price.monthly === 0 ? "Free" : `$${plan.price.monthly}`}
+                      </h4>
+                      <span class="text-muted-foreground inline-block text-sm">
+                        {plan.priceLabel}
+                      </span>
+                      {plan.note && (
+                        <p class="text-muted-foreground mt-1 text-xs">{plan.note}</p>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      <div class="pricing-monthly">
+                        <h4 class="text-4xl font-medium">${plan.price.monthly}</h4>
+                        <span class="text-muted-foreground inline-block text-sm">(per student)</span>
+                      </div>
+                      <div class="pricing-yearly hidden">
+                        <h4 class="text-4xl font-medium">${plan.price.yearly}</h4>
+                        <span class="text-muted-foreground inline-block text-sm">(per class section)</span>
+                      </div>
+                    </>
+                  )}
+                </div>
 
                 <div class="mt-8 border-y py-8">
-                  <p
-                    class="text-muted-foreground mx-auto max-w-xs"
-                    class:list={[
-                      {
-                        "text-foreground": plan.featured === true,
-                      },
-                    ]}
-                  >
+                  <p class="text-muted-foreground mx-auto max-w-xs">
                     {plan.description}
                   </p>
                 </div>
                 <ul class="py-8">
                   {plan.features.map((feature) => (
-                    <li class="mb-2.5 flex flex-wrap items-center gap-3">
+                    <li class="mb-2.5 flex items-start gap-3">
                       <Icon
                         name="tabler/check"
-                        class="text-primary-accent size-5"
+                        class="text-primary-accent mt-0.5 size-5 shrink-0"
                         aria-hidden="true"
                       />
-                      <span
-                        class="font-medium"
-                        class:list={[
-                          {
-                            "text-muted-foreground": plan.featured !== true,
-                          },
-                        ]}
-                      >
+                      <span class="text-muted-foreground text-left font-medium">
                         {feature}
                       </span>
                     </li>
@@ -181,7 +202,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
               </div>
               <Button
                 class="mb-0 w-full"
-                variant={plan.featured === true ? "primary" : "outline"}
+                variant="outline"
                 href={plan.href}
               >
                 {plan.linkText}
@@ -191,6 +212,11 @@ const currLocale = getLocaleFromUrl(Astro.url);
         ))
       }
     </div>
+    <p class="text-muted-foreground mx-auto mt-10 max-w-2xl text-center text-sm">
+      <strong>Per Class Section</strong> pricing covers one instructor's class of up to 35 students
+      for a single course enrollment. Need to cover multiple sections or an entire department?
+      <a href="/contact" class="text-primary-accent underline">Contact us</a> for volume discounts.
+    </p>
   </div>
 </section>
 
