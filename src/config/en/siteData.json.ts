@@ -5,9 +5,9 @@ const siteData: SiteDataProps = {
   name: "Gold Simulations",
   // Your website's title and description (meta fields)
   title:
-    "GoldSimulations: Immersive simulations that bring your classroom to life.",
+    "Gold Simulations — Economics simulation games for the classroom",
   description:
-    "Turn economic concepts into hands-on learning with immersive simulations that bring your classroom to life. Let students explore, experiment, and truly understand how economies work. Built for colleges, MBA programs, and high schools.",
+    "Gold Simulations builds immersive games that change how students learn economics. Designed for colleges, MBA programs, and high schools. Meet EconRunes.",
 
   // Your information for blog post purposes
   author: {
