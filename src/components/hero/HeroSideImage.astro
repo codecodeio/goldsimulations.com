@@ -3,19 +3,16 @@
  * * Hero with image one the side
  */
 
-import heroImage from "@images/econrunes/EconRunesWorldMap.webp";
-import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
+import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
 import Button from "@/components/button/Button.astro";
-import { getLocaleFromUrl } from "@/js/localeUtils";
-import Badge from "@/components/starwind/badge/Badge.astro";
-
-const currLocale = getLocaleFromUrl(Astro.url);
+import RealmCards from "@/components/hero/RealmCards.astro";
 ---
 
 <!-- "dark" class forces dark mode for this section -->
-<section id="hero-side" class="mt-14 overflow-x-clip">
-  <div class="site-container py-16 md:py-20">
+<section id="hero-side" class="relative mt-14 overflow-clip">
+  <div class="site-container relative z-10 py-16 md:py-20">
     <div
       class="mx-auto grid max-w-md gap-10 text-center md:max-w-none md:grid-cols-2 md:text-left xl:items-center"
     >
@@ -24,7 +21,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
           <h1
             class="mb-6 text-5xl leading-tight font-medium tracking-tight text-pretty md:text-5xl md:leading-tight"
           >
-            Where Economics Becomes <span class="text-primary-accent">Adventure</span>
+            Where Economics Classrooms <span class="text-primary-accent">Come to Life</span>
           </h1>
         </div>
         <p
@@ -33,30 +30,44 @@ const currLocale = getLocaleFromUrl(Astro.url);
           data-mos-delay=".1"
           data-mos-anchor="#hero-side-overview"
         >
-          Turn economic concepts into hands-on learning with our immersive simulation game, EconRunes, that brings your classroom to life. Let students explore, experiment, and truly understand how economies work. Built for colleges, MBA programs, and high schools.
+          Our immersive games change how students learn economics. Abstract concepts become hands-on decisions. Learners explore, experiment, and truly understand how markets work by applying theory and living with the outcomes. Designed for colleges, MBA programs, and high schools. Explore our flagship game, EconRunes.
         </p>
-        <div data-mos="fade-up"
+        <div
+          class="text-muted-foreground flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm md:justify-start"
+          data-mos="fade-up"
           data-mos-delay=".2"
-          data-mos-anchor="#hero-side-coming-soon">
-        <Badge variant="warning">Coming Soon!</Badge>
+          data-mos-anchor="#hero-side-trust"
+        >
+          <span class="inline-flex items-center gap-1.5">
+            <Icon
+              name="tabler/devices"
+              class="size-4 text-brand-green"
+              aria-hidden="true"
+            />
+            Works on any device
+          </span>
+          <span class="inline-flex items-center gap-1.5">
+            <Icon
+              name="tabler/circle-check"
+              class="size-4 text-brand-green"
+              aria-hidden="true"
+            />
+            Built by economists
+          </span>
         </div>
-        
+
         <div
           class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
           data-mos="fade-up"
           data-mos-delay=".3"
           data-mos-anchor="#hero-side-cta"
         >
-          <Button variant="primary" arrow="right" href={"/features/"}>
-            Features
+          <Button variant="primary" arrow="right" href="https://econrunes.goldsimulations.com/play">
+            Try It Free
           </Button>
-          
-          <Button
-            variant="secondary"
-            arrow="right"
-            href="/games/econrunes/"  
-          >
-            Explore The Game
+
+          <Button variant="secondary" arrow="right" href="/features/">
+            How It Works
           </Button>
         </div>
       </div>
@@ -67,18 +78,10 @@ const currLocale = getLocaleFromUrl(Astro.url);
         data-mos-anchor="#hero-side"
         data-mos-delay=".5"
       >
-        <div class="relative h-full overflow-hidden rounded-xl border">
-          <a href="/games/econrunes/">
-            <Image
-            src={heroImage}
-            class="min-h-full w-auto object-cover"
-            alt="hero"
-            loading="eager"
-            width={500}
-            densities={[1.5, 2]}
-          /></a>
-        </div>
+        <RealmCards />
       </div>
     </div>
   </div>
+
+  <AccentBlur color="blue" />
 </section>

@@ -1,0 +1,42 @@
+---
+/**
+ * * Decorative blurred accent lights, anchored to top-right and bottom-left.
+ *
+ * Parent element MUST be `relative overflow-clip` (or `overflow-hidden`)
+ * for the blurs to position correctly and not bleed into adjacent sections.
+ *
+ * Sibling content should have a higher stacking context (e.g. `relative z-10`)
+ * so it renders above the blurs.
+ */
+
+interface Props {
+  color?: "blue" | "green" | "orange";
+}
+
+const { color = "blue" } = Astro.props;
+
+const colorClasses: Record<NonNullable<Props["color"]>, string> = {
+  blue: "bg-primary/20",
+  green: "bg-green-500/20",
+  orange: "bg-orange-500/20",
+};
+
+const blurColor = colorClasses[color];
+---
+
+<div
+  class:list={[
+    blurColor,
+    "pointer-events-none absolute -top-40 -right-40 size-140 rounded-full blur-3xl xl:size-150",
+  ]}
+  aria-hidden="true"
+>
+</div>
+<div
+  class:list={[
+    blurColor,
+    "pointer-events-none absolute -bottom-40 -left-40 size-140 rounded-full blur-3xl xl:size-150",
+  ]}
+  aria-hidden="true"
+>
+</div>
