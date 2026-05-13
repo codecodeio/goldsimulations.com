@@ -18,7 +18,7 @@ const navConfig: navItem[] = [
   }, 
   // dropdown
   {
-    text: "Products",
+    text: "Games",
     dropdown: [
       {
         text: "Econ runes",
