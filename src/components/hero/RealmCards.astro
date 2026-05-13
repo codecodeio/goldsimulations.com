@@ -1,0 +1,95 @@
+---
+/**
+ * * Card list previewing the four EconRunes Realms.
+ * * Used in the homepage hero in place of a static image.
+ */
+import { Icon } from "astro-icon/components";
+
+const realms = [
+  {
+    number: "Realm 1",
+    title: "Perfect Competition",
+    description: "Costs, price-taking, MR=MC",
+    href: "/games/econrunes/#realm-1",
+    hoverBg: "hover:bg-brand-blue/10 hover:border-brand-blue/20",
+  },
+  {
+    number: "Realm 2",
+    title: "Monopolistic Competition",
+    description: "Differentiation & advertising",
+    href: "/games/econrunes/#realm-2",
+    hoverBg: "hover:bg-brand-teal/10 hover:border-brand-teal/20",
+  },
+  {
+    number: "Realm 3",
+    title: "Oligopoly",
+    description: "Game theory & rivalry",
+    href: "/games/econrunes/#realm-3",
+    hoverBg: "hover:bg-brand-green/10 hover:border-brand-green/20",
+  },
+  {
+    number: "Realm 4",
+    title: "Monopoly",
+    description: "Market power & welfare",
+    href: "/games/econrunes/#realm-4",
+    hoverBg: "hover:bg-brand-orange/10 hover:border-brand-orange/20",
+  },
+];
+---
+
+<div
+  class="border-gray/45 bg-base-100/40 dark:bg-base-800/30 relative w-full rounded-2xl border-2 p-6 md:p-7"
+>
+  <div class="mb-5 flex items-center justify-between">
+    <h2 class="text-foreground text-xl font-medium md:text-2xl">
+      The journey through economics
+    </h2>
+    <Icon
+      name="tabler/route-square"
+      class="text-primary-accent size-6 shrink-0"
+      aria-hidden="true"
+    />
+  </div>
+
+  <ul class="flex flex-col gap-3">
+    {
+      realms.map(({ number, title, description, href, hoverBg }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              "group border-gray-100/10 bg-base-100/7 dark:bg-base-100/7 flex items-center justify-between gap-3 rounded-xl border p-3 transition-all duration-200",
+              hoverBg,
+            ]}
+          >
+            <div class="min-w-0">
+              <div class="text-muted-foreground mb-0.5 text-xs font-medium tracking-wider uppercase">
+                {number}
+              </div>
+              <div class="text-foreground truncate text-base font-medium md:text-lg">
+                {title}
+              </div>
+              <div class="text-muted-foreground mt-1 truncate text-sm">
+                {description}
+              </div>
+            </div>
+            <Icon
+              name="tabler/arrow-narrow-right"
+              class="text-muted-foreground group-hover:text-primary-accent size-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <a
+    href="/resources/syllabus/"
+    class="text-primary-accent hover:text-primary-accent/80 mt-5 inline-flex items-center gap-2 text-sm font-medium"
+  >
+    <Icon name="tabler/north-star" class="size-4 text-brand-blue" aria-hidden="true" />
+    New to EconRunes? See the syllabus
+    <span aria-hidden="true">→</span>
+  </a>
+</div>

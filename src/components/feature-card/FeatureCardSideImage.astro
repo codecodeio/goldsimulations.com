@@ -18,17 +18,19 @@ interface Props {
   href: string; // link to learn more
   image: ImageMetadata; // an imported image
   imageSide: "left" | "right";
+  id?: string; // optional anchor id
   rest?: any; // catch-all for any additional parameters, such as "aria-label"
 }
 
-const { badge, image, title, buttonText, href, description, imageSide, ...rest } =
+const { badge, image, title, buttonText, href, description, imageSide, id, ...rest } =
   Astro.props as Props;
 
 const currLocale = getLocaleFromUrl(Astro.url);
 ---
 
 <div
-  class="mx-auto grid gap-8 rounded-lg md:grid-cols-2 md:gap-12 md:rounded-xl lg:gap-16"
+  id={id}
+  class="mx-auto grid scroll-mt-24 gap-8 rounded-lg md:grid-cols-2 md:gap-12 md:rounded-xl lg:gap-16"
   data-mos=`${imageSide == "left" ? "fade-right" : "fade-left"}`
   {...rest}
 >

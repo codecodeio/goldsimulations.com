@@ -73,4 +73,5 @@ export interface FeatureItem {
   description: string;
   href: string; // link to learn more
   buttonText: string; // button text
+  id?: string; // optional anchor id for the card wrapper
 }
