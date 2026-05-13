@@ -17,6 +17,13 @@
   --color-primary-900: var(--color-blue-900);
   --color-primary-950: var(--color-blue-950);
 
+  /* brand accent colors — reusable across realms and trust signals.
+     Change a single line here to update everywhere it's used. */
+  --color-brand-blue: var(--color-blue-400);
+  --color-brand-teal: var(--color-teal-400);
+  --color-brand-green: var(--color-emerald-400);
+  --color-brand-orange: var(--color-orange-400);
+
   /* base colors */
   --color-base-50: var(--color-neutral-50);
   --color-base-100: var(--color-neutral-100);
