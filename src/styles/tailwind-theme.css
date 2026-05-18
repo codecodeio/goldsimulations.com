@@ -67,6 +67,8 @@
   --animate-marquee: marquee 70s linear infinite;
   --animate-marquee-testimonials: marquee-testimonials 60s linear infinite;
   --animate-marquee-gallery: marquee-gallery 100s linear infinite;
+  --animate-accent-blur-a: accent-blur-a 16s ease-in-out infinite;
+  --animate-accent-blur-b: accent-blur-b 20s ease-in-out infinite;
 
   @keyframes accordion-down {
     from {
@@ -110,6 +112,26 @@
     }
     to {
       transform: translateX(calc(-100% - 2.5rem));
+    }
+  }
+
+  @keyframes accent-blur-a {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(0.75);
+    }
+    50% {
+      transform: translate(-180px, 140px) scale(1.3);
+    }
+  }
+
+  @keyframes accent-blur-b {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(0.75);
+    }
+    50% {
+      transform: translate(160px, -130px) scale(1.4);
     }
   }
 }
