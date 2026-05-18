@@ -26,12 +26,12 @@ const { navStyle = "default" } = Astro.props as Props;
 <div
   id="nav__container"
   class:list={[
-    "navbar--initial fixed top-0 left-0 z-30 flex w-full flex-col border-b transition-all duration-300",
+    "bg-background fixed top-0 left-0 z-30 flex w-full flex-col border-b",
     { dark: navStyle === "dark" },
   ]}
 >
   <div class="mx-auto flex w-full">
-    <div class="site-container flex h-14 w-full items-center">
+    <div class="site-container flex h-16 w-full items-center">
       <header class="relative flex w-full items-center gap-2">
         <!-- home button / image -->
         <div class="flex flex-auto justify-start">
@@ -73,7 +73,6 @@ const { navStyle = "default" } = Astro.props as Props;
             variant="primary"
             class="my-auto hidden px-4 py-2 md:flex"
             href="/coming-soon/"
-            
           >
             Sign In
           </Button>
@@ -90,43 +89,3 @@ const { navStyle = "default" } = Astro.props as Props;
   </div>
 </div>
 
-<style>
-  @import "tailwindcss/theme" theme(reference);
-  @import "@/styles/tailwind-theme.css" theme(reference);
-
-  .navbar--scrolled {
-    @apply bg-background border-b;
-  }
-
-  .navbar--initial {
-    @apply border-b-transparent bg-transparent py-2;
-  }
-</style>
-
-<script>
-  let navbar: HTMLElement | null;
-
-  function scrollHandler() {
-    if (navbar) {
-      if (window.scrollY > 50) {
-        // if we have scrolled down the page a bit, add a frosted-glass look to the navbar
-        navbar.classList.add("navbar--scrolled");
-        navbar.classList.remove("navbar--initial");
-      } else {
-        navbar.classList.add("navbar--initial");
-        navbar.classList.remove("navbar--scrolled");
-      }
-    }
-  }
-
-  function initNav() {
-    navbar = document.getElementById("nav__container");
-    window.addEventListener("scroll", scrollHandler, { passive: true });
-  }
-
-  // runs on initial page load
-  initNav();
-
-  // runs on view transitions navigation. Not needed if item has "transition:persist"
-  document.addEventListener("astro:after-swap", initNav);
-</script>
