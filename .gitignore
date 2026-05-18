@@ -24,3 +24,9 @@ pnpm-debug.log*
 .vercel
 .wrangler
 .ai-context
+
+# Playwright (MCP scratch dir + standard test output)
+.playwright-mcp/
+test-results/
+playwright-report/
+playwright/.cache/
