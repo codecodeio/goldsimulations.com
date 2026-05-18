@@ -1,0 +1,252 @@
+---
+/**
+ * Animated Cost Curves & Market Price chart for the EconRunes hero.
+ * Lines draw in left-to-right once the chart scrolls into view; on hover,
+ * the muted strokes are overlaid by brand-colored gradient strokes.
+ */
+---
+
+<div class="chart-econrunes group relative h-full w-full" data-chart-econrunes>
+  <svg
+    viewBox="0 0 700 500"
+    preserveAspectRatio="xMidYMid meet"
+    role="img"
+    aria-label="Cost curves and market price chart: ATC (average total cost), MC (marginal cost), and the market Price (MR)."
+    class="block h-auto w-full"
+  >
+    <defs>
+      <linearGradient id="grad-atc" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--color-brand-blue)" stop-opacity="0.25" />
+        <stop offset="55%" stop-color="var(--color-brand-blue)" stop-opacity="1" />
+        <stop offset="100%" stop-color="var(--color-brand-blue)" stop-opacity="0.7" />
+      </linearGradient>
+      <linearGradient id="grad-mc" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--color-brand-orange)" stop-opacity="0.25" />
+        <stop offset="55%" stop-color="var(--color-brand-orange)" stop-opacity="1" />
+        <stop offset="100%" stop-color="var(--color-brand-orange)" stop-opacity="0.7" />
+      </linearGradient>
+      <linearGradient id="grad-mr" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--color-brand-green)" stop-opacity="0.25" />
+        <stop offset="55%" stop-color="var(--color-brand-green)" stop-opacity="1" />
+        <stop offset="100%" stop-color="var(--color-brand-green)" stop-opacity="0.7" />
+      </linearGradient>
+    </defs>
+
+    <!-- Title -->
+    <text
+      x="350"
+      y="36"
+      text-anchor="middle"
+      class="chart-title"
+      fill="var(--color-muted-foreground)"
+      font-size="16"
+      font-weight="600"
+      letter-spacing="2"
+    >COST CURVES &amp; MARKET PRICE</text>
+
+    <!-- Legend -->
+    <g class="chart-legend" font-size="14" font-weight="500">
+      <g transform="translate(220, 72)">
+        <circle cx="0" cy="0" r="4" fill="var(--color-brand-blue)" />
+        <text x="12" y="5" fill="var(--color-brand-blue)">ATC</text>
+      </g>
+      <g transform="translate(310, 72)">
+        <circle cx="0" cy="0" r="4" fill="var(--color-brand-orange)" />
+        <text x="12" y="5" fill="var(--color-brand-orange)">MC</text>
+      </g>
+      <g transform="translate(390, 72)">
+        <circle cx="0" cy="0" r="4" fill="var(--color-brand-green)" />
+        <text x="12" y="5" fill="var(--color-brand-green)">Price (MR)</text>
+      </g>
+    </g>
+
+    <!-- Axis labels (rotated Y label + X label) -->
+    <text
+      x="-270"
+      y="32"
+      transform="rotate(-90)"
+      text-anchor="middle"
+      class="chart-axis-label"
+      fill="var(--color-muted-foreground)"
+      font-size="13"
+    >Cost / Price</text>
+    <text
+      x="370"
+      y="478"
+      text-anchor="middle"
+      class="chart-axis-label"
+      fill="var(--color-muted-foreground)"
+      font-size="13"
+    >Quantity (Q)</text>
+
+    <!-- Grid -->
+    <g class="chart-grid" stroke="var(--color-border)" stroke-width="1" opacity="0.6">
+      <!-- horizontal grid lines at v = 0, 30, 60, 90, 120 -->
+      <line x1="80" y1="430" x2="660" y2="430" />
+      <line x1="80" y1="350" x2="660" y2="350" stroke-dasharray="2 4" />
+      <line x1="80" y1="270" x2="660" y2="270" stroke-dasharray="2 4" />
+      <line x1="80" y1="190" x2="660" y2="190" stroke-dasharray="2 4" />
+      <line x1="80" y1="110" x2="660" y2="110" stroke-dasharray="2 4" />
+      <!-- vertical grid lines at q = 1, 5, 10, 15, 20, 25, 30 -->
+      <line x1="80" y1="110" x2="80" y2="430" />
+      <line x1="160" y1="110" x2="160" y2="430" stroke-dasharray="2 4" />
+      <line x1="260" y1="110" x2="260" y2="430" stroke-dasharray="2 4" />
+      <line x1="360" y1="110" x2="360" y2="430" stroke-dasharray="2 4" />
+      <line x1="460" y1="110" x2="460" y2="430" stroke-dasharray="2 4" />
+      <line x1="560" y1="110" x2="560" y2="430" stroke-dasharray="2 4" />
+      <line x1="660" y1="110" x2="660" y2="430" stroke-dasharray="2 4" />
+    </g>
+
+    <!-- Axis tick labels -->
+    <g class="chart-ticks" fill="var(--color-muted-foreground)" font-size="11">
+      <!-- Y-axis values -->
+      <text x="70" y="434" text-anchor="end">0</text>
+      <text x="70" y="354" text-anchor="end">30</text>
+      <text x="70" y="274" text-anchor="end">60</text>
+      <text x="70" y="194" text-anchor="end">90</text>
+      <text x="70" y="114" text-anchor="end">120</text>
+      <!-- X-axis values -->
+      <text x="80" y="448" text-anchor="middle">1</text>
+      <text x="160" y="448" text-anchor="middle">5</text>
+      <text x="260" y="448" text-anchor="middle">10</text>
+      <text x="360" y="448" text-anchor="middle">15</text>
+      <text x="460" y="448" text-anchor="middle">20</text>
+      <text x="560" y="448" text-anchor="middle">25</text>
+      <text x="660" y="448" text-anchor="middle">30</text>
+    </g>
+
+    <!-- Series: ATC (blue, U-curve) - base colored layer + hover gradient/glow overlay -->
+    <g class="chart-series" style="--i: 0; color: var(--color-brand-blue)">
+      <path
+        class="chart-line"
+        d="M 80 137 C 100 220 115 295 150 325 C 185 348 225 350 260 350 C 350 350 460 335 560 325 L 660 310"
+        fill="none"
+        stroke="var(--color-brand-blue)"
+        stroke-opacity="0.75"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        class="chart-line chart-line--color"
+        d="M 80 137 C 100 220 115 295 150 325 C 185 348 225 350 260 350 C 350 350 460 335 560 325 L 660 310"
+        fill="none"
+        stroke="url(#grad-atc)"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </g>
+
+    <!-- Series: MC (orange, straight line) -->
+    <g class="chart-series" style="--i: 1; color: var(--color-brand-orange)">
+      <path
+        class="chart-line"
+        d="M 80 398 L 660 243"
+        fill="none"
+        stroke="var(--color-brand-orange)"
+        stroke-opacity="0.75"
+        stroke-width="2.5"
+        stroke-linecap="round"
+      />
+      <path
+        class="chart-line chart-line--color"
+        d="M 80 398 L 660 243"
+        fill="none"
+        stroke="url(#grad-mc)"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+    </g>
+
+    <!-- Series: Price/MR (green, dashed horizontal) -->
+    <g class="chart-series" style="--i: 2; color: var(--color-brand-green)">
+      <path
+        class="chart-line"
+        d="M 80 329 L 660 329"
+        fill="none"
+        stroke="var(--color-brand-green)"
+        stroke-opacity="0.75"
+        stroke-width="2.5"
+        stroke-dasharray="8 6"
+        stroke-linecap="round"
+      />
+      <path
+        class="chart-line chart-line--color"
+        d="M 80 329 L 660 329"
+        fill="none"
+        stroke="url(#grad-mr)"
+        stroke-width="3"
+        stroke-dasharray="8 6"
+        stroke-linecap="round"
+      />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .chart-econrunes svg {
+    aspect-ratio: 7 / 5;
+  }
+
+  /* Line draw-in: clip-path reveal from left → right.
+     Starts ~1s after .is-visible so it follows the parent's 0.8s MOS fade-in. */
+  .chart-line {
+    clip-path: inset(0 100% 0 0);
+  }
+  .chart-line--color {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    filter: drop-shadow(0 0 6px currentColor);
+  }
+  .chart-econrunes:hover .chart-line--color,
+  .chart-econrunes:focus-within .chart-line--color {
+    opacity: 1;
+  }
+  .chart-econrunes.is-visible .chart-line {
+    animation: chart-econrunes-draw 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    animation-delay: calc(0.5s + var(--i, 0) * 0.25s);
+  }
+
+  @keyframes chart-econrunes-draw {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chart-econrunes .chart-line {
+      clip-path: inset(0 0 0 0);
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const reveal = (root: HTMLElement) => root.classList.add("is-visible");
+
+  const charts = document.querySelectorAll<HTMLElement>("[data-chart-econrunes]");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  charts.forEach((root) => {
+    if (reduce) {
+      reveal(root);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            reveal(root);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(root);
+  });
+</script>
