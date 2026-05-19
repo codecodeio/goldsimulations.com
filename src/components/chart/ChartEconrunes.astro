@@ -181,6 +181,29 @@
         stroke-linecap="round"
       />
     </g>
+
+    <!-- Q=14 indicator: slides in from the left and stops at Q=14 (x=340) -->
+    <g class="chart-indicator">
+      <text
+        x="340"
+        y="102"
+        text-anchor="middle"
+        fill="var(--color-red-400)"
+        font-size="13"
+        font-weight="600"
+        data-q-label
+      >Q=14</text>
+      <line
+        x1="340"
+        y1="112"
+        x2="340"
+        y2="430"
+        stroke="var(--color-red-400)"
+        stroke-width="2"
+        stroke-dasharray="6 5"
+        stroke-linecap="round"
+      />
+    </g>
   </svg>
 </div>
 
@@ -217,9 +240,36 @@
     }
   }
 
+  /* Q=14 indicator: hidden + parked at the plot's left edge (x=80 visually)
+     until the chart lines finish drawing (~2.4s), then slides to x=340. */
+  .chart-indicator {
+    opacity: 0;
+    transform: translateX(-260px);
+  }
+  .chart-econrunes.is-visible .chart-indicator {
+    animation: chart-econrunes-indicator-slide 1s cubic-bezier(0.22, 0.61, 0.36, 1)
+      forwards;
+    animation-delay: 1.75s;
+  }
+  @keyframes chart-econrunes-indicator-slide {
+    from {
+      opacity: 1;
+      transform: translateX(-260px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .chart-econrunes .chart-line {
       clip-path: inset(0 0 0 0);
+      animation: none;
+    }
+    .chart-econrunes .chart-indicator {
+      opacity: 1;
+      transform: translateX(0);
       animation: none;
     }
   }
@@ -227,6 +277,28 @@
 
 <script>
   const reveal = (root: HTMLElement) => root.classList.add("is-visible");
+
+  const wireCountUp = (root: HTMLElement) => {
+    const indicator = root.querySelector<SVGGElement>(".chart-indicator");
+    const label = root.querySelector<SVGTextElement>("[data-q-label]");
+    if (!indicator || !label) return;
+    // Park at 0 until the slide animation starts; the indicator stays opacity:0
+    // during the CSS delay so this isn't visible to the user.
+    label.textContent = "Q=0";
+    indicator.addEventListener("animationstart", (event) => {
+      if (event.animationName !== "chart-econrunes-indicator-slide") return;
+      const target = 14;
+      const durationMs = 1000;
+      let start: number | null = null;
+      const tick = (now: number) => {
+        if (start === null) start = now;
+        const progress = Math.min(1, (now - start) / durationMs);
+        label.textContent = `Q=${Math.round(progress * target)}`;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  };
 
   const charts = document.querySelectorAll<HTMLElement>("[data-chart-econrunes]");
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -236,6 +308,7 @@
       reveal(root);
       return;
     }
+    wireCountUp(root);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
