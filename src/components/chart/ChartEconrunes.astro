@@ -300,26 +300,32 @@
     });
   };
 
-  const charts = document.querySelectorAll<HTMLElement>("[data-chart-econrunes]");
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const setupCharts = () => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.querySelectorAll<HTMLElement>("[data-chart-econrunes]").forEach((root) => {
+      if (root.dataset.chartReady === "true") return;
+      root.dataset.chartReady = "true";
+      if (reduce) {
+        reveal(root);
+        return;
+      }
+      wireCountUp(root);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              reveal(root);
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(root);
+    });
+  };
 
-  charts.forEach((root) => {
-    if (reduce) {
-      reveal(root);
-      return;
-    }
-    wireCountUp(root);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            reveal(root);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(root);
-  });
+  // astro:page-load fires on initial load AND on every ClientRouter navigation,
+  // so this re-runs setup against the freshly-swapped chart element.
+  document.addEventListener("astro:page-load", setupCharts);
 </script>
