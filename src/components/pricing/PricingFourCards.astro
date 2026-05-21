@@ -9,6 +9,11 @@ import { Icon } from "astro-icon/components";
 import Button from "@/components/button/Button.astro";
 import { Switch } from "@/components/starwind/switch";
 import { getLocaleFromUrl } from "@/js/localeUtils";
+interface featureItem {
+  name: string;
+  comingSoon?: boolean;
+}
+
 interface pricingItem {
   name: string; // plan name
   description: string; // plan description
@@ -20,7 +25,7 @@ interface pricingItem {
     yearly?: number; // per class section price
   };
   priceLabel?: string; // label shown below price for personal use tiers
-  features: string[]; // list of features
+  features: (string | featureItem)[]; // strings for built features; objects to mark "coming soon"
   href: string; // button link to sign up or other page
   linkText: string; // text for the button
 }
@@ -55,8 +60,8 @@ const pricingData: pricingItem[] = [
     },
     features: [
       "All EconRunes Realms (as released)",
-      "Multiplayer with friends",
-      "Leaderboards & achievements",
+      { name: "Multiplayer with friends", comingSoon: true },
+      { name: "Leaderboards & achievements", comingSoon: true },
       "Progress tracking",
       "Priority support",
     ],
@@ -73,9 +78,9 @@ const pricingData: pricingItem[] = [
     },
     features: [
       "All EconRunes Realms",
-      "Classroom management dashboard",
-      "Student progress reports",
-      "Class assignments & scenarios",
+      { name: "Classroom management dashboard", comingSoon: true },
+      { name: "Student progress reports", comingSoon: true },
+      { name: "Class assignments & scenarios", comingSoon: true },
       "Up to 35 students per section",
       "Teacher resources & guides",
       "Email support",
@@ -93,12 +98,12 @@ const pricingData: pricingItem[] = [
     },
     features: [
       "All EconRunes Realms",
-      "Classroom management dashboard",
-      "Student progress reports",
-      "Class assignments & scenarios",
-      "Data export for research",
-      "Custom scenario builder",
-      "LMS integration (Canvas, Blackboard)",
+      { name: "Classroom management dashboard", comingSoon: true },
+      { name: "Student progress reports", comingSoon: true },
+      { name: "Class assignments & scenarios", comingSoon: true },
+      { name: "Data export for research", comingSoon: true },
+      { name: "Custom scenario builder", comingSoon: true },
+      { name: "LMS integration (Canvas, Blackboard)", comingSoon: true },
       "Unlimited students per section",
       "Email support",
       "Onboarding assistance",
@@ -186,18 +191,29 @@ const currLocale = getLocaleFromUrl(Astro.url);
                   </p>
                 </div>
                 <ul class="py-8">
-                  {plan.features.map((feature) => (
-                    <li class="mb-2.5 flex items-start gap-3">
-                      <Icon
-                        name="tabler/check"
-                        class="text-primary-accent mt-0.5 size-5 shrink-0"
-                        aria-hidden="true"
-                      />
-                      <span class="text-muted-foreground text-left font-medium">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
+                  {plan.features.map((feature) => {
+                    const isString = typeof feature === "string";
+                    const name = isString ? feature : feature.name;
+                    const comingSoon = !isString && feature.comingSoon === true;
+                    return (
+                      <li class="mb-2.5 flex items-start gap-3">
+                        <Icon
+                          name="tabler/check"
+                          class:list={[
+                            "mt-0.5 size-5 shrink-0",
+                            comingSoon ? "text-muted-foreground/40" : "text-primary-accent",
+                          ]}
+                          aria-hidden="true"
+                        />
+                        <span class="text-muted-foreground text-left font-medium">
+                          {name}
+                          {comingSoon && (
+                            <span class="ml-1 text-xs italic opacity-70">(coming soon)</span>
+                          )}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <Button
