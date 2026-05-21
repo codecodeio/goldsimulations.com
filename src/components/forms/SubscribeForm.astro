@@ -1,0 +1,101 @@
+---
+import { Icon } from "astro-icon/components";
+
+import Button from "@/components/button/Button.astro";
+import { Alert, AlertDescription, AlertTitle } from "@/components/starwind/alert";
+import { Input } from "@/components/starwind/input";
+import { Label } from "@/components/starwind/label";
+---
+
+<form method="post" class="space-y-6" id="subscribe-form">
+  <div class="space-y-2">
+    <Label for="subscribe-email">Email</Label>
+    <Input
+      required
+      name="email"
+      type="email"
+      id="subscribe-email"
+      placeholder="you@school.edu"
+      autocomplete="email"
+    />
+  </div>
+
+  <Button type="submit" variant="primary" class="w-full" id="subscribe-button">
+    <span id="subscribe-button-text">Subscribe</span>
+    <span id="subscribe-button-spinner" hidden class="inline-flex items-center gap-2">
+      <svg
+        class="size-4 animate-spin"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
+        ></circle>
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        ></path>
+      </svg>
+      Sending...
+    </span>
+  </Button>
+
+  <Alert variant="error" id="subscribe-alert-error" hidden>
+    <AlertTitle>Something went wrong</AlertTitle>
+    <AlertDescription id="subscribe-error-message">Please try again later.</AlertDescription>
+  </Alert>
+
+  <Alert variant="success" id="subscribe-alert-pending" hidden>
+    <AlertTitle>
+      <Icon name="tabler/circle-check" class="mr-2 inline size-5" aria-hidden="true" />
+      You're on the list
+    </AlertTitle>
+    <AlertDescription>
+      Thanks for subscribing. We'll be in touch with the latest updates about GoldSimulations and our games.
+    </AlertDescription>
+  </Alert>
+</form>
+
+<script>
+  // Placeholder submit handler. Phase 2 will replace this body with the real
+  // Supabase magic-link flow (mirrors codecode.io's actions.subscribe call).
+  // Markup stays identical so the swap is script-only.
+  const form = document.getElementById("subscribe-form") as HTMLFormElement | null;
+  const emailInput = document.getElementById("subscribe-email") as HTMLInputElement | null;
+  const button = document.getElementById("subscribe-button") as HTMLButtonElement | null;
+  const buttonText = document.getElementById("subscribe-button-text");
+  const buttonSpinner = document.getElementById("subscribe-button-spinner");
+  const alertError = document.getElementById("subscribe-alert-error");
+  const alertPending = document.getElementById("subscribe-alert-pending");
+
+  function setLoading(loading: boolean) {
+    if (!button) return;
+    button.disabled = loading;
+    if (loading) {
+      buttonText?.setAttribute("hidden", "true");
+      buttonSpinner?.removeAttribute("hidden");
+    } else {
+      buttonText?.removeAttribute("hidden");
+      buttonSpinner?.setAttribute("hidden", "true");
+    }
+  }
+
+  function showPending() {
+    alertPending?.removeAttribute("hidden");
+    alertError?.setAttribute("hidden", "true");
+    if (emailInput) emailInput.readOnly = true;
+    button?.setAttribute("hidden", "true");
+  }
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    setLoading(true);
+    // Simulate a brief request so the UI flow feels real.
+    window.setTimeout(() => {
+      setLoading(false);
+      showPending();
+    }, 600);
+  });
+</script>

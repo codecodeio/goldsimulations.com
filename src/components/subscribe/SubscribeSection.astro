@@ -1,0 +1,83 @@
+---
+import { Icon } from "astro-icon/components";
+
+import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
+import SubscribeForm from "@/components/forms/SubscribeForm.astro";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props as Props;
+---
+
+<section
+  id="subscribe"
+  class:list={[
+    "relative mt-16 overflow-clip py-16 md:py-24",
+    className,
+  ]}
+>
+  <div class="site-container relative z-10">
+    <div class="mx-auto max-w-xl text-center">
+      <div
+        class="bg-muted text-muted-foreground mb-6 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium"
+        data-mos="fade-up"
+        data-mos-anchor="#subscribe"
+      >
+        <Icon name="tabler/mail" class="size-4" aria-hidden="true" />
+        Newsletter
+      </div>
+
+      <h1
+        class="h1 mb-6"
+        data-mos="fade-up"
+        data-mos-delay=".1"
+        data-mos-anchor="#subscribe"
+      >
+        Stay in the loop with <span class="text-primary-accent">Gold Simulations</span>
+      </h1>
+
+      <p
+        class="description mb-10"
+        data-mos="fade-up"
+        data-mos-delay=".2"
+        data-mos-anchor="#subscribe"
+      >
+        Get classroom-ready updates from Gold Simulations — new releases, EconRunes
+        development news, teaching resources, and news about ecucational simulation games.
+      </p>
+    </div>
+
+    <div
+      class="bg-card mx-auto max-w-xl rounded-2xl border p-6 shadow-sm md:p-10"
+      data-mos="fade-up"
+      data-mos-delay=".3"
+      data-mos-anchor="#subscribe"
+    >
+      <SubscribeForm />
+    </div>
+
+    <ul
+      class="text-muted-foreground mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm"
+      data-mos="fade-up"
+      data-mos-delay=".4"
+      data-mos-anchor="#subscribe"
+    >
+      <li class="inline-flex items-center gap-1.5">
+        <Icon name="tabler/circle-check" class="size-4 text-brand-green" aria-hidden="true" />
+        No spam, ever
+      </li>
+      <li class="inline-flex items-center gap-1.5">
+        <Icon name="tabler/circle-check" class="size-4 text-brand-green" aria-hidden="true" />
+        Unsubscribe anytime
+      </li>
+      <li class="inline-flex items-center gap-1.5">
+        <Icon name="tabler/circle-check" class="size-4 text-brand-green" aria-hidden="true" />
+        Built by economists
+      </li>
+    </ul>
+  </div>
+
+  <AccentBlur color="blue" />
+</section>
