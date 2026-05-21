@@ -1,0 +1,151 @@
+---
+/**
+ * Drifting Equations — animated SVG showing microeconomic notation
+ * floating untethered, conveying "abstract theory disconnected from
+ * practice." Symbols wander on independent ambient paths and never
+ * settle into a connected diagram. Used in the /features Challenge
+ * section.
+ */
+
+interface Symbol {
+  text: string;
+  x: number;
+  y: number;
+  size: number;
+  fill: string;
+  fillOpacity: number;
+  driftClass: string;
+}
+
+const symbols: Symbol[] = [
+  { text: "P = MC", x: 110, y: 105, size: 22, fill: "var(--color-foreground)", fillOpacity: 0.7, driftClass: "drift-a" },
+  { text: "MR", x: 540, y: 95, size: 30, fill: "var(--color-brand-green)", fillOpacity: 0.55, driftClass: "drift-b" },
+  { text: "ATC", x: 80, y: 285, size: 38, fill: "var(--color-brand-blue)", fillOpacity: 0.6, driftClass: "drift-c" },
+  { text: "Q*", x: 370, y: 250, size: 26, fill: "var(--color-foreground)", fillOpacity: 0.65, driftClass: "drift-d" },
+  { text: "π = TR − TC", x: 120, y: 415, size: 18, fill: "var(--color-muted-foreground)", fillOpacity: 0.7, driftClass: "drift-e" },
+  { text: "∂π/∂Q", x: 590, y: 220, size: 20, fill: "var(--color-foreground)", fillOpacity: 0.55, driftClass: "drift-f" },
+  { text: "ΔQ", x: 470, y: 380, size: 28, fill: "var(--color-foreground)", fillOpacity: 0.6, driftClass: "drift-g" },
+  { text: "MC(Q)", x: 290, y: 425, size: 22, fill: "var(--color-brand-orange)", fillOpacity: 0.6, driftClass: "drift-h" },
+  { text: "TR", x: 620, y: 330, size: 34, fill: "var(--color-foreground)", fillOpacity: 0.45, driftClass: "drift-a" },
+  { text: "dTR/dQ", x: 220, y: 180, size: 16, fill: "var(--color-muted-foreground)", fillOpacity: 0.55, driftClass: "drift-b" },
+];
+---
+
+<div class="drifting-equations relative h-full w-full">
+  <svg
+    viewBox="0 0 700 500"
+    preserveAspectRatio="xMidYMid meet"
+    role="img"
+    aria-label="Microeconomic equations — P = MC, MR, ATC, dTR/dQ, and others — floating without forming a connected diagram."
+    class="block h-auto w-full"
+  >
+    <defs>
+      <radialGradient id="drift-bg" cx="50%" cy="50%" r="65%">
+        <stop offset="0%" stop-color="var(--color-brand-blue)" stop-opacity="0.10" />
+        <stop offset="60%" stop-color="var(--color-brand-blue)" stop-opacity="0.03" />
+        <stop offset="100%" stop-color="transparent" />
+      </radialGradient>
+    </defs>
+
+    <rect x="0" y="0" width="700" height="500" fill="url(#drift-bg)" />
+
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-weight="500">
+      {
+        symbols.map(({ text, x, y, size, fill, fillOpacity, driftClass }) => (
+          <text
+            class:list={["drift-symbol", driftClass]}
+            x={x}
+            y={y}
+            font-size={size}
+            fill={fill}
+            fill-opacity={fillOpacity}
+          >
+            {text}
+          </text>
+        ))
+      }
+    </g>
+  </svg>
+</div>
+
+<style>
+  .drifting-equations svg {
+    aspect-ratio: 7 / 5;
+  }
+
+  /* Per-symbol ambient drift — each path is a distinct meander so symbols
+     never sync up, reinforcing the "untethered" feeling. */
+  .drift-symbol {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .drift-a { animation: drift-a 14s ease-in-out infinite; }
+  .drift-b { animation: drift-b 17s ease-in-out infinite; }
+  .drift-c { animation: drift-c 19s ease-in-out infinite; }
+  .drift-d { animation: drift-d 12s ease-in-out infinite; }
+  .drift-e { animation: drift-e 16s ease-in-out infinite; }
+  .drift-f { animation: drift-f 18s ease-in-out infinite; }
+  .drift-g { animation: drift-g 13s ease-in-out infinite; }
+  .drift-h { animation: drift-h 20s ease-in-out infinite; }
+
+  @keyframes drift-a {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(22px, -16px); }
+    50%  { transform: translate(8px, -28px); }
+    75%  { transform: translate(-18px, -10px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes drift-b {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-20px, 14px); }
+    50%  { transform: translate(-26px, -6px); }
+    75%  { transform: translate(-10px, 20px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes drift-c {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(24px, 12px); }
+    50%  { transform: translate(16px, 28px); }
+    75%  { transform: translate(-14px, 18px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes drift-d {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-18px, -12px); }
+    50%  { transform: translate(-26px, 14px); }
+    75%  { transform: translate(8px, 22px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes drift-e {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(14px, 18px); }
+    50%  { transform: translate(28px, 6px); }
+    75%  { transform: translate(20px, -14px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes drift-f {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-14px, -20px); }
+    50%  { transform: translate(-22px, -8px); }
+    75%  { transform: translate(-6px, -28px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes drift-g {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(26px, 10px); }
+    50%  { transform: translate(14px, 26px); }
+    75%  { transform: translate(-12px, 16px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes drift-h {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-22px, 12px); }
+    50%  { transform: translate(-10px, 24px); }
+    75%  { transform: translate(18px, 10px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .drift-symbol { animation: none; }
+  }
+</style>

@@ -1,0 +1,176 @@
+---
+/**
+ * Connected Concepts — animated SVG showing microeconomic concepts as
+ * a networked constellation. Faint pulses travel along the edges and
+ * the destination node briefly glows when a pulse arrives. Pairs with
+ * DriftingEquations on /features: same gradient, but where the
+ * Challenge SVG shows isolated symbols, this one shows them wired.
+ */
+
+const NODE_R = 6;
+
+interface Node {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+  // text-anchor + label offset relative to the node center
+  labelDx: number;
+  labelDy: number;
+  labelAnchor: "start" | "middle" | "end";
+  color: string;
+}
+
+const nodes: Node[] = [
+  { id: "eq",    label: "Equilibrium", x: 350, y: 250, labelDx: 0,   labelDy: 28,  labelAnchor: "middle", color: "var(--color-brand-green)" },
+  { id: "price", label: "Price",       x: 180, y: 130, labelDx: 0,   labelDy: -16, labelAnchor: "middle", color: "var(--color-brand-blue)" },
+  { id: "qty",   label: "Quantity",    x: 520, y: 130, labelDx: 0,   labelDy: -16, labelAnchor: "middle", color: "var(--color-brand-blue)" },
+  { id: "cost",  label: "Cost",        x: 180, y: 380, labelDx: 0,   labelDy: 28,  labelAnchor: "middle", color: "var(--color-brand-orange)" },
+  { id: "profit",label: "Profit",      x: 520, y: 380, labelDx: 0,   labelDy: 28,  labelAnchor: "middle", color: "var(--color-brand-orange)" },
+];
+
+const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
+
+interface Edge {
+  from: string;
+  to: string;
+}
+
+// Star (equilibrium ↔ outer four) + perimeter (price → qty → profit → cost → price).
+const edges: Edge[] = [
+  { from: "eq",     to: "price" },
+  { from: "eq",     to: "qty" },
+  { from: "eq",     to: "cost" },
+  { from: "eq",     to: "profit" },
+  { from: "price",  to: "qty" },
+  { from: "qty",    to: "profit" },
+  { from: "profit", to: "cost" },
+  { from: "cost",   to: "price" },
+];
+---
+
+<div class="connected-concepts relative h-full w-full">
+  <svg
+    viewBox="0 0 700 500"
+    preserveAspectRatio="xMidYMid meet"
+    role="img"
+    aria-label="A constellation of connected economic concepts — Price, Quantity, Cost, Profit, and Equilibrium — wired together with pulses of light traveling between them."
+    class="block h-auto w-full"
+  >
+    <defs>
+      <radialGradient id="concepts-bg" cx="50%" cy="50%" r="65%">
+        <stop offset="0%" stop-color="var(--color-brand-green)" stop-opacity="0.10" />
+        <stop offset="60%" stop-color="var(--color-brand-green)" stop-opacity="0.03" />
+        <stop offset="100%" stop-color="transparent" />
+      </radialGradient>
+      <filter id="concepts-glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+
+    <rect x="0" y="0" width="700" height="500" fill="url(#concepts-bg)" />
+
+    <!-- Edges (drawn first so they sit under the nodes) -->
+    <g class="edges" stroke="var(--color-muted-foreground)" stroke-opacity="0.25" stroke-width="1" stroke-linecap="round">
+      {
+        edges.map(({ from, to }) => (
+          <line x1={byId[from].x} y1={byId[from].y} x2={byId[to].x} y2={byId[to].y} />
+        ))
+      }
+    </g>
+
+    <!-- Pulses traveling along each edge.  Each pulse is positioned at the
+         source via CSS vars and animated to the destination. -->
+    <g class="pulses">
+      {
+        edges.map(({ from, to }, i) => {
+          const a = byId[from];
+          const b = byId[to];
+          const style = `--from-x: ${a.x}px; --from-y: ${a.y}px; --to-x: ${b.x}px; --to-y: ${b.y}px; animation-delay: ${(i * 0.7).toFixed(2)}s;`;
+          return (
+            <circle
+              class="pulse"
+              r="3"
+              fill="var(--color-brand-green)"
+              filter="url(#concepts-glow)"
+              style={style}
+            />
+          );
+        })
+      }
+    </g>
+
+    <!-- Nodes -->
+    <g class="nodes">
+      {
+        nodes.map(({ id, x, y, color, label, labelDx, labelDy, labelAnchor }) => (
+          <g class:list={["node", `node-${id}`]}>
+            <circle class="node-halo" cx={x} cy={y} r={NODE_R + 6} fill={color} fill-opacity="0.18" />
+            <circle class="node-core" cx={x} cy={y} r={NODE_R} fill={color} filter="url(#concepts-glow)" />
+            <text
+              x={x + labelDx}
+              y={y + labelDy}
+              text-anchor={labelAnchor}
+              font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+              font-size="14"
+              font-weight="500"
+              fill="var(--color-foreground)"
+              fill-opacity="0.75"
+            >
+              {label}
+            </text>
+          </g>
+        ))
+      }
+    </g>
+  </svg>
+</div>
+
+<style>
+  .connected-concepts svg {
+    aspect-ratio: 7 / 5;
+  }
+
+  /* Travel from source to destination, hold, fade.  Total cycle 5.6s
+     gives 8 staggered pulses (0.7s apart) constant network activity. */
+  .pulse {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: translate(var(--from-x), var(--from-y));
+    opacity: 0;
+    animation: pulse-travel 5.6s linear infinite;
+  }
+  @keyframes pulse-travel {
+    0%   { transform: translate(var(--from-x), var(--from-y)); opacity: 0; }
+    6%   { transform: translate(var(--from-x), var(--from-y)); opacity: 1; }
+    35%  { transform: translate(var(--to-x), var(--to-y)); opacity: 1; }
+    44%  { transform: translate(var(--to-x), var(--to-y)); opacity: 0; }
+    100% { transform: translate(var(--to-x), var(--to-y)); opacity: 0; }
+  }
+
+  /* Slow node halo breathing, each node staggered. */
+  .node-halo {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: node-breathe 4s ease-in-out infinite;
+  }
+  .node-eq    .node-halo { animation-delay: 0s; }
+  .node-price .node-halo { animation-delay: 0.6s; }
+  .node-qty   .node-halo { animation-delay: 1.2s; }
+  .node-cost  .node-halo { animation-delay: 1.8s; }
+  .node-profit .node-halo { animation-delay: 2.4s; }
+
+  @keyframes node-breathe {
+    0%, 100% { transform: scale(1);   opacity: 0.7; }
+    50%      { transform: scale(1.6); opacity: 0.25; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulse { opacity: 0; animation: none; }
+    .node-halo { animation: none; opacity: 0.4; }
+  }
+</style>

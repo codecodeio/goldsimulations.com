@@ -1,0 +1,35 @@
+---
+/**
+ * "The Gold Simulations Solution" section for /features.
+ * Counterpart to ChallengeSection — text on the left, animated SVG on
+ * the right.  Uses the ConnectedConcepts constellation to visually
+ * resolve the disconnection shown in the Challenge section.
+ */
+import ConnectedConcepts from "@/components/chart/ConnectedConcepts.astro";
+---
+
+<section class="my-12 overflow-hidden py-12">
+  <div class="site-container">
+    <div
+      class="mx-auto grid scroll-mt-24 gap-8 rounded-lg md:grid-cols-2 md:gap-12 md:rounded-xl lg:gap-16"
+      data-mos="fade-left"
+    >
+      <!-- Text (left) -->
+      <div class="col-span-1 flex items-center md:order-first">
+        <div class="md:py-6">
+          <h2 class="h2 mt-4">The Gold Simulations Solution</h2>
+          <p class="text-muted-foreground mt-4 mr-auto max-w-xl text-pretty">
+            A modern, immersive, browser-based simulation platform that transforms
+            economics into a hands-on, exploratory experience. Students don't just learn
+            economics — they experience it.
+          </p>
+        </div>
+      </div>
+
+      <!-- Media (right) -->
+      <div class="mb-auto h-auto w-full overflow-hidden rounded-xl border">
+        <ConnectedConcepts />
+      </div>
+    </div>
+  </div>
+</section>
