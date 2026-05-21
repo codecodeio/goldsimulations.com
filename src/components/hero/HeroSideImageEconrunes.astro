@@ -30,28 +30,12 @@ const currLocale = getLocaleFromUrl(Astro.url);
           data-mos-delay=".1"
           data-mos-anchor="#hero-side"
         >
-          In the land of Econterra, knowledge is power, and the greatest knowledge of all lies within the ancient EconRunes.
-        </p>
-        <p
-          class="description mb-8 text-pretty lg:text-lg"
-          data-mos="fade-up"
-          data-mos-delay=".1"
-          data-mos-anchor="#hero-side"
-        >
-           You are a young apprentice of the Guild of Analysts. To restore balance to the realms, you must journey across Econterra, mastering the forces that govern each market.
-        </p>
-        <p
-          class="description mb-8 text-pretty lg:text-lg"
-          data-mos="fade-up"
-          data-mos-delay=".1"
-          data-mos-anchor="#hero-side"
-        >
-           Collect the Runes from each realm and harness their power. Unlock the secrets of the EconRunes to learn how the forces of economics shape the world and present your wisdom to the Council of Runes to bring prosperity back to Econterra.
+          EconRunes turns four microeconomic market structures into playable realms. Students make decisions such as pricing or production round by round, see cost and demand curves update live, and earn a Rune for mastering each market. Launches with all five realms, including a capstone called the Council of Runes.
         </p>
         <div data-mos="fade-up"
           data-mos-delay=".2"
           data-mos-anchor="#hero-side-coming-soon">
-        <Badge variant="warning">Coming Soon!</Badge>
+        <Badge variant="warning">Coming soon</Badge>
         </div>
         <div
           class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
@@ -59,15 +43,22 @@ const currLocale = getLocaleFromUrl(Astro.url);
           data-mos-delay=".2"
           data-mos-anchor="#hero-side"
         >
-          <Button variant="primary" href={"/sign-up"}>
-            Start Your Quest 
+          <Button variant="primary" href="/subscribe/">
+            Join the Waitlist
           </Button>
           <Button
             variant="ghost"
             arrow="right"
-            href="#feature-side-image"  
+            href="#story"
           >
-            Learn About Each Realm 
+            Learn the Story
+          </Button>
+          <Button
+            variant="ghost"
+            arrow="right"
+            href="#feature-side-image"
+          >
+            Learn About Each Realm
           </Button>
         </div>
       </div>

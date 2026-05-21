@@ -71,7 +71,8 @@ export interface FeatureItem {
   image: ImageMetadata; // an imported image
   title: string;
   description: string;
-  href: string; // link to learn more
-  buttonText: string; // button text
+  href?: string; // link to learn more (omit with buttonText to hide the button)
+  buttonText?: string; // button text (omit with href to hide the button)
+  details?: { label: string; value: string }[]; // optional label/value pairs rendered below description
   id?: string; // optional anchor id for the card wrapper
 }

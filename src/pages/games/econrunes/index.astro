@@ -23,8 +23,12 @@ const featureData: FeatureItem[] = [
     title: "Plains of Many Paths",
     description:
       "Realm 1 introduces players to the simplest and most foundational market structure, Perfect Competition where: Firms are price takers, Each firm is small relative to the market, Products are identical, There are many sellers, Firms can freely enter and exit, Profit motivates short-run decisions, and entry/exit drives long-run equilibrium",
-    href: "/games/econrunes/play/",
-    buttonText: "Play Now",
+    details: [
+      { label: "Decision", value: "Choose quantity" },
+      { label: "Rule", value: "P = MC" },
+      { label: "Mentor", value: "Elder Analyst" },
+      { label: "Rune", value: "Rune of Competition" },
+    ],
   },
   {
     id: "realm-2",
@@ -33,8 +37,12 @@ const featureData: FeatureItem[] = [
     title: "Bazaar of Colors",
     description:
       "Realm 2 explores Monopolistic Competition, where: Many sellers exist, Products are differentiated, Firms have some price-setting power, There is free entry and exit in the long run, Firms use advertising to differentiate products, and Long-run equilibrium results in zero economic profit.",
-    href: "/games/econrunes/play/",
-    buttonText: "Play Now",
+    details: [
+      { label: "Decision", value: "Choose price" },
+      { label: "Rule", value: "MR = MC" },
+      { label: "Mentor", value: "Artisan of Differentiation" },
+      { label: "Rune", value: "Rune of Variety" },
+    ],
   },
   {
     id: "realm-3",
@@ -43,8 +51,12 @@ const featureData: FeatureItem[] = [
     title: "The Citadel of Houses",
     description:
       "Realm 3 delves into Oligopoly, characterized by: A few dominant firms, Interdependent decision-making, Barriers to entry, Potential for collusion, Use of game theory in strategy, and Outcomes that can vary widely based on firm behavior.",
-    href: "/games/econrunes/play/",
-    buttonText: "Play Now",
+    details: [
+      { label: "Decision", value: "Choose quantity vs. rival" },
+      { label: "Rule", value: "Residual MR = MC" },
+      { label: "Mentor", value: "Captain Cournot" },
+      { label: "Rune", value: "Rune of Strategy" },
+    ],
   },
   {
     id: "realm-4",
@@ -52,9 +64,13 @@ const featureData: FeatureItem[] = [
     image: realm4,
     title: "Obsidian Peak",
     description:
-      "Realm 4 focuses on Monopoly, where: A single firm dominates the market, High barriers to entry exist, The monopolist is a price maker, Profit maximization occurs where MR=MC, There are  no close substitutes for the product, and Monopolies can lead to allocative inefficiency.",
-    href: "/games/econrunes/play/",
-    buttonText: "Play Now",
+      "Realm 4 focuses on Monopoly, where: A single firm dominates the market, High barriers to entry exist, The monopolist is a price maker, Profit maximization occurs where MR = MC, There are no close substitutes for the product, and Monopolies can lead to allocative inefficiency.",
+    details: [
+      { label: "Decision", value: "Choose quantity" },
+      { label: "Rule", value: "MR = MC" },
+      { label: "Mentor", value: "Gatekeeper of Power" },
+      { label: "Rune", value: "Rune of Control" },
+    ],
   },
   {
     id: "realm-5",
@@ -62,14 +78,31 @@ const featureData: FeatureItem[] = [
     image: realm5,
     title: "The Council of Runes",
     description:
-      "In the final realm, players present their acquired knowledge to the Council of Runes. This culmination tests their understanding of all market structures and economic principles learned throughout their journey in Econterra. Will they succeed in restoring balance and prosperity to Econterra? Only those who have mastered the EconRunes stand a chance.",
-    href: "/games/econrunes/play/",
-    buttonText: "Play Now",
+      "The capstone realm cycles students through all four market structures, with each phase guided by the mentor of its market. Players present their mastery of every realm to the Council, and those who succeed earn the Grand Rune of Equilibrium and bring balance back to Econterra.",
+    details: [
+      { label: "Mentors", value: "All four from prior realms" },
+      { label: "Rune", value: "Grand Rune of Equilibrium" },
+    ],
   },
 ];
 ---
 
 <BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
-  <HeroSideImageEconrunes/>
+  <HeroSideImageEconrunes />
+  <section id="story" class="site-container py-12 md:py-16">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="h2 mb-6">The story of <span class="text-primary-accent">EconRunes</span></h2>
+      <p class="description mb-4 text-pretty">
+        EconRunes is set in Econterra, a land where the forces that govern markets have
+        fallen out of balance. Players take on the role of a young apprentice of the Guild
+        of Analysts, journeying across the realms to master the laws that shape each
+        market.
+      </p>
+      <p class="description text-pretty">
+        A Rune is earned for mastery of each realm. Collect them all and present your
+        wisdom to the Council of Runes to bring prosperity back to Econterra.
+      </p>
+    </div>
+  </section>
   <FeatureSideImageProps featureData={featureData} />
 </BaseLayout>

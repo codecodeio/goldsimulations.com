@@ -14,15 +14,16 @@ interface Props {
   badge: string; // small badge
   title: string; // larger title
   description: string; // paragraph text
-  buttonText: string; // button text
-  href: string; // link to learn more
+  buttonText?: string; // button text (omit with href to hide the button)
+  href?: string; // link to learn more (omit with buttonText to hide the button)
   image: ImageMetadata; // an imported image
   imageSide: "left" | "right";
+  details?: { label: string; value: string }[];
   id?: string; // optional anchor id
   rest?: any; // catch-all for any additional parameters, such as "aria-label"
 }
 
-const { badge, image, title, buttonText, href, description, imageSide, id, ...rest } =
+const { badge, image, title, buttonText, href, description, imageSide, details, id, ...rest } =
   Astro.props as Props;
 
 const currLocale = getLocaleFromUrl(Astro.url);
@@ -44,11 +45,23 @@ const currLocale = getLocaleFromUrl(Astro.url);
           {description}
         </p>
       </div>
-      <div class="z-20 mt-8 flex">
-        <Button variant="outline" href={href} arrow="right">
-          {buttonText}
-        </Button>
-      </div>
+      {details && details.length > 0 && (
+        <dl class="text-muted-foreground mt-6 grid max-w-xl grid-cols-1 gap-x-8 gap-y-2 text-sm sm:grid-cols-2">
+          {details.map(({ label, value }) => (
+            <div>
+              <dt class="text-foreground inline font-medium">{label}:</dt>{" "}
+              <dd class="inline">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+      {buttonText && href && (
+        <div class="z-20 mt-8 flex">
+          <Button variant="outline" href={href} arrow="right">
+            {buttonText}
+          </Button>
+        </div>
+      )}
     </div>
   </div>
 
