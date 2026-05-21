@@ -7,7 +7,7 @@ import { Icon } from "astro-icon/components";
 
 import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
 import Button from "@/components/button/Button.astro";
-import RealmCards from "@/components/hero/RealmCards.astro";
+import GamesGrid from "@/components/hero/GamesGrid.astro";
 ---
 
 <!-- "dark" class forces dark mode for this section -->
@@ -19,9 +19,11 @@ import RealmCards from "@/components/hero/RealmCards.astro";
       <div class="mx-auto my-auto w-full pt-4 md:ml-0 md:max-w-[560px] md:py-10 lg:pr-10">
         <div class="" data-mos="fade-up" data-mos-anchor="#hero-side">
           <h1
-            class="mb-6 text-5xl leading-tight font-medium tracking-tight text-pretty md:text-5xl md:leading-tight"
+            class="mb-6 text-5xl leading-tight font-medium tracking-tight text-pretty md:text-6xl md:leading-tight"
           >
-            Where Economics Classrooms <span class="text-primary-accent">Come to Life</span>
+            Where Economics Classrooms <span
+              class="bg-[length:200%_100%] bg-clip-text text-transparent [background-image:linear-gradient(90deg,var(--color-blue-800),var(--color-blue-600),var(--color-blue-400),var(--color-blue-600),var(--color-blue-800))] motion-safe:animate-text-shine"
+            >Come to Life</span>
           </h1>
         </div>
         <p
@@ -40,19 +42,19 @@ import RealmCards from "@/components/hero/RealmCards.astro";
         >
           <span class="inline-flex items-center gap-1.5">
             <Icon
-              name="tabler/devices"
-              class="size-4 text-brand-green"
-              aria-hidden="true"
-            />
-            Works on any device
-          </span>
-          <span class="inline-flex items-center gap-1.5">
-            <Icon
               name="tabler/circle-check"
               class="size-4 text-brand-green"
               aria-hidden="true"
             />
             Built by economists
+          </span>
+          <span class="inline-flex items-center gap-1.5">
+            <Icon
+              name="tabler/devices"
+              class="size-4 text-brand-green"
+              aria-hidden="true"
+            />
+            Works on any device
           </span>
         </div>
 
@@ -62,8 +64,8 @@ import RealmCards from "@/components/hero/RealmCards.astro";
           data-mos-delay=".3"
           data-mos-anchor="#hero-side-cta"
         >
-          <Button variant="primary" arrow="right" href="https://econrunes.goldsimulations.com/play">
-            Try It Free
+          <Button variant="primary" arrow="right" href="/subscribe/">
+            Join the Waitlist
           </Button>
 
           <Button variant="secondary" arrow="right" href="/features/">
@@ -78,7 +80,7 @@ import RealmCards from "@/components/hero/RealmCards.astro";
         data-mos-anchor="#hero-side"
         data-mos-delay=".5"
       >
-        <RealmCards />
+        <GamesGrid />
       </div>
     </div>
   </div>

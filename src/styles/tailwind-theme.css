@@ -69,6 +69,7 @@
   --animate-marquee-gallery: marquee-gallery 100s linear infinite;
   --animate-accent-blur-a: accent-blur-a 16s ease-in-out infinite;
   --animate-accent-blur-b: accent-blur-b 20s ease-in-out infinite;
+  --animate-text-shine: text-shine 6s ease-in-out infinite alternate;
 
   @keyframes accordion-down {
     from {
@@ -132,6 +133,15 @@
     }
     50% {
       transform: translate(160px, -130px) scale(1.4);
+    }
+  }
+
+  @keyframes text-shine {
+    from {
+      background-position: 0% 50%;
+    }
+    to {
+      background-position: 100% 50%;
     }
   }
 }

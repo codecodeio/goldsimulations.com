@@ -1,0 +1,114 @@
+---
+/**
+ * * Homepage games catalog. Replaces the EconRunes-realm-specific RealmCards.
+ * * Used in the homepage hero in place of a static image.
+ */
+import { Icon } from "astro-icon/components";
+
+interface GameRow {
+  label: string;
+  status?: { text: string; variant: "warning" | "success" };
+  title: string;
+  description: string;
+  href: string;
+  hoverBg: string;
+}
+
+const rows: GameRow[] = [
+  {
+    label: "Flagship",
+    status: { text: "Coming soon", variant: "warning" },
+    title: "EconRunes",
+    description: "Four microeconomic market structures, played as realms.",
+    href: "/games/econrunes/",
+    hoverBg: "hover:bg-brand-blue/10 hover:border-brand-blue/20",
+  },
+  {
+    label: "Legacy",
+    status: { text: "Available now", variant: "success" },
+    title: "Beat The Market",
+    description: "Classroom-tested supply-and-demand simulation.",
+    href: "/games/beat-the-market/",
+    hoverBg: "hover:bg-brand-green/10 hover:border-brand-green/20",
+  },
+  {
+    label: "Who Is This For",
+    title: "High schools, colleges, MBA programs",
+    description: "Curriculum-aligned, browser-based, instructor dashboards.",
+    href: "/features/",
+    hoverBg: "hover:bg-brand-orange/10 hover:border-brand-orange/20",
+  },
+];
+
+const statusClasses: Record<"warning" | "success", string> = {
+  warning: "bg-warning/10 text-warning border-warning/30",
+  success: "bg-success/10 text-success border-success/30",
+};
+---
+
+<div
+  class="border-gray/45 bg-base-100/40 dark:bg-base-800/30 relative w-full rounded-2xl border-2 p-6 md:p-7"
+>
+  <div class="mb-5 flex items-center justify-between">
+    <h2 class="text-foreground text-xl font-medium md:text-2xl">
+      Our economics games
+    </h2>
+    <Icon
+      name="tabler/category"
+      class="text-primary-accent size-6 shrink-0"
+      aria-hidden="true"
+    />
+  </div>
+
+  <ul class="flex flex-col gap-3">
+    {
+      rows.map(({ label, status, title, description, href, hoverBg }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              "group border-gray-100/10 bg-base-100/7 dark:bg-base-100/7 flex items-center justify-between gap-3 rounded-xl border p-3 transition-all duration-200",
+              hoverBg,
+            ]}
+          >
+            <div class="min-w-0">
+              <div class="mb-0.5 flex flex-wrap items-center gap-2">
+                <span class="text-muted-foreground text-xs font-medium tracking-wider uppercase">
+                  {label}
+                </span>
+                {status && (
+                  <span
+                    class:list={[
+                      "rounded-full border px-2 text-[10px] leading-4 font-medium",
+                      statusClasses[status.variant],
+                    ]}
+                  >
+                    {status.text}
+                  </span>
+                )}
+              </div>
+              <div class="text-foreground text-base font-medium md:text-lg">
+                {title}
+              </div>
+              <div class="text-muted-foreground mt-1 text-sm">{description}</div>
+            </div>
+            <Icon
+              name="tabler/arrow-narrow-right"
+              class="text-muted-foreground group-hover:text-primary-accent size-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <a
+    href="/features/"
+    class="text-primary-accent hover:text-primary-accent/80 mt-5 inline-flex items-center gap-2 text-sm font-medium"
+  >
+    <Icon name="tabler/north-star" class="size-4 text-brand-blue" aria-hidden="true" />
+    Learn more
+    <span aria-hidden="true">→</span>
+  </a>
+</div>
