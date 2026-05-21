@@ -1,0 +1,56 @@
+---
+import Badge from "@/components/badge/Badge.astro";
+import FeatureCard from "@/components/feature-card/FeatureCardSmall.astro";
+
+interface FeatureData {
+  icon: string;
+  title: string;
+  text: string;
+}
+
+const featureData: FeatureData[] = [
+  {
+    icon: "tabler/chart-line",
+    title: "Cost Curves",
+    text: "MC, ATC, and AVC visualized live as students change output — the curves move with every decision.",
+  },
+  {
+    icon: "tabler/target-arrow",
+    title: "Profit Maximization",
+    text: "MR = MC reinforced across every realm so students build intuition for the rule that drives every firm.",
+  },
+  {
+    icon: "tabler/scale",
+    title: "Market Equilibrium",
+    text: "Entry, exit, and competition push markets toward long-run balance round after round.",
+  },
+  {
+    icon: "tabler/chess",
+    title: "Strategic Thinking",
+    text: "Game theory through Cournot rivalry and monopoly trade-offs — students reason about other firms, not just their own.",
+  },
+];
+---
+
+<section id="pedagogy-highlights" class="py-16 md:py-20">
+  <div class="site-container relative">
+    <div class="mx-auto mb-12 text-center md:max-w-2xl" data-mos="fade-up">
+      <Badge>What students learn</Badge>
+      <h2 class="h2 mt-4 mb-4">Core <span class="text-primary-accent">microeconomic</span> concepts</h2>
+      <p class="description text-pretty">
+        Every realm is built around the ideas that anchor a microeconomics course — taught through decisions, not lectures.
+      </p>
+    </div>
+    <div
+      class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8"
+      data-mos="fade-up"
+      data-mos-delay=".1"
+    >
+      {
+        featureData.map((feature) => (
+          <FeatureCard title={feature.title} text={feature.text} icon={feature.icon} />
+        ))
+      }
+    </div>
+  </div>
+</section>

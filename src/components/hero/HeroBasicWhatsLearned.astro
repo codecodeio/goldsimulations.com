@@ -1,27 +1,20 @@
 ---
-import Button from "@/components/button/Button.astro";
-import { getLocaleFromUrl } from "@/js/localeUtils";
-import { getTranslatedData, useTranslations } from "@/js/translationUtils";
-
-const currLocale = getLocaleFromUrl(Astro.url);
-const siteData = getTranslatedData("siteData", currLocale);
-
 const bullets = [
-  "Law of Demand",
-"Price Elasticity",
-"Shifts in Demand",
-"Revenue Maximization",
-"Monopoly",
-"Market Equilibrium",
-"Demand & Supply Analysis",
-"Perfect Competition",
-"Monopolistic Competition",
-"Oligopoly & Gaming Theory",
-"Short-run Production",
-"Short-run Costs",
-"Long-run Production",
-"Long-run Costs",
-"Profit Maximizing Rule"
+  "Perfect Competition",
+  "Monopolistic Competition",
+  "Oligopoly",
+  "Monopoly",
+  "Cournot Strategy",
+  "Game Theory",
+  "Market Power",
+  "Price Elasticity",
+  "Marginal Cost (MC)",
+  "Marginal Revenue (MR)",
+  "Average Total Cost (ATC)",
+  "Profit Maximizing Rule (MR = MC)",
+  "Market Equilibrium",
+  "Deadweight Loss & Welfare",
+  "Short-run Production & Costs",
 ];
 ---
 
@@ -37,38 +30,14 @@ const bullets = [
   </p>
   <div data-mos="fade-up" data-mos-delay=".3">
     <ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-left">
-        {
-          bullets.map((item) => (
-            <li class="flex items-start">
-              <span class="bg-primary-accent mt-1.5 mr-3 inline-block size-3 shrink-0 rounded-full md:mt-2" />
-              <span class="text-muted-foreground md:text-lg">{item}</span>
-            </li>
-          ))
-        }
-      </ul>
-  </div>
-  <div
-    class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start"
-    data-mos="fade-up"
-    data-mos-delay=".4"
-    data-mos-anchor="#hero-basic-cta"
-  >
-    <Button variant="primary" href={"/coming-soon"}>
-      Get Started
-    </Button>
-    <Button
-      variant="secondary"
-      arrow="right"
-      href="/resources/"  
-    >
-      Resources
-    </Button>
-    <Button
-      variant="outline"
-      arrow="right"
-      href="/games/econrunes/"  
-    >
-      Explore The Game
-    </Button>
+      {
+        bullets.map((item) => (
+          <li class="flex items-start">
+            <span class="bg-primary-accent mt-1.5 mr-3 inline-block size-3 shrink-0 rounded-full md:mt-2" />
+            <span class="text-muted-foreground md:text-lg">{item}</span>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </section>

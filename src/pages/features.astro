@@ -9,6 +9,9 @@ import AboutSideImage from "@/components/about/AboutSideImage.astro";
 import FeatureSideImageProps from "@/components/feature/FeatureSideImageProps.astro";
 import { type FeatureItem } from "@/config/types/configDataTypes";
 import HeroBasicWhatsLearned from "@/components/hero/HeroBasicWhatsLearned.astro";
+import PedagogyHighlights from "@/components/feature/PedagogyHighlights.astro";
+import HowStudentsLearn from "@/components/feature/HowStudentsLearn.astro";
+import RoadmapCallout from "@/components/feature/RoadmapCallout.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
@@ -20,8 +23,6 @@ const featureData: FeatureItem[] = [
     title: "The Challenge in Today’s Economics Classroom",
     description:
       "Students struggle with abstract theory which often fails to engage students, leading to lower retention and understanding of key economic concepts. Memorization without intuition, low engagement levels, and difficulty applying theory to real-world scenarios are common issues. Instructors struggle with Keeping students engaged, Demonstrating practical applications of economic theories, and providing interactive learning experiences.",
-    href: "/games/econrunes/play/",
-    buttonText: "Play Now",
   },
   {
     badge: "",
@@ -29,14 +30,15 @@ const featureData: FeatureItem[] = [
     title: "The Gold Simulations Solution",
     description:
       "A modern, immersive, browser-based simulation platform that transforms economics into a hands-on, exploratory experience. Students don’t just learn economics — they experience it.",
-    href: "/games/econrunes/play/",
-    buttonText: "Play Now",
   },
 ];
 ---
 
 <BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
   <AboutSideImage />
+  <PedagogyHighlights />
+  <HowStudentsLearn />
   <FeatureSideImageProps featureData={featureData} start="left" />
   <HeroBasicWhatsLearned />
+  <RoadmapCallout />
 </BaseLayout>

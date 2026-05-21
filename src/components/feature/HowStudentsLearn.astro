@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+
+import Badge from "@/components/badge/Badge.astro";
+
+const pillars = [
+  {
+    icon: "tabler/chart-line",
+    title: "See. Decide. Reflect.",
+    text: "Students adjust a slider and watch their cost and demand curves respond in real time. Every decision produces a result they can read and learn from.",
+  },
+  {
+    icon: "tabler/book",
+    title: "Book of Runes",
+    text: "An in-game reference with formulas, definitions, and the rules of each market — available on demand without breaking the flow of play.",
+  },
+  {
+    icon: "tabler/list-check",
+    title: "Mastery feedback",
+    text: "Tiered feedback after each round and at the end of each realm helps students see where they're confident and where to focus next.",
+  },
+];
+---
+
+<section id="how-students-learn" class="py-16 md:py-20">
+  <div class="site-container">
+    <div class="mx-auto mb-12 max-w-2xl text-center" data-mos="fade-up">
+      <Badge>How students learn</Badge>
+      <h2 class="h2 mt-4 mb-4">Learning by <span class="text-primary-accent">deciding</span>, not memorizing</h2>
+      <p class="description text-pretty">
+        Every realm asks students to make a decision and live with the outcome. The interface keeps the underlying economics visible so the intuition builds with every round.
+      </p>
+    </div>
+
+    <ul
+      class="mx-auto grid max-w-5xl gap-6 md:grid-cols-3 lg:gap-8"
+      data-mos="fade-up"
+      data-mos-delay=".1"
+    >
+      {
+        pillars.map(({ icon, title, text }) => (
+          <li class="bg-card flex h-full flex-col rounded-xl border p-6 shadow-sm">
+            <Icon name={icon} class="text-primary-accent size-8" aria-hidden="true" />
+            <h3 class="mt-4 text-lg font-medium tracking-tight">{title}</h3>
+            <p class="text-muted-foreground mt-2">{text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
+import Badge from "@/components/badge/Badge.astro";
+import Button from "@/components/button/Button.astro";
+---
+
+<section id="roadmap" class="relative overflow-clip py-16 md:py-24">
+  <div class="site-container relative z-10">
+    <div class="mx-auto max-w-2xl text-center" data-mos="fade-up">
+      <Badge>Roadmap</Badge>
+      <h2 class="h2 mt-4 mb-4">What's <span class="text-primary-accent">next</span></h2>
+      <p class="description mb-8 text-pretty">
+        Beta opens with all five realms of Level 1. Level 2 is in development — a deeper
+        trial across every realm with more rounds and harder decisions for students ready
+        to push their mastery further.
+      </p>
+      <Button variant="primary" href="/subscribe/">
+        Join the Waitlist
+      </Button>
+    </div>
+  </div>
+  <AccentBlur color="blue" />
+</section>
