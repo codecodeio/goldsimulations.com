@@ -1,0 +1,102 @@
+---
+/**
+ * * Course-fit catalog for the /features hero side panel.
+ * * Replaces the static EconRunesWorldMap image with content instructors
+ * * can scan to answer "is this for my course?"
+ */
+import { Icon } from "astro-icon/components";
+
+interface Row {
+  label: string;
+  title: string;
+  description: string;
+  href: string;
+  hoverBg: string;
+}
+
+const rows: Row[] = [
+  {
+    label: "College",
+    title: "Micro & Managerial Economics",
+    description: "Problem-set decisions become live market rounds.",
+    href: "/pricing/",
+    hoverBg: "hover:bg-brand-blue/10 hover:border-brand-blue/20",
+  },
+  {
+    label: "Graduate",
+    title: "MBA & Strategy",
+    description: "Capstone integrates oligopoly, monopoly, and welfare across all four market structures.",
+    href: "/pricing/",
+    hoverBg: "hover:bg-brand-teal/10 hover:border-brand-teal/20",
+  },
+  {
+    label: "High school",
+    title: "HS Economics",
+    description: "Replace passive textbook chapters with hands-on market structures.",
+    href: "/pricing/",
+    hoverBg: "hover:bg-brand-green/10 hover:border-brand-green/20",
+  },
+  {
+    label: "Self-study",
+    title: "Curious learners",
+    description: "Solo play with full progress tracking across every realm.",
+    href: "/pricing/",
+    hoverBg: "hover:bg-brand-orange/10 hover:border-brand-orange/20",
+  },
+];
+---
+
+<div
+  class="border-gray/45 bg-base-100/40 dark:bg-base-800/30 relative w-full rounded-2xl border-2 p-6 md:p-7"
+>
+  <div class="mb-5 flex items-center justify-between">
+    <h3 class="text-foreground text-xl font-medium md:text-2xl">
+      Where it fits in your course
+    </h3>
+    <Icon
+      name="tabler/bell-school"
+      class="text-primary-accent size-6 shrink-0"
+      aria-hidden="true"
+    />
+  </div>
+
+  <ul class="flex flex-col gap-3">
+    {
+      rows.map(({ label, title, description, href, hoverBg }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              "group border-gray-100/10 bg-base-100/7 dark:bg-base-100/7 flex items-center justify-between gap-3 rounded-xl border p-3 transition-all duration-200",
+              hoverBg,
+            ]}
+          >
+            <div class="min-w-0">
+              <div class="text-muted-foreground mb-0.5 text-xs font-medium tracking-wider uppercase">
+                {label}
+              </div>
+              <div class="text-foreground text-base font-medium md:text-lg">
+                {title}
+              </div>
+              <div class="text-muted-foreground mt-1 text-sm">{description}</div>
+            </div>
+            <Icon
+              name="tabler/arrow-narrow-right"
+              class="text-muted-foreground group-hover:text-primary-accent size-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <a
+    href="/pricing/"
+    class="text-primary-accent hover:text-primary-accent/80 mt-5 inline-flex items-center gap-2 text-sm font-medium"
+  >
+    <Icon name="tabler/north-star" class="size-4 text-brand-blue" aria-hidden="true" />
+    See pricing
+    <span aria-hidden="true">→</span>
+  </a>
+</div>

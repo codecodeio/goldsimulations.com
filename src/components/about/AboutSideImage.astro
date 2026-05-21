@@ -1,9 +1,9 @@
 ---
-import { Image } from "astro:assets";
 import Button from "@/components/button/Button.astro";
 import Badge from "@/components/starwind/badge/Badge.astro";
+import CourseFitGrid from "@/components/feature/CourseFitGrid.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
-import heroImage from "@images/econrunes/EconRunesWorldMap.webp";
+import AccentBlur from "../accent-blur/AccentBlur.astro";
 const currLocale = getLocaleFromUrl(Astro.url);
 interface Props {
   class?: string;
@@ -15,7 +15,9 @@ const { class: className } = Astro.props as Props;
 <section class:list={["py-16 md:py-24", className]}>
   <div class="site-container grid gap-8 md:grid-cols-2 md:gap-16">
     <div class="" id="about-side-image-trigger">
-      <h2 data-mos="fade-up" class="h1">Interactive Economics Simulations for <span class="text-primary-accent">Modern </span> Classrooms</h2>
+      <h1 data-mos="fade-up" class="h1">Interactive Economics Simulations for <span
+              class="bg-[length:200%_100%] bg-clip-text text-transparent [background-image:linear-gradient(90deg,var(--color-blue-800),var(--color-blue-600),var(--color-blue-400),var(--color-blue-600),var(--color-blue-800))] motion-safe:animate-text-shine"
+            >Modern Classrooms</span> </h1>
 
       <div class="text-muted-foreground mt-6">
         <p
@@ -42,7 +44,7 @@ const { class: className } = Astro.props as Props;
           data-mos-anchor="#about-side-image-trigger"
           data-mos-delay=".6"
         >
-          Turn economic concepts into hands-on learning with immersive digital simulations built for high schools, colleges, and MBA programs.
+          Turn economic concepts into hands-on learning with immersive digital simulations built for colleges, MBA programs, and high schools.
         </p>
       </div>
       <div class="pt-8" data-mos="fade-up"
@@ -75,14 +77,9 @@ const { class: className } = Astro.props as Props;
         </div>
     </div>
 
-    <div class="overflow-clip rounded-2xl">
-      <Image
-        src={heroImage}
-        alt="Interactive Economics Simulations for Modern Classrooms"
-        width={1001}
-        densities={[1.5, 2]}
-        class="h-full w-full object-cover"
-      />
+    <div class="flex items-center">
+      <CourseFitGrid />
     </div>
   </div>
+  <AccentBlur color="blue"/>
 </section>
