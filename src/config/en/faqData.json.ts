@@ -16,7 +16,7 @@ export const faqData: FaqItem[] = [
   },
   {
     question: "How do I sign up as an instructor and get started?",
-    answer: `Start by creating an account on GoldSimulations.com, explore the EconRunes game, and review the provided course materials, syllabus, and assignments to see how the game fits into your course. When ready invite students by sharing a course link that will connect their accounts to yours.`,
+    answer: `Soon you'll be able to sign up by creating an account on GoldSimulations.com, explore the EconRunes game, and review the provided course materials, syllabus, and assignments to see how the game fits into your course. When ready, you'll invite students by sharing a course link that connects their accounts to yours. <a href="/subscribe/">Join the waitlist</a> for launch news.`,
   },
   {
     question: "What kinds of courses are economics games appropriate for?",
@@ -29,6 +29,18 @@ export const faqData: FaqItem[] = [
   {
     question: "Can I continue to use Beat The Market?",
     answer: `Yes, you can continue to use Beat The Market. However, we recommend transitioning to EconRunes for a more comprehensive and engaging learning experience, as it covers a wider range of microeconomic concepts through its immersive gameplay. Eventually, Beat The Market will be phased out to focus on developing and enhancing EconRunes.`,
+  },
+  {
+    question: "When will EconRunes launch?",
+    answer: `We're preparing the beta launch of EconRunes. The launch will include all five realms — the four market structures (Perfect Competition, Monopolistic Competition, Oligopoly, and Monopoly) and the Council of Runes capstone. <a href="/subscribe/">Join the waitlist</a> for launch news.`,
+  },
+  {
+    question: "What does a student actually do in a realm?",
+    answer: `Each realm asks students to make a market decision — choosing a price or a production quantity — and shows the result with cost and demand curves that update in real time. Players reflect, adjust, and earn a Rune as they master each market structure.`,
+  },
+  {
+    question: "How can I get early access for my classroom?",
+    answer: `Instructors who want to pilot EconRunes can <a href="/subscribe/">join the waitlist</a>. We'll reach out before launch with details on classroom pilots and institutional licensing. <a href="/pricing">Pricing</a> for individuals and institutions is published in advance.`,
   },
 ];
 
