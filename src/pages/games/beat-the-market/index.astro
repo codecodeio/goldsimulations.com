@@ -6,6 +6,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import AboutNumbers from "@/components/about/AboutNumbers.astro";
 import AboutSideCardsBTMInstructor from "@/components/about/AboutSideCardsBTMInstructor.astro";
 import AboutSideCardsBTMStudent from "@/components/about/AboutSideCardsBTMStudent.astro";
+import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
@@ -13,7 +14,12 @@ const siteData = getTranslatedData("siteData", currLocale);
 ---
 
 <BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
-  <HeroSideImageBTM />
+  <div class="relative overflow-clip">
+    <div class="relative z-10">
+      <HeroSideImageBTM />
+    </div>
+    <AccentBlur color="blue" />
+  </div>
   <AboutNumbers />
   <AboutSideCardsBTMInstructor/>
   <AboutSideCardsBTMStudent/>

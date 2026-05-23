@@ -4,6 +4,7 @@ import backgroundImage from "@images/hero/hero_bg_3-min.png";
 import { Image } from "astro:assets";
 
 import Button from "@/components/button/Button.astro";
+import ShineText from "@/components/shine-text/ShineText.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
 
@@ -31,7 +32,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
         class="h1 text-foreground mb-4"
       >
         Beat The Market: An
-        <span class="text-primary-accent">Interactive </span>
+        <ShineText>Interactive </ShineText>
         Microeconomics Game
       </h1>
       <p

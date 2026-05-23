@@ -3,6 +3,7 @@ import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getTranslatedData, useTranslations } from "@/js/translationUtils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Button from "@/components/button/Button.astro";
+import ShineText from "@/components/shine-text/ShineText.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
@@ -10,11 +11,11 @@ const siteData = getTranslatedData("siteData", currLocale);
 
 <BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
 	<!-- Hero / Intro -->
-	<section class="site-container pt-10 pb-8 md:pt-16 md:pb-8 mt-14 overflow-x-clip" data-mos="fade-up"
+	<section class="site-container pt-24 pb-8 md:pt-28 md:pb-8 overflow-x-clip" data-mos="fade-up"
           data-mos-delay=".1"
           data-mos-anchor="#learning-objectives-title">
 		<div class="max-w-3xl">
-			<h1 class="h1">Learning <span class="text-primary-accent">Objectives</span> — EconRunes</h1>
+			<h1 class="h1 text-center md:text-left">Learning <ShineText>Objectives</ShineText> for EconRunes</h1>
 			<p class="description mt-4">
 				Core outcomes students achieve across Realms and the capstone.
 			</p>

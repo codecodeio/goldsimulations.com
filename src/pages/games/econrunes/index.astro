@@ -4,6 +4,7 @@ import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getTranslatedData, useTranslations } from "@/js/translationUtils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import FeatureSideImageProps from "@/components/feature/FeatureSideImageProps.astro";
+import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
 import { type FeatureItem } from "@/config/types/configDataTypes";
 
 const currLocale = getLocaleFromUrl(Astro.url);
@@ -88,7 +89,12 @@ const featureData: FeatureItem[] = [
 ---
 
 <BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
-  <HeroSideImageEconrunes />
+  <div class="relative overflow-clip">
+    <div class="relative z-10">
+      <HeroSideImageEconrunes />
+    </div>
+    <AccentBlur color="blue" />
+  </div>
   <section id="story" class="site-container py-12 md:py-16">
     <div class="mx-auto max-w-3xl text-center">
       <h2 class="h2 mb-6">The story of <span class="text-primary-accent">EconRunes</span></h2>
@@ -106,3 +112,4 @@ const featureData: FeatureItem[] = [
   </section>
   <FeatureSideImageProps featureData={featureData} />
 </BaseLayout>
+

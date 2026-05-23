@@ -8,20 +8,19 @@ import { Icon } from "astro-icon/components";
 import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
 import Button from "@/components/button/Button.astro";
 import GamesGrid from "@/components/hero/GamesGrid.astro";
+import ShineText from "@/components/shine-text/ShineText.astro";
 ---
 
 <!-- "dark" class forces dark mode for this section -->
-<section id="hero-side" class="relative mt-16 overflow-clip">
-  <div class="site-container relative z-10 py-16 md:py-20">
+<section id="hero-side" class="relative overflow-clip pt-24 md:pt-28">
+  <div class="site-container relative z-10 pb-16 md:pb-20">
     <div
       class="mx-auto grid max-w-md gap-10 text-center md:max-w-none md:grid-cols-2 md:text-left xl:items-center"
     >
-      <div class="mx-auto my-auto w-full pt-4 md:ml-0 md:max-w-[560px] md:py-10 lg:pr-10">
+      <div class="mx-auto my-auto w-full pt-4 md:ml-0 md:max-w-[560px] md:pb-10 lg:pr-10">
         <div class="" data-mos="fade-up" data-mos-anchor="#hero-side">
           <h1 class="h1 mb-6">
-            Where Economics Classrooms <span
-              class="bg-[length:200%_100%] bg-clip-text text-transparent [background-image:linear-gradient(90deg,var(--color-blue-800),var(--color-blue-600),var(--color-blue-400),var(--color-blue-600),var(--color-blue-800))] motion-safe:animate-text-shine"
-            >Come to Life</span>
+            Where Economics Classrooms <ShineText>Come to Life</ShineText>
           </h1>
         </div>
         <p

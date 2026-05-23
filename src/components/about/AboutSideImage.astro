@@ -2,6 +2,7 @@
 import Button from "@/components/button/Button.astro";
 import Badge from "@/components/starwind/badge/Badge.astro";
 import CourseFitGrid from "@/components/feature/CourseFitGrid.astro";
+import ShineText from "@/components/shine-text/ShineText.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import AccentBlur from "../accent-blur/AccentBlur.astro";
 const currLocale = getLocaleFromUrl(Astro.url);
@@ -12,12 +13,10 @@ interface Props {
 const { class: className } = Astro.props as Props;
 ---
 
-<section class:list={["relative overflow-clip py-16 md:py-24", className]}>
+<section class:list={["relative overflow-clip pt-24 pb-16 md:pt-28 md:pb-24", className]}>
   <div class="site-container relative z-10 grid gap-8 md:grid-cols-2 md:gap-16">
-    <div class="" id="about-side-image-trigger">
-      <h1 data-mos="fade-up" class="h1">Interactive Economics Simulations for <span
-              class="bg-[length:200%_100%] bg-clip-text text-transparent [background-image:linear-gradient(90deg,var(--color-blue-800),var(--color-blue-600),var(--color-blue-400),var(--color-blue-600),var(--color-blue-800))] motion-safe:animate-text-shine"
-            >Modern Classrooms</span> </h1>
+    <div class="text-center md:text-left" id="about-side-image-trigger">
+      <h1 data-mos="fade-up" class="h1">Interactive Economics Simulations for <ShineText>Modern Classrooms</ShineText> </h1>
 
       <div class="text-muted-foreground mt-6">
         <p
@@ -47,7 +46,7 @@ const { class: className } = Astro.props as Props;
           Turn economic concepts into hands-on learning with immersive digital simulations built for colleges, MBA programs, and high schools.
         </p>
       </div>
-      <div class="pt-8" data-mos="fade-up"
+      <div class="flex justify-center pt-8 md:justify-start" data-mos="fade-up"
           data-mos-delay=".6"
           data-mos-anchor="#hero-side-coming-soon">
         <Badge variant="warning">Coming soon</Badge>

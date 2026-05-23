@@ -1,6 +1,7 @@
 ---
 import { type Page } from "astro";
 
+import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
 import CategoryCloud from "@/components/category-cloud/CategoryCloud.astro";
 import Pagination from "@/components/pagination/Pagination.astro";
 import PostCard from "@/components/post-card/PostCardMultiLink.astro";
@@ -45,35 +46,39 @@ const formattedCategory = humanize(category);
   title={`${formattedCategory} - Blog posts`}
   description={`A collection of blog posts about ${formattedCategory}`}
 >
-  <section class="site-container py-24 md:pt-40">
-    <div class="overflow-x-clip">
-      <div class="mr-auto flex max-w-[950px] flex-col">
-        <h1 class="h1">
-          Blog Post about <span class="border-primary border-b-2">{formattedCategory}</span>
-        </h1>
-        <p class="description mt-2">
-          Lorem ipsum dolor sit amet, consectetury adipiscing elit. Volutpat, tempor to after
-          condimentum commodo
-        </p>
+  <section class="relative overflow-clip py-24 md:pt-28">
+    <div class="site-container">
+      <div class="relative z-10 overflow-x-clip">
+        <div class="mr-auto flex max-w-[950px] flex-col">
+          <h1 class="h1">
+            Blog Post about <span class="border-primary border-b-2">{formattedCategory}</span>
+          </h1>
+          <p class="description mt-2">
+            Lorem ipsum dolor sit amet, consectetury adipiscing elit. Volutpat, tempor to after
+            condimentum commodo
+          </p>
+        </div>
+
+        <div class="mt-6 flex pb-16">
+          <CategoryCloud />
+        </div>
       </div>
 
-      <div class="mt-6 flex pb-16">
-        <CategoryCloud />
+      <div class="relative z-10 grid gap-8 gap-y-10 md:grid-cols-2">
+        {page.data.map((post) => <PostCard post={post} showDescription={true} data-mos="fade-up" />)}
+      </div>
+
+      <div class="relative z-10 mt-10 flex justify-center md:mt-16">
+        <Pagination
+          basePath={`/categories/${category}/`}
+          prevUrl={page.url.prev}
+          currPage={page.currentPage}
+          nextUrl={page.url.next}
+          lastPage={page.lastPage}
+        />
       </div>
     </div>
 
-    <div class="grid gap-8 gap-y-10 md:grid-cols-2">
-      {page.data.map((post) => <PostCard post={post} showDescription={true} data-mos="fade-up" />)}
-    </div>
-
-    <div class="mt-10 flex justify-center md:mt-16">
-      <Pagination
-        basePath={`/categories/${category}/`}
-        prevUrl={page.url.prev}
-        currPage={page.currentPage}
-        nextUrl={page.url.next}
-        lastPage={page.lastPage}
-      />
-    </div>
+    <AccentBlur color="blue" />
   </section>
 </BaseLayout>

@@ -7,6 +7,7 @@
 import { Icon } from "astro-icon/components";
 
 import Button from "@/components/button/Button.astro";
+import ShineText from "@/components/shine-text/ShineText.astro";
 import { Switch } from "@/components/starwind/switch";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 interface featureItem {
@@ -116,13 +117,13 @@ const pricingData: pricingItem[] = [
 const currLocale = getLocaleFromUrl(Astro.url);
 ---
 
-<section id="pricing-four-cards" class="py-16 md:py-20">
+<section id="pricing-four-cards" class="pt-24 pb-16 md:pt-28 md:pb-20">
   <div class="site-container relative">
     <div class="flex justify-center">
       <!-- <Badge>Pricing</Badge> -->
     </div>
     <div class="flex justify-center">
-      <h2 class="h2 inline text-center"><span class="text-primary-accent">Choose  </span> Your Economics Adventure</h2>
+      <h1 class="h1 inline text-center"><ShineText>Choose</ShineText> Your Economics Adventure</h1>
     </div>
 
     <!-- Toggle switch for monthly or yearly pricing -->

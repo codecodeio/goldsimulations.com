@@ -1,0 +1,19 @@
+---
+/**
+ * Animated blue gradient text-shine effect.
+ * Wrap key phrases (e.g. "Come to Life") with this component.
+ * Edit the gradient or animation here to update every usage site-wide.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props as Props;
+---
+
+<span
+  class:list={[
+    "bg-[length:200%_100%] bg-clip-text text-transparent [background-image:linear-gradient(90deg,var(--color-blue-800),var(--color-blue-600),var(--color-blue-400),var(--color-blue-600),var(--color-blue-800))] motion-safe:animate-text-shine",
+    className,
+  ]}
+><slot /></span>

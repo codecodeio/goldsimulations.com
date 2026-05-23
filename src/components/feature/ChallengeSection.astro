@@ -13,13 +13,13 @@ import DriftingEquations from "@/components/chart/DriftingEquations.astro";
       class="mx-auto grid scroll-mt-24 gap-8 rounded-lg md:grid-cols-2 md:gap-12 md:rounded-xl lg:gap-16"
       data-mos="fade-right"
     >
-      <!-- Media (left on md+) -->
-      <div class="mb-auto h-auto w-full overflow-hidden rounded-xl border">
+      <!-- Media (left on md+, below text on mobile) -->
+      <div class="order-2 mb-auto h-auto w-full overflow-hidden rounded-xl border md:order-1">
         <DriftingEquations />
       </div>
 
-      <!-- Text (right) -->
-      <div class="col-span-1 flex items-center">
+      <!-- Text (right on md+, above media on mobile) -->
+      <div class="order-1 col-span-1 flex items-center md:order-2">
         <div class="md:py-6">
           <h2 class="h2 mt-4">The Challenge in Today's Economics Classroom</h2>
           <p class="text-muted-foreground mt-4 mr-auto max-w-xl text-pretty">

@@ -1,9 +1,11 @@
 ---
 import { type Page } from "astro";
 
+import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
 import CategoryCloud from "@/components/category-cloud/CategoryCloud.astro";
 import Pagination from "@/components/pagination/Pagination.astro";
 import PostCard from "@/components/post-card/PostCardMultiLink.astro";
+import ShineText from "@/components/shine-text/ShineText.astro";
 import { defaultLocale } from "@/config/siteSettings.json";
 import { getAllPosts } from "@/js/blogUtils";
 import { getLocaleFromUrl } from "@/js/localeUtils";
@@ -24,32 +26,36 @@ const { page } = Astro.props as { page: Page };
   title="GoldSimulations News"
   description="The latest news about GoldSimulations, and articles on economics education."
 >
-  <section class="site-container py-24 md:pt-40">
-    <div class="overflow-x-clip">
-      <div class="mr-auto flex max-w-5xl flex-col">
-        <h1 class="h1">The Latest <span class="text-primary-accent">News</span> in Economics Education</h1>
-        <p class="description mt-2">
-          The latest news about GoldSimulations, and articles on economics education.
-        </p>
+  <section class="relative overflow-clip py-24 md:pt-28">
+    <div class="site-container">
+      <div class="relative z-10 overflow-x-clip">
+        <div class="mr-auto flex max-w-5xl flex-col">
+          <h1 class="h1 text-center md:text-left">The Latest <ShineText>News</ShineText> in Economics Education</h1>
+          <p class="description mt-2">
+            The latest news about GoldSimulations, and articles on economics education.
+          </p>
+        </div>
+
+        <div class="mt-6 flex pb-16">
+          <CategoryCloud />
+        </div>
       </div>
 
-      <div class="mt-6 flex pb-16">
-        <CategoryCloud />
+      <div class="relative z-10 grid gap-8 gap-y-10 md:grid-cols-2">
+        {page.data.map((post) => <PostCard post={post} showDescription={true} data-mos="fade-up" />)}
+      </div>
+
+      <div class="relative z-10 mt-10 flex justify-center md:mt-16">
+        <Pagination
+          basePath={`/news/`}
+          prevUrl={page.url.prev}
+          currPage={page.currentPage}
+          nextUrl={page.url.next}
+          lastPage={page.lastPage}
+        />
       </div>
     </div>
 
-    <div class="grid gap-8 gap-y-10 md:grid-cols-2">
-      {page.data.map((post) => <PostCard post={post} showDescription={true} data-mos="fade-up" />)}
-    </div>
-
-    <div class="mt-10 flex justify-center md:mt-16">
-      <Pagination
-        basePath={`/news/`}
-        prevUrl={page.url.prev}
-        currPage={page.currentPage}
-        nextUrl={page.url.next}
-        lastPage={page.lastPage}
-      />
-    </div>
+    <AccentBlur color="blue" />
   </section>
 </BaseLayout>

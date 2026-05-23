@@ -6,20 +6,21 @@
 import Badge from "@/components/starwind/badge/Badge.astro";
 import Button from "@/components/button/Button.astro";
 import ChartEconrunes from "@/components/chart/ChartEconrunes.astro";
+import ShineText from "@/components/shine-text/ShineText.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 const currLocale = getLocaleFromUrl(Astro.url);
 ---
 
 <!-- "dark" class forces dark mode for this section -->
-<section id="hero-side" class="mt-16 overflow-x-clip">
-  <div class="site-container py-16 md:py-20">
+<section id="hero-side" class="overflow-x-clip pt-24 md:pt-28">
+  <div class="site-container pb-16 md:pb-20">
     <div
       class="mx-auto grid max-w-md gap-10 text-center md:max-w-none md:grid-cols-2 md:text-left xl:items-center"
     >
-      <div class="mx-auto my-auto w-full pt-4 md:ml-0 md:max-w-[560px] md:py-10 lg:pr-10">
+      <div class="mx-auto my-auto w-full pt-4 md:ml-0 md:max-w-[560px] md:pb-10 lg:pr-10">
         <div class="" data-mos="fade-up" data-mos-anchor="#hero-side">
           <h1 class="h1 mb-6">
-            EconRunes: An <br><span class="text-primary-accent">Epic Quest </span> through Microeconomic Realms
+            EconRunes: An <br><ShineText>Epic Quest </ShineText> through Microeconomic Realms
           </h1>
         </div>
         <p

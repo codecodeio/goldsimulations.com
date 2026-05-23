@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
 
+import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
 import ExternalLink from "@/components/markdown-components/ExternalLink.astro";
 import { defaultLocale } from "@/config/siteSettings.json";
 import { filterCollectionByLanguage } from "@/js/localeUtils";
@@ -33,13 +34,16 @@ const { title, description } = page.data;
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="mx-auto max-w-3xl px-4 py-20 md:px-8 md:pt-32">
-    <div class="max-w-2xl">
-      <h1 class="h1">{title}</h1>
-      <p class="description mt-2">{description}</p>
+  <div class="relative overflow-clip">
+    <div class="relative z-10 mx-auto max-w-3xl px-4 py-20 md:px-8 md:pt-32">
+      <div class="max-w-2xl">
+        <h1 class="h1">{title}</h1>
+        <p class="description mt-2">{description}</p>
+      </div>
+      <div class="markdown-content mx-auto mt-16 max-w-3xl">
+        <Content components={{ a: ExternalLink }} />
+      </div>
     </div>
-    <div class="markdown-content mx-auto mt-16 max-w-3xl">
-      <Content components={{ a: ExternalLink }} />
-    </div>
+    <AccentBlur color="blue" />
   </div>
 </BaseLayout>
