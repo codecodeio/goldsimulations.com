@@ -24,12 +24,23 @@ const currLocale = getLocaleFromUrl(Astro.url);
           </h1>
         </div>
         <p
-          class="description mb-8 text-pretty lg:text-lg"
+          class="description mb-4 text-pretty lg:text-lg"
           data-mos="fade-up"
           data-mos-delay=".1"
           data-mos-anchor="#hero-side"
         >
           EconRunes turns four microeconomic market structures into playable realms. Students make decisions such as pricing or production round by round, see cost and demand curves update live, and earn a Rune for mastering each market. Launches with all five realms, including a capstone called the Council of Runes.
+        </p>
+        <p
+          class="text-muted-foreground mb-8 text-sm"
+          data-mos="fade-up"
+          data-mos-delay=".15"
+          data-mos-anchor="#hero-side"
+        >
+          Bringing EconRunes to your classroom? See the
+          <a href="/resources/syllabus/" class="text-primary-accent hover:underline">syllabus</a>
+          and
+          <a href="/resources/learning-objectives/" class="text-primary-accent hover:underline">learning objectives</a>.
         </p>
         <div data-mos="fade-up"
           data-mos-delay=".2"
@@ -45,19 +56,8 @@ const currLocale = getLocaleFromUrl(Astro.url);
           <Button variant="primary" href="/subscribe/">
             Join the Waitlist
           </Button>
-          <Button
-            variant="ghost"
-            arrow="right"
-            href="#story"
-          >
-            Learn the Story
-          </Button>
-          <Button
-            variant="ghost"
-            arrow="right"
-            href="#feature-side-image"
-          >
-            Learn About Each Realm
+          <Button variant="secondary" arrow="right" href="/pricing/">
+            See Pricing
           </Button>
         </div>
       </div>
