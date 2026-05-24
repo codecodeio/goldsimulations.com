@@ -1,7 +1,8 @@
 ---
 import Search from "@tabler/icons/outline/search.svg";
 import type { HTMLAttributes } from "astro/types";
-import { tv } from "tailwind-variants";
+
+import { selectSearch } from "./variants";
 
 type Props = Omit<HTMLAttributes<"input">, "type" | "autocomplete"> & {
   /**
@@ -9,19 +10,18 @@ type Props = Omit<HTMLAttributes<"input">, "type" | "autocomplete"> & {
    * @default "No results found."
    */
   emptyText?: string;
+  /**
+   * Whether the search input should be auto-focused on touch devices.
+   * @default false
+   */
+  focusOnTouchDevices?: boolean;
 };
-
-export const selectSearch = tv({
-  base: [
-    "placeholder:text-muted-foreground flex w-full border-0 bg-transparent px-0 py-2.5",
-    "ring-0 outline-none disabled:cursor-not-allowed disabled:opacity-50",
-  ],
-});
 
 const {
   class: className,
   placeholder = "Search...",
   emptyText = "No results found.",
+  focusOnTouchDevices = false,
   ...rest
 } = Astro.props;
 ---
@@ -36,11 +36,12 @@ const {
   <input
     type="text"
     class={selectSearch({ class: className })}
-    data-slot="select-search"
     placeholder={placeholder}
     autocomplete="off"
     aria-label={placeholder}
     {...rest}
+    data-slot="select-search"
+    data-focus-on-touch-devices={focusOnTouchDevices}
   />
 </div>
 

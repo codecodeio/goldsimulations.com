@@ -26,8 +26,8 @@ const { class: className, name, defaultValue, required, ...rest } = Astro.props;
   data-name={name}
   data-value={defaultValue}
   data-required={required}
-  data-slot="select"
   {...rest}
+  data-slot="select"
 >
   <slot />
 </div>
@@ -218,6 +218,7 @@ const { class: className, name, defaultValue, required, ...rest } = Astro.props;
         if (e.key === "Enter" || e.key === " ") {
           // Only handle selection if not typing in search input
           if (!isFromSearchInput) {
+            e.preventDefault();
             // set element based on current focused element
             const activeElement = document.activeElement;
             this.returnFocusOnClose = true;
@@ -558,9 +559,14 @@ const { class: className, name, defaultValue, required, ...rest } = Astro.props;
           this.setActiveItem(initialItem);
         }
 
-        requestAnimationFrame(() => {
-          this.searchInput?.focus();
-        });
+        const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+        const focusOnTouch =
+          this.searchInput?.getAttribute("data-focus-on-touch-devices") === "true";
+        if (!isTouchDevice || focusOnTouch) {
+          requestAnimationFrame(() => {
+            this.searchInput?.focus();
+          });
+        }
       } else {
         // set active on the current selected item
         if (this.selectedItem) {
@@ -674,6 +680,9 @@ const { class: className, name, defaultValue, required, ...rest } = Astro.props;
     private programmaticallySelect(value: string): void {
       if (!this.content) return;
 
+      // Skip if already selected (prevents infinite loops with synced selects)
+      if (this.selectedItem?.getAttribute("data-value") === value) return;
+
       const item = this.content.querySelector(`[data-value="${value}"]`);
       if (item instanceof HTMLElement) {
         this.returnFocusOnClose = false;
@@ -717,18 +726,20 @@ const { class: className, name, defaultValue, required, ...rest } = Astro.props;
 
   // Store instances in a WeakMap to avoid memory leaks
   const selectInstances = new WeakMap<HTMLElement, SelectHandler>();
+  let selectCounter = 0;
 
   // Initialize selects
   const initSelects = () => {
-    document.querySelectorAll(".starwind-select").forEach((select, idx) => {
+    document.querySelectorAll(".starwind-select").forEach((select) => {
       if (select instanceof HTMLElement && !selectInstances.has(select)) {
-        selectInstances.set(select, new SelectHandler(select, idx));
+        selectInstances.set(select, new SelectHandler(select, selectCounter++));
       }
     });
   };
 
   initSelects();
   document.addEventListener("astro:after-swap", initSelects);
+  document.addEventListener("starwind:init", initSelects);
 </script>
 
 <style is:global>
