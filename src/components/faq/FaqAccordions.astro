@@ -17,14 +17,14 @@ const currLocale = getLocaleFromUrl(Astro.url);
 const faqData = getTranslatedData("faqData", currLocale);
 ---
 
-<section id="faq-accordions" class="py-16 md:py-24">
+<section id="faq-accordions" class="pb-20 md:pb-24">
   <div class="site-container">
     <div class="mx-auto mb-16 max-w-3xl text-center" data-mos="fade-up">
       <h2 class="h2 mb-4">Frequently Asked Questions</h2>
       <p class="description">Find answers to common questions about our services and process</p>
     </div>
     <div
-      class="mx-auto mt-10 flex max-w-3xl flex-col gap-3"
+      class="mx-auto flex max-w-3xl flex-col gap-3"
       data-mos="fade-up"
       data-mos-delay="0.4"
     >

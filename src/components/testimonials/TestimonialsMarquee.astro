@@ -17,7 +17,7 @@ const testimonialData = getTranslatedData("testimonialData", currLocale);
 
 <section
   id="testimonials-marquee-section"
-  class="mx-auto max-w-[2000px] overflow-x-hidden px-4 py-16 md:py-20"
+  class="mx-auto max-w-[2000px] overflow-x-hidden px-4 pb-20 md:pb-24"
 >
   <div class="mb-10 flex flex-col justify-center text-center">
     <Badge>Testimonials</Badge>
@@ -25,25 +25,27 @@ const testimonialData = getTranslatedData("testimonialData", currLocale);
   </div>
 
   <div class="relative -mt-2">
-    <!-- left fade-out -->
+    <!-- left fade-out (desktop only) -->
     <div
-      class="from-background absolute top-0 -left-px z-20 h-full w-[10%] bg-gradient-to-r from-10% to-transparent"
+      class="from-background pointer-events-none absolute top-0 -left-px z-20 hidden h-full w-[10%] bg-gradient-to-r from-10% to-transparent md:block"
     >
     </div>
-    <!-- right fade-out -->
+    <!-- right fade-out (desktop only) -->
     <div
-      class="to-background absolute top-0 -right-px z-20 h-full w-[10%] bg-gradient-to-r from-transparent to-90%"
+      class="to-background pointer-events-none absolute top-0 -right-px z-20 hidden h-full w-[10%] bg-gradient-to-r from-transparent to-90% md:block"
     >
     </div>
 
-    <div class="relative h-full overflow-x-hidden py-4">
+    <div
+      class="testimonials-scroll relative h-full snap-x snap-mandatory overflow-x-auto py-4 [scrollbar-width:none] md:snap-none md:overflow-x-hidden [&::-webkit-scrollbar]:hidden"
+    >
       <div class="testimonial-marquee flex gap-6">
         <div
-          class="animate-marquee-testimonials flex min-w-full shrink-0 items-start justify-around gap-6"
+          class="flex shrink-0 items-start gap-6 md:min-w-full md:justify-around testimonial-row md:animate-marquee-testimonials"
         >
           {
             testimonialData.map((testimonial, idx) => (
-              <div class="w-[clamp(17rem,40vw,23rem)]">
+              <div class="w-[clamp(17rem,40vw,23rem)] shrink-0 snap-center">
                 <TestimonialCard {...testimonial} />
               </div>
             ))
@@ -51,7 +53,7 @@ const testimonialData = getTranslatedData("testimonialData", currLocale);
         </div>
         <div
           aria-hidden="true"
-          class="animate-marquee-testimonials flex min-w-full shrink-0 items-start justify-around gap-6"
+          class="hidden min-w-full shrink-0 items-start justify-around gap-6 md:flex testimonial-row md:animate-marquee-testimonials"
         >
           {
             testimonialData.map((testimonial, idx) => (
@@ -72,14 +74,14 @@ const testimonialData = getTranslatedData("testimonialData", currLocale);
 
     // add the clauss "pause" when the mouse enters the marquee
     testimonialMarquee?.addEventListener("mouseover", () => {
-      testimonialMarquee.querySelectorAll(".animate-marquee-testimonials").forEach((el) => {
+      testimonialMarquee.querySelectorAll(".testimonial-row").forEach((el) => {
         el.classList.add("pause");
       });
     });
 
     // remove the class "pause" when the mouse leaves the marquee
     testimonialMarquee?.addEventListener("mouseout", () => {
-      testimonialMarquee.querySelectorAll(".animate-marquee-testimonials").forEach((el) => {
+      testimonialMarquee.querySelectorAll(".testimonial-row").forEach((el) => {
         el.classList.remove("pause");
       });
     });
