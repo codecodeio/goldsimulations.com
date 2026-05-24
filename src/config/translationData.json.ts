@@ -74,8 +74,6 @@ export const routeTranslations = {
     tagKey2: "tags/*",
     tagKey3: "tags",
     blogKey: "blog",
-    servicesKey: "services",
-    projectsKey: "projects",
   },
   
 } as const;
@@ -93,12 +91,6 @@ export const routeTranslations = {
 export const localizedCollections = {
   blog: {
 		en: "blog"
-	},
-  services: {
-		en: "services"
-	},
-  projects: {
-		en: "projects"
 	},
   // Add more collections/locales as needed
 } as const;

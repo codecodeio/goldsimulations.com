@@ -69,4 +69,4 @@ To remove Keystatic: `pnpm remove-keystatic`
 - [i18n](https://cosmicthemes.com/docs/i18n/)
 - [Astro docs](https://docs.astro.build)
 
-Built on the [Kitchen Sink Starter](https://cosmicthemes.com/) by Cosmic Themes.
+Built on the [Kitchen Sink Starter](https://starter.cosmicthemes.com/) by [Cosmic Themes](https://cosmicthemes.com/).

@@ -32,16 +32,6 @@ export default config({
     // this might look like "author-1-en" and "author-1-fr"
     authors: Collections.Authors(""),
 
-    servicesEN: Collections.Services("en"),
-
-    careersEN: Collections.Careers("en"),
-
     otherPagesEN: Collections.OtherPages("en"),
-
-    projectsEN: Collections.Projects("en"),
-  },
-
-  singletons: {
-    resumeEN: Collections.Resume("en"),
   },
 });
