@@ -44,7 +44,7 @@ export default function jsonLDGenerator(props: JsonLDProps) {
     return `<script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Blogposting",
+        "@type": "BlogPosting",
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": "${canonicalUrl}"
@@ -53,8 +53,8 @@ export default function jsonLDGenerator(props: JsonLDProps) {
         "description": "${postFrontmatter.description}",
         "image": "${image.src}",
         "author": ${JSON.stringify(authorsJsonLd)},
-        "datePublished": "${postFrontmatter.pubDate}",
-        "dateModified": "${postFrontmatter.updatedDate}"
+        "datePublished": "${postFrontmatter.pubDate.toISOString()}",
+        "dateModified": "${postFrontmatter.updatedDate ? postFrontmatter.updatedDate.toISOString() : postFrontmatter.pubDate.toISOString()}"
       }
     </script>`;
   }
