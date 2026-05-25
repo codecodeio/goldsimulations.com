@@ -1,5 +1,6 @@
 ---
-import { type Page } from "astro";
+import { type GetStaticPathsOptions, type Page } from "astro";
+import { type CollectionEntry } from "astro:content";
 
 import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
 import CategoryCloud from "@/components/category-cloud/CategoryCloud.astro";
@@ -7,21 +8,21 @@ import Pagination from "@/components/pagination/Pagination.astro";
 import PostCard from "@/components/post-card/PostCardMultiLink.astro";
 import { defaultLocale } from "@/config/siteSettings.json";
 import { countItems, getAllPosts } from "@/js/blogUtils";
-import { categorify, humanize, slugify } from "@/js/textUtils";
+import { humanize, slugify } from "@/js/textUtils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 // generate pagination for tag pages if there are a bunch of posts for a single tag
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = await getAllPosts(defaultLocale);
 
   // get all tags from the posts
   const allCategories = posts.map((post) => post.data.categories).flat();
 
   // combine tags and count how many times they appear. these are "slugified"
-  const countedCategories = countItems(allCategories);
+  const countedCategories = countItems(allCategories) as Record<string, number>;
 
   // pagination returns an array of objects with params and page size
-  return Object.entries(countedCategories).flatMap(([category, val]) => {
+  return Object.entries(countedCategories).flatMap(([category]) => {
     // get all posts that have the tag
     const filteredPosts = posts.filter((post) => {
       // make sure to slugify them for comparison
@@ -36,26 +37,25 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 
-const { page } = Astro.props as { page: Page };
+const { page } = Astro.props as { page: Page<CollectionEntry<"blog">> };
 const { category } = Astro.params as { category: string };
 
 const formattedCategory = humanize(category);
 ---
 
 <BaseLayout
-  title={`${formattedCategory} - Blog posts`}
-  description={`A collection of blog posts about ${formattedCategory}`}
+  title={`${formattedCategory} - News`}
+  description={`A collection of news articles about the ${formattedCategory} cateogry.`}
 >
   <section class="relative overflow-clip pt-24 pb-20 md:pt-28 md:pb-24">
     <div class="site-container">
       <div class="relative z-10 overflow-x-clip">
         <div class="mr-auto flex max-w-[950px] flex-col">
           <h1 class="h1">
-            Blog Post about <span class="border-primary border-b-2">{formattedCategory}</span>
+            <span class="border-primary border-b-2">{formattedCategory}</span> News
           </h1>
           <p class="description mt-2">
-            Lorem ipsum dolor sit amet, consectetury adipiscing elit. Volutpat, tempor to after
-            condimentum commodo
+            A collection of news articles about the {formattedCategory.toLowerCase()} category.
           </p>
         </div>
 

@@ -1,5 +1,6 @@
 ---
-import { type Page } from "astro";
+import { type GetStaticPathsOptions, type Page } from "astro";
+import { type CollectionEntry } from "astro:content";
 
 import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
 import CategoryCloud from "@/components/category-cloud/CategoryCloud.astro";
@@ -8,10 +9,9 @@ import PostCard from "@/components/post-card/PostCardMultiLink.astro";
 import ShineText from "@/components/shine-text/ShineText.astro";
 import { defaultLocale } from "@/config/siteSettings.json";
 import { getAllPosts } from "@/js/blogUtils";
-import { getLocaleFromUrl } from "@/js/localeUtils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = await getAllPosts(defaultLocale);
 
   return paginate(posts, {
@@ -19,7 +19,7 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 
-const { page } = Astro.props as { page: Page };
+const { page } = Astro.props as { page: Page<CollectionEntry<"blog">> };
 ---
 
 <BaseLayout
