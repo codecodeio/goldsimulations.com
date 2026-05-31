@@ -1,9 +1,9 @@
 ---
-import { getLocaleFromUrl } from "@/js/localeUtils";
-import { getTranslatedData, useTranslations } from "@/js/translationUtils";
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import Button from "@/components/button/Button.astro";
 import ShineText from "@/components/shine-text/ShineText.astro";
+import { getLocaleFromUrl } from "@/js/localeUtils";
+import { getTranslatedData } from "@/js/translationUtils";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
@@ -74,7 +74,8 @@ const siteData = getTranslatedData("siteData", currLocale);
 
 		<h2>2) Realm Objectives</h2>
 
-		<h3>Realm 1 — Perfect Competition (The Plains of Many Paths)</h3>
+		<h3>Realm 1 — Perfect Competition</h3>
+		<p class="text-sm text-muted-foreground">Set in the realm of <em>The Plains of Many Paths</em>, guided by the mentor <em>Elder Analyst</em>. Students choose <strong>quantity</strong>; the market sets the price.</p>
 		<ol>
 			<li>
 				<strong>Price-taking behavior</strong>
@@ -108,7 +109,8 @@ const siteData = getTranslatedData("siteData", currLocale);
 			</li>
 		</ol>
 
-		<h3>Realm 2 — Monopolistic Competition (The Bazaar of Colors)</h3>
+		<h3>Realm 2 — Monopolistic Competition</h3>
+		<p class="text-sm text-muted-foreground">Set in the realm of <em>The Bazaar of Colors</em>, guided by the mentor <em>Artisan of Differentiation</em>. Students set their <strong>price</strong>; quantity is derived from the firm's demand curve.</p>
 		<ol>
 			<li>
 				<strong>Differentiation and downward-sloping demand</strong>
@@ -129,20 +131,21 @@ const siteData = getTranslatedData("siteData", currLocale);
 				</ul>
 			</li>
 			<li>
-				<strong>Non-price competition</strong>
+				<strong>Avoid the P = MC trap</strong>
 				<ul>
-					<li>Identify how <strong>advertising/positioning/variety</strong> shifts a firm’s demand (and how that changes results).</li>
+					<li>Recognise that a price-setting firm maximises profit at <strong>MR = MC</strong>, not P = MC — pricing down to marginal cost gives up profit.</li>
 				</ul>
 			</li>
 			<li>
-				<strong>Interpret elasticity intuition</strong>
+				<strong>Read shifting demand</strong>
 				<ul>
-					<li>Use “more/less price-sensitive customers” to explain why demand response differs across choices.</li>
+					<li>Explain how the firm’s demand curve <strong>shifts round to round</strong> as rivals enter or exit, and how that moves the best price and profit.</li>
 				</ul>
 			</li>
 		</ol>
 
-		<h3>Realm 3 — Oligopoly (The Citadel of Houses)</h3>
+		<h3>Realm 3 — Oligopoly</h3>
+		<p class="text-sm text-muted-foreground">Set in the realm of <em>The Citadel of Houses</em>, guided by the mentor <em>Captain Cournot</em>. Students choose <strong>quantity</strong> in a Cournot duopoly; the rival's committed output is shown each round.</p>
 		<ol>
 			<li>
 				<strong>Strategic interdependence</strong>
@@ -151,21 +154,21 @@ const siteData = getTranslatedData("siteData", currLocale);
 				</ul>
 			</li>
 			<li>
-				<strong>Predict rival response</strong>
+				<strong>Best response to a rival</strong>
 				<ul>
-					<li>Make and defend a prediction about competitor behavior, then compare it to outcomes.</li>
+					<li>Given the rival’s <strong>committed output</strong> (shown each round), find your profit-maximising quantity where residual MR = MC.</li>
 				</ul>
 			</li>
 			<li>
-				<strong>Basic game theory intuition</strong>
+				<strong>Residual demand</strong>
 				<ul>
-					<li>Use payoff logic (not heavy math) to explain competition vs cooperation outcomes.</li>
+					<li>Explain how a rival’s output <strong>shrinks the demand you face</strong>, shifting your residual demand and MR curves inward.</li>
 				</ul>
 			</li>
 			<li>
-				<strong>Cournot vs. Bertrand intuition (as introduced)</strong>
+				<strong>Adjust as rivalry intensifies</strong>
 				<ul>
-					<li>Describe how outcomes differ when firms compete mainly on <strong>quantity</strong> vs <strong>price</strong>.</li>
+					<li>Describe why a more aggressive rival (larger committed output) pushes your best-response quantity <strong>down</strong>.</li>
 				</ul>
 			</li>
 			<li>
@@ -176,7 +179,8 @@ const siteData = getTranslatedData("siteData", currLocale);
 			</li>
 		</ol>
 
-		<h3>Realm 4 — Monopoly (The Obsidian Peak)</h3>
+		<h3>Realm 4 — Monopoly</h3>
+		<p class="text-sm text-muted-foreground">Set in the realm of <em>The Obsidian Peak</em>, guided by the mentor <em>Gatekeeper of Power</em>. Students choose <strong>quantity</strong> as the sole seller; price is read off the market demand curve.</p>
 		<ol>
 			<li>
 				<strong>Market power</strong>
@@ -197,15 +201,15 @@ const siteData = getTranslatedData("siteData", currLocale);
 				</ul>
 			</li>
 			<li>
-				<strong>Welfare and efficiency</strong>
+				<strong>Persistent economic profit</strong>
 				<ul>
-					<li>Explain deadweight loss in plain language (who loses, what’s reduced, why it matters).</li>
+					<li>Explain why at the monopoly optimum <strong>P &gt; MC</strong>, and why—unlike perfect competition—no entry erodes the profit, so it persists.</li>
 				</ul>
 			</li>
 			<li>
-				<strong>Policy/regulation themes</strong>
+				<strong>Read shifting demand</strong>
 				<ul>
-					<li>Interpret how regulation-like constraints would change outcomes and tradeoffs.</li>
+					<li>Explain how the demand curve’s <strong>height</strong> (willingness to pay) and <strong>slope</strong> (price sensitivity) move the optimal quantity and price each round.</li>
 				</ul>
 			</li>
 		</ol>
@@ -213,11 +217,12 @@ const siteData = getTranslatedData("siteData", currLocale);
 		<hr />
 
 		<h2>3) Optional Capstone — Council of Runes (Synthesis)</h2>
+		<p class="text-sm">An 8-round gauntlet that cycles back through all four market structures (perfect competition → monopolistic competition → oligopoly → monopoly), each phase led by its original mentor.</p>
 		<ol>
 			<li>
-				<strong>Identify the structure</strong>
+				<strong>Switch decision rules</strong>
 				<ul>
-					<li>Determine which market structure best fits the scenario and justify it using evidence.</li>
+					<li>Recognise each market structure as it reappears across the rounds and apply the right rule (P = MC, MR = MC on price, residual MR = MC, monopoly MR = MC).</li>
 				</ul>
 			</li>
 			<li>

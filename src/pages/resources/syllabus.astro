@@ -1,9 +1,9 @@
 ---
-import { getLocaleFromUrl } from "@/js/localeUtils";
-import { getTranslatedData, useTranslations } from "@/js/translationUtils";
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import Button from "@/components/button/Button.astro";
 import ShineText from "@/components/shine-text/ShineText.astro";
+import { getLocaleFromUrl } from "@/js/localeUtils";
+import { getTranslatedData } from "@/js/translationUtils";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
@@ -13,7 +13,7 @@ const siteData = getTranslatedData("siteData", currLocale);
 	<!-- Hero / Intro -->
 	<section class="site-container pt-24 pb-8 md:pt-28 md:pb-8 overflow-x-clip" data-mos="fade-up"
           data-mos-delay=".1"
-          data-mos-anchor="#ayllabus-title">
+          data-mos-anchor="#syllabus-title">
 		<div class="max-w-3xl">
 			<h1 class="h1 text-center md:text-left"><ShineText>Syllabus</ShineText> for EconRunes </h1>
 			<p class="description mt-4">
@@ -25,18 +25,18 @@ const siteData = getTranslatedData("siteData", currLocale);
 	<!-- Content -->
 	<section class="site-container markdown-content pb-20 md:pb-24" data-mos="fade-up"
           data-mos-delay=".2"
-          data-mos-anchor="#ayllabus-content">
+          data-mos-anchor="#syllabus-content">
 		<h2>What EconRunes Covers</h2>
 		<p>
 			EconRunes is a story-driven journey through market structures. Students make decisions, see outcomes instantly,
 			and connect choices to core models and graphs.
 		</p>
 		<ul>
-			<li><strong>Realm 1: Perfect Competition</strong> — costs, price-taking, MR = MC, SR profit/loss, LR entry/exit</li>
-			<li><strong>Realm 2: Monopolistic Competition</strong> — differentiation, firm demand, SR vs LR, advertising/positioning</li>
-			<li><strong>Realm 3: Oligopoly</strong> — strategic interdependence, basic game theory, rival response intuition</li>
-			<li><strong>Realm 4: Monopoly</strong> — market power, MR &lt; P, welfare, deadweight loss, regulation themes</li>
-			<li><strong>Optional Capstone: Council of Runes</strong> — synthesis across structures</li>
+			<li><strong>Realm 1: Perfect Competition</strong> — <em>choose quantity</em> as a price-taker: costs, MR = MC where MR = price, SR profit/loss, LR entry/exit toward zero economic profit</li>
+			<li><strong>Realm 2: Monopolistic Competition</strong> — <em>set your price</em> on a downward-sloping firm demand curve, MR = MC (not P = MC), and watch demand soften as rivals enter across rounds</li>
+			<li><strong>Realm 3: Oligopoly</strong> — <em>choose quantity</em> in a Cournot duopoly: find your best response to a rival's known output using residual demand</li>
+			<li><strong>Realm 4: Monopoly</strong> — <em>choose quantity</em> as the sole seller: market power, MR &lt; P, MR = MC, and persistent economic profit (P &gt; MC, no entry to erode it)</li>
+			<li><strong>Capstone: Council of Runes</strong> — an 8-round synthesis gauntlet that cycles back through all four market structures</li>
 		</ul>
 
 		<hr />
@@ -103,8 +103,8 @@ const siteData = getTranslatedData("siteData", currLocale);
 		<h4>Steps</h4>
 		<ol>
 			<li><strong>Teach:</strong> downward-sloping firm demand + product differentiation</li>
-			<li><strong>Play:</strong> Realm 2 segment (positioning/advertising choices if included)</li>
-			<li><strong>Debrief:</strong> what moved demand vs what changed costs</li>
+			<li><strong>Play:</strong> Realm 2 segment (set your price; quantity is read off the demand curve)</li>
+			<li><strong>Debrief:</strong> why MR = MC (not P = MC) sets the best price, and what entry does to demand over the rounds</li>
 			<li><strong>Quick grade:</strong> exit ticket</li>
 		</ol>
 
@@ -112,39 +112,39 @@ const siteData = getTranslatedData("siteData", currLocale);
 		<p><strong>Run when you teach:</strong> interdependence, pricing/quantity competition, basic game theory</p>
 		<h4>Steps</h4>
 		<ol>
-			<li><strong>Teach:</strong> why rivals matter + strategic response</li>
-			<li><strong>Play:</strong> Realm 3 segment (multi-firm competition)</li>
-			<li><strong>Debrief:</strong> “What do you think rivals did? What will you do next?”</li>
+			<li><strong>Teach:</strong> why rivals matter + best response to a rival's output</li>
+			<li><strong>Play:</strong> Realm 3 segment (Cournot duopoly — the rival's output is shown each round)</li>
+			<li><strong>Debrief:</strong> “Given the rival's known output, what's your best-response quantity — and how does residual demand change it?”</li>
 			<li><strong>Quick grade:</strong> mini-quiz or short reflection</li>
 		</ol>
 
-		<h3>Realm 4 — Monopoly (Market power + welfare)</h3>
-		<p><strong>Run when you teach:</strong> market power, MR &lt; P, welfare, deadweight loss</p>
+		<h3>Realm 4 — Monopoly (Market power + persistent profit)</h3>
+		<p><strong>Run when you teach:</strong> market power, MR &lt; P, MR = MC, why monopoly profit persists</p>
 		<h4>Steps</h4>
 		<ol>
-			<li><strong>Teach:</strong> monopoly profit rule + welfare impacts</li>
-			<li><strong>Play:</strong> Realm 4 segment</li>
-			<li><strong>Debrief:</strong> relate choices to surplus + DWL</li>
+			<li><strong>Teach:</strong> monopoly profit rule (MR = MC, MR &lt; P) and why monopoly profit persists</li>
+			<li><strong>Play:</strong> Realm 4 segment (choose quantity; price is read off the demand curve)</li>
+			<li><strong>Debrief:</strong> relate the MR = MC choice to persistent profit (P &gt; MC, no entry); note how demand's height and slope move the optimum each round</li>
 			<li><strong>Quick grade:</strong> screenshot + explanation</li>
 		</ol>
 
 		<hr />
 
-		<h1><ShineText>Part 4</ShineText> — Optional Capstone Event</h1>
+		<h2><ShineText>Part 4</ShineText> — Optional Capstone Event</h2>
 		<p><strong>Goal:</strong> create a memorable finish with teamwork and synthesis—without adding complexity.</p>
 
-		<h2>Capstone Steps (1–2 class sessions)</h2>
+		<h3>Capstone Steps (1–2 class sessions)</h3>
 		<ol>
 			<li><strong>Form teams</strong> (3–5 students)</li>
 			<li>
 				<strong>Team strategy plan:</strong>
 				<ul>
-					<li>What market structure are we in?</li>
-					<li>What’s our strategy and why?</li>
-					<li>What do we predict competitors/market conditions will do?</li>
+					<li>Council cycles through all four structures — which decision rule applies in each phase (P = MC, MR = MC for price, residual MR = MC, monopoly MR = MC)?</li>
+					<li>What’s our strategy for each phase and why?</li>
+					<li>What do we predict for market conditions, and what will the results confirm or deny?</li>
 				</ul>
 			</li>
-			<li><strong>Team run:</strong> play Realm 5 - Council of Runes</li>
+			<li><strong>Team run:</strong> play the Council of Runes (Realm 5) — 8 rounds spanning all four market structures</li>
 			<li>
 				<strong>Team deliverable (choose one):</strong>
 				<ul>

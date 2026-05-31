@@ -47,6 +47,25 @@ src/
 └── assets/         # Images and videos
 ```
 
+## Systems & Costs
+
+External services this site depends on.
+
+| System | What it does | Plan | Cost |
+| :----- | :----------- | :--- | :--- |
+| **[Netlify](https://netlify.com)** | Hosting, builds, and deploys (connected to the private repo). | Free (legacy) | $0 — well within free limits (custom domains, private repos, HTTPS, and 300 build min/mo are all included). |
+| **[Supabase](https://supabase.com)** | Postgres database for `newsletter_subscribers`; shared project intended for cross-subdomain SSO with EconRunes and future games. | Pro | ~$25/mo base + compute. Two Micro Compute instances (`goldsimulations`, `codecode.io`) ≈ $8.82/mo each, offset by $10 compute credits. Projected ≈ **$35/mo** total. |
+| **[Resend](https://resend.com)** | Transactional email (subscription confirmations) and the newsletter audience/segments. | Pro | $20/mo — shared with another site; Pro adds up to 10 verified sending domains. |
+| **[Porkbun](https://porkbun.com)** | Domain registration for `goldsimulations.com`. | — | ~$11.08/yr (≈ $0.92/mo) at current renewal pricing. |
+| **[Claude](https://www.anthropic.com/)** | AI development assistant (Claude Code). | Pro | $20/mo. |
+
+### Approximate Total
+
+| Period | Cost |
+| :----- | :--- |
+| Monthly | ≈ **$76/mo** (Netlify $0 + Supabase ~$35 + Resend $20 + Claude $20 + Porkbun ~$0.92) |
+| Yearly | ≈ **$912/yr** |
+
 ## Content Management
 
 Content is managed through [Keystatic CMS](https://keystatic.com) or by editing MDX/Markdown files directly in `src/data/`. Collections include blog posts, authors, services, projects, careers, and resume data.

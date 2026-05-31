@@ -5,13 +5,27 @@ import sitemap from "@astrojs/sitemap";
 import keystatic from "@keystatic/astro";
 import compress from "@playform/compress";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import AutoImport from "astro-auto-import";
 import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.goldsimulations.com",
+  env: {
+    schema: {
+      SITE_URL: envField.string({ context: "server", access: "secret" }),
+      SUPABASE_URL: envField.string({ context: "server", access: "secret" }),
+      SUPABASE_SECRET_KEY: envField.string({ context: "server", access: "secret" }),
+      RESEND_API_KEY: envField.string({ context: "server", access: "secret" }),
+      RESEND_AUDIENCE_ID: envField.string({ context: "server", access: "secret" }),
+      RESEND_SEGMENT_ID_GOLDSIMULATIONS_NEWS: envField.string({
+        context: "server",
+        access: "secret",
+      }),
+      SEND_EMAIL_FROM: envField.string({ context: "server", access: "secret" }),
+    },
+  },
   adapter: netlify({
     imageCDN: false,
   }),

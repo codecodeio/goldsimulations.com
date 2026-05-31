@@ -50,18 +50,28 @@ import { Label } from "@/components/starwind/label";
   <Alert variant="success" id="subscribe-alert-pending" hidden>
     <AlertTitle>
       <Icon name="tabler/circle-check" class="mr-2 inline size-5" aria-hidden="true" />
-      You're on the list
+      Check your inbox
     </AlertTitle>
     <AlertDescription>
-      Thanks for subscribing. We'll be in touch with the latest updates about GoldSimulations and our games.
+      We've sent a confirmation link to your email. Click the link to finish subscribing.
     </AlertDescription>
   </Alert>
+
+  <div id="subscribe-resend-container" hidden class="text-center text-sm text-foreground/70">
+    <p class="mb-1">Didn't receive the email?</p>
+    <button
+      type="button"
+      id="subscribe-resend-button"
+      class="text-primary hover:text-primary-accent underline"
+    >
+      Resend confirmation
+    </button>
+  </div>
 </form>
 
 <script>
-  // Placeholder submit handler. Phase 2 will replace this body with the real
-  // Supabase magic-link flow (mirrors codecode.io's actions.subscribe call).
-  // Markup stays identical so the swap is script-only.
+  import { actions } from "astro:actions";
+
   const form = document.getElementById("subscribe-form") as HTMLFormElement | null;
   const emailInput = document.getElementById("subscribe-email") as HTMLInputElement | null;
   const button = document.getElementById("subscribe-button") as HTMLButtonElement | null;
@@ -69,6 +79,11 @@ import { Label } from "@/components/starwind/label";
   const buttonSpinner = document.getElementById("subscribe-button-spinner");
   const alertError = document.getElementById("subscribe-alert-error");
   const alertPending = document.getElementById("subscribe-alert-pending");
+  const errorMessage = document.getElementById("subscribe-error-message");
+  const resendContainer = document.getElementById("subscribe-resend-container");
+  const resendButton = document.getElementById("subscribe-resend-button") as HTMLButtonElement | null;
+
+  let pendingEmail = "";
 
   function setLoading(loading: boolean) {
     if (!button) return;
@@ -82,20 +97,59 @@ import { Label } from "@/components/starwind/label";
     }
   }
 
+  function showError(message: string) {
+    if (errorMessage) errorMessage.textContent = message;
+    alertError?.removeAttribute("hidden");
+    alertPending?.setAttribute("hidden", "true");
+    resendContainer?.setAttribute("hidden", "true");
+  }
+
   function showPending() {
     alertPending?.removeAttribute("hidden");
     alertError?.setAttribute("hidden", "true");
+    resendContainer?.removeAttribute("hidden");
     if (emailInput) emailInput.readOnly = true;
     button?.setAttribute("hidden", "true");
   }
 
-  form?.addEventListener("submit", (event) => {
+  form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     setLoading(true);
-    // Simulate a brief request so the UI flow feels real.
-    window.setTimeout(() => {
-      setLoading(false);
+
+    const formData = new FormData(form);
+    pendingEmail = (formData.get("email") as string) ?? "";
+
+    const { error } = await actions.subscribe(formData);
+
+    setLoading(false);
+
+    if (error) {
+      showError(error.message || "Please try again later.");
+    } else {
       showPending();
-    }, 600);
+    }
+  });
+
+  resendButton?.addEventListener("click", async () => {
+    if (!pendingEmail || !resendButton) return;
+
+    resendButton.disabled = true;
+    const originalLabel = resendButton.textContent;
+    resendButton.textContent = "Sending...";
+
+    const formData = new FormData();
+    formData.append("email", pendingEmail);
+
+    const { error } = await actions.resendConfirmation(formData);
+
+    if (error) {
+      showError(error.message || "Failed to resend. Please try again.");
+      resendButton.disabled = false;
+      resendButton.textContent = originalLabel ?? "Resend confirmation";
+    } else {
+      resendButton.textContent = "Sent!";
+      resendButton.classList.remove("underline");
+      resendButton.classList.add("text-foreground/50");
+    }
   });
 </script>

@@ -4,6 +4,7 @@ import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getTranslatedData, useTranslations } from "@/js/translationUtils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import FeatureSideImageProps from "@/components/feature/FeatureSideImageProps.astro";
+import RoadmapTimeline from "@/components/feature/RoadmapTimeline.astro";
 import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
 import { type FeatureItem } from "@/config/types/configDataTypes";
 
@@ -79,10 +80,10 @@ const featureData: FeatureItem[] = [
     image: realm5,
     title: "The Council of Runes",
     description:
-      "The capstone realm cycles students through all four market structures, with each phase guided by the mentor of its market. Players present their mastery of every realm to the Council, and those who succeed earn the Grand Rune of Equilibrium and bring balance back to Econterra.",
+      "The capstone realm cycles students through all four market structures, with each phase guided by the mentor of its market. Players present their mastery of every realm to the Council, and those who succeed earn the Rune of Mastery and bring balance back to Econterra.",
     details: [
       { label: "Mentors", value: "All four from prior realms" },
-      { label: "Rune", value: "Grand Rune of Equilibrium" },
+      { label: "Rune", value: "Rune of Mastery" },
     ],
   },
 ];
@@ -111,5 +112,6 @@ const featureData: FeatureItem[] = [
     </div>
   </section>
   <FeatureSideImageProps featureData={featureData} />
+  <RoadmapTimeline />
 </BaseLayout>
 

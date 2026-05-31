@@ -1,0 +1,112 @@
+---
+/**
+ * Roadmap section — "Now / Next / Later" vertical timeline.
+ * Candidate A for the features-page roadmap (compare with RoadmapCardGrid).
+ */
+import AccentBlur from "@/components/accent-blur/AccentBlur.astro";
+import Badge from "@/components/badge/Badge.astro";
+import Button from "@/components/button/Button.astro";
+
+interface Phase {
+  phase: string;
+  label: string;
+  status: "now" | "next" | "later";
+  items: string[];
+}
+
+const phases: Phase[] = [
+  {
+    phase: "Now",
+    label: "Available at beta",
+    status: "now",
+    items: ["All five realms (Level 1)", "Solo play", "Progress tracking"],
+  },
+  {
+    phase: "Next",
+    label: "In development",
+    status: "next",
+    items: [
+      "Level 2 — new decisions per realm",
+      "Classroom management dashboard",
+      "Student progress reports",
+      "Graded class assignments & scenarios",
+    ],
+  },
+  {
+    phase: "Later",
+    label: "On the roadmap",
+    status: "later",
+    items: [
+      "Levels 3–4 — deeper complexity",
+      "Leaderboards & achievements",
+      "Custom scenario builder",
+      "Data export for research",
+      "Multiplayer with friends",
+      "LMS integration (Canvas, Blackboard)",
+    ],
+  },
+];
+---
+
+<section id="roadmap" class="relative overflow-clip pb-20 md:pb-24">
+  <div class="site-container relative z-10">
+    <div class="mx-auto mb-12 max-w-2xl text-center" data-mos="fade-up">
+      <Badge>Roadmap</Badge>
+      <h2 class="h2 mt-4 mb-4">What's <span class="text-primary-accent">next</span></h2>
+      <p class="description text-pretty">
+        Beta opens with all five realms of Level 1. Here's what's live today and what's
+        coming as EconRunes grows.
+      </p>
+    </div>
+
+    <ul class="mx-auto max-w-2xl" data-mos="fade-up" data-mos-delay=".1">
+      {
+        phases.map((phase, i) => (
+          <li class="relative flex gap-5 pb-10 last:pb-0">
+            {/* Rail: node + connecting line */}
+            <div class="flex flex-col items-center">
+              <span
+                class:list={[
+                  "flex size-4 shrink-0 items-center justify-center rounded-full border-2",
+                  phase.status === "now"
+                    ? "border-primary bg-primary"
+                    : "border-border bg-muted",
+                ]}
+              />
+              {i < phases.length - 1 && <span class="bg-border mt-1 w-px grow" />}
+            </div>
+
+            {/* Content */}
+            <div class="-mt-1 flex-1">
+              <div class="mb-3 flex flex-wrap items-center gap-3">
+                <h3 class="text-lg font-medium tracking-tight">{phase.phase}</h3>
+                <span
+                  class:list={[
+                    "rounded-full px-2.5 py-0.5 text-xs font-medium",
+                    phase.status === "now"
+                      ? "bg-primary/10 text-primary-accent"
+                      : "bg-muted text-muted-foreground",
+                  ]}
+                >
+                  {phase.label}
+                </span>
+              </div>
+              <ul class="flex flex-wrap gap-2">
+                {phase.items.map((item) => (
+                  <li class="bg-card text-muted-foreground rounded-lg border px-3 py-1.5 text-sm">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-10 flex justify-center" data-mos="fade-up" data-mos-delay=".2">
+      <Button variant="primary" href="/subscribe/">Join the Waitlist</Button>
+    </div>
+  </div>
+  <AccentBlur color="blue" />
+</section>
