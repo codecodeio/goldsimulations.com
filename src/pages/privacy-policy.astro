@@ -1,0 +1,152 @@
+---
+import ShineText from "@/components/shine-text/ShineText.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const lastUpdated = "August 25, 2026";
+const contactEmail = "contact@goldsimulations.com";
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="What Gold Simulations collects, why, who processes it, and how to have it deleted."
+  navStyle="default"
+>
+  <section class="site-container pt-24 pb-8 md:pt-28">
+    <div class="max-w-3xl">
+      <h1 class="h1"><ShineText>Privacy</ShineText> Policy</h1>
+      <p class="description mt-4">Last updated {lastUpdated}.</p>
+    </div>
+  </section>
+
+  <section class="site-container markdown-content max-w-3xl pb-20 md:pb-24">
+    <p>
+      Gold Simulations builds economics simulation games for classrooms. This policy covers
+      <strong>goldsimulations.com</strong> and the newsletter you can subscribe to from it. It is written
+      to be read, not to protect us — if anything here is unclear, email
+      <a href={`mailto:${contactEmail}`}>{contactEmail}</a> and we will explain it.
+    </p>
+
+    <h2>The short version</h2>
+    <ul>
+      <li>The only thing this website collects from you is <strong>your email address</strong>, and only if you type it into the subscribe form.</li>
+      <li>We <strong>have never sold personal information and never will</strong>, to anyone, for any price.</li>
+      <li>There are <strong>no analytics, no advertising trackers, and no third-party scripts</strong> on this site.</li>
+      <li>You can leave at any time using the unsubscribe link in any email, or by emailing us.</li>
+    </ul>
+
+    <h2>What we collect</h2>
+
+    <h3>Your email address</h3>
+    <p>
+      When you subscribe, we store the address you entered, the date you subscribed, and whether you have
+      confirmed it. We use double opt-in: after you submit the form we email you a confirmation link, and
+      you are not added to the list until you click it. This protects you from being signed up by someone
+      else.
+    </p>
+    <p>
+      We do not ask for your name, your institution, or anything else. If you email us directly, we will
+      have whatever you chose to put in that email.
+    </p>
+
+    <h3>Standard server logs</h3>
+    <p>
+      Our hosting provider records ordinary web server logs — IP address, browser user agent, the page
+      requested, and a timestamp — as an automatic part of serving the site. These are used for security
+      and troubleshooting. We do not combine them with your email address or use them to build a profile.
+    </p>
+
+    <h3>What we do not collect</h3>
+    <p>
+      No analytics platform, advertising pixel, session recorder, or social media tracker runs on this
+      site. Our fonts are served from our own domain rather than a font provider, so simply reading these
+      pages does not report your visit to any third party.
+    </p>
+
+    <h2>Cookies</h2>
+    <p>
+      This site sets <strong>no tracking cookies</strong>. Because there is nothing to consent to, you will
+      not see a cookie banner. If we ever add analytics, we will add a genuine consent control and update
+      this policy before turning it on — not after.
+    </p>
+
+    <h2>Who processes your data</h2>
+    <p>
+      We keep your information in three services, each of which acts as a processor on our behalf under
+      contract. We do not hand your data to anyone else.
+    </p>
+    <ul>
+      <li><strong>Supabase</strong> — the database holding the subscriber list.</li>
+      <li><strong>Resend</strong> — sends the confirmation email and the newsletter, and holds the mailing list used to send it.</li>
+      <li><strong>Netlify</strong> — hosts the website and produces the server logs described above.</li>
+    </ul>
+    <p>
+      These providers store data on servers in the United States. If you are subscribing from outside the
+      US, your email address will be transferred there.
+    </p>
+
+    <h2>Email tracking</h2>
+    <p>
+      Open tracking and click tracking are <strong>switched off</strong> on our sending domain. We do not
+      embed tracking pixels in our emails, and we do not know whether you opened one or which links you
+      followed. We can see delivery-level information from our email provider — whether a message was
+      accepted, bounced, or reported as spam — which is necessary to keep the list healthy.
+    </p>
+
+    <h2>How long we keep it</h2>
+    <p>
+      We keep your email address until you unsubscribe or ask us to delete it. When you unsubscribe we
+      retain a record that the address opted out, so that we do not accidentally email you again. Server
+      logs are kept for a short period by our host and then rotated out.
+    </p>
+
+    <h2>Your choices</h2>
+    <ul>
+      <li><strong>Unsubscribe</strong> — every email includes an unsubscribe link, which takes effect immediately.</li>
+      <li><strong>Ask what we hold</strong> — email us and we will tell you exactly what is stored against your address.</li>
+      <li><strong>Correction or deletion</strong> — email us and we will correct or erase your record.</li>
+    </ul>
+    <p>
+      Depending on where you live you may have additional rights under laws such as the GDPR or the CCPA,
+      including the right to a copy of your data, to object to processing, or to complain to a supervisory
+      authority. We honour these requests regardless of where you live. Our lawful basis for sending the
+      newsletter is your consent, which you gave by confirming your subscription and can withdraw at any
+      time.
+    </p>
+    <p>
+      Send any request to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. We aim to respond within
+      a few days and will not charge you for it.
+    </p>
+
+    <h2>Children</h2>
+    <p>
+      Our products are sold to educators and institutions, and this newsletter is intended for teachers,
+      instructors, and administrators. It is not directed at children, and we do not knowingly collect
+      information from anyone under 16 through this website. If you believe a child has subscribed, email
+      us and we will remove the address.
+    </p>
+    <p>
+      EconRunes is not yet available. When student accounts launch, the handling of student data will be
+      governed by a separate agreement with each school or institution, and this policy will be updated to
+      describe it.
+    </p>
+
+    <h2>Security</h2>
+    <p>
+      The subscriber list is stored with row-level security enabled and is reachable only by our server
+      using a privileged key that is never exposed to your browser. The site is served over HTTPS
+      throughout.
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      If we change how we handle your information we will update this page and change the date at the top.
+      For a material change affecting existing subscribers — a new processor, a new purpose — we will say
+      so in the newsletter rather than quietly editing this page.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Gold Simulations — <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+    </p>
+  </section>
+</BaseLayout>

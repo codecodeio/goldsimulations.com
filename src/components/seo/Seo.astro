@@ -78,6 +78,14 @@ function trimEndSlash(str: string) {
 // put together the image URL
 const imageUrl =
   trimEndSlash(Astro.site?.toString() || "") + (optimizedImage?.src || siteData.defaultImage.src);
+
+// Page images are optimized to webp by astro:assets, but the site-wide default
+// in siteData is served straight from public/, so derive the type from the file.
+const imageMimeType = imageUrl.endsWith(".png")
+  ? "image/png"
+  : /\.jpe?g$/.test(imageUrl)
+    ? "image/jpeg"
+    : "image/webp";
 ---
 
 <SEO
@@ -96,9 +104,9 @@ const imageUrl =
       siteName: siteData.title,
     },
     image: {
-      type: "image/webp",
+      type: imageMimeType,
       width: optimizedImage?.attributes.width || "1200",
-      height: optimizedImage?.attributes.height || "800",
+      height: optimizedImage?.attributes.height || "630",
       alt: title,
     },
   }}

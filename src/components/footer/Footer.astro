@@ -90,9 +90,14 @@ const footerColumns = [
         }
       </div>
     </div>
-    <p class="text-muted-foreground py-5 text-center text-sm leading-normal font-medium">
-      Copyright {today.getFullYear()}
-      {siteData.name}. All Rights Reserved
-    </p>
+    <div
+      class="text-muted-foreground flex flex-wrap items-center justify-center gap-x-4 gap-y-2 py-5 text-center text-sm leading-normal font-medium"
+    >
+      <p>
+        Copyright {today.getFullYear()}
+        {siteData.name}. All Rights Reserved
+      </p>
+      <a href="/privacy-policy/" class="hover:text-foreground underline transition">Privacy Policy</a>
+    </div>
   </div>
 </section>

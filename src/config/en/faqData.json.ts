@@ -24,7 +24,7 @@ export const faqData: FaqItem[] = [
   },
   {
     question: "How does pricing work—do students pay individually or can my department license it?",
-    answer: `We offer both individual student subscriptions and institutional licensing options. Individual students pay a one time fee, while institutions can pay for licensing plans that suit their needs. Review our <a href="/pricing">pricing page</a> for more details.`,
+    answer: `We'll offer both individual student purchases and institutional licensing. Individual students pay a one-time fee, while institutions can license by class section or department-wide. Final pricing is being set ahead of the EconRunes launch — our <a href="/pricing/">plans page</a> shows what each tier includes, and you can <a href="/subscribe/">join the list</a> to get pricing as soon as it's announced.`,
   },
   {
     question: "Can I continue to use Beat The Market?",
@@ -40,7 +40,7 @@ export const faqData: FaqItem[] = [
   },
   {
     question: "How can I get early access for my classroom?",
-    answer: `Instructors who want to pilot EconRunes can <a href="/subscribe/">join the waitlist</a>. We'll reach out before launch with details on classroom pilots and institutional licensing. <a href="/pricing">Pricing</a> for individuals and institutions is published in advance.`,
+    answer: `Instructors who want to pilot EconRunes can <a href="/subscribe/">join the waitlist</a>. We'll reach out before launch with details on classroom pilots, institutional licensing, and pricing.`,
   },
 ];
 

@@ -12,14 +12,14 @@ const siteData: SiteDataProps = {
   // Your information for blog post purposes
   author: {
     name: "Gold Simulations",
-    email: "news@goldsimulations.com",
+    email: "contact@goldsimulations.com",
     twitter: "GoldSimulations",
   },
 
   // default image for meta tags if the page doesn't have an image already
   defaultImage: {
-    src: "/images/cosmic-themes-logo.jpg",
-    alt: "Cosmic Themes logo",
+    src: "/images/og-default.png",
+    alt: "Gold Simulations — economics simulation games for the classroom",
   },
 };
 
