@@ -1,7 +1,11 @@
-import { RESEND_API_KEY, SEND_EMAIL_FROM } from "astro:env/server";
+import { RESEND_API_KEY, SEND_TRANSACTIONAL_FROM } from "astro:env/server";
 import { Resend } from "resend";
 
 const resend = new Resend(RESEND_API_KEY);
+
+// Replies go to the monitored Workspace group, not the sending subdomain —
+// nobody reads mail addressed to hello@mail.goldsimulations.com.
+const REPLY_TO = "contact@goldsimulations.com";
 
 interface SendConfirmationEmailArgs {
   email: string;
@@ -57,7 +61,8 @@ ${confirmationUrl}
 If you didn't sign up, you can safely ignore this email.`;
 
   return resend.emails.send({
-    from: SEND_EMAIL_FROM,
+    from: SEND_TRANSACTIONAL_FROM,
+    replyTo: REPLY_TO,
     to: email,
     subject,
     html,

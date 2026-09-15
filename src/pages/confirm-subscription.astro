@@ -1,11 +1,7 @@
 ---
 export const prerender = false;
 
-import {
-  RESEND_API_KEY,
-  RESEND_AUDIENCE_ID,
-  RESEND_SEGMENT_ID_GOLDSIMULATIONS_NEWS,
-} from "astro:env/server";
+import { RESEND_API_KEY, RESEND_SEGMENT_ID_GOLDSIMULATIONS_NEWS } from "astro:env/server";
 import { Resend } from "resend";
 
 import Button from "@/components/button/Button.astro";
@@ -16,8 +12,54 @@ import { supabase } from "@/lib/supabase";
 const token = Astro.url.searchParams.get("token");
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-type Status = "success" | "invalid";
+type Status = "success" | "error" | "invalid";
 let status: Status = "invalid";
+
+// Add the address to the newsletter segment. Idempotent: a contact that already
+// exists is attached to the segment directly, since `create` won't apply the
+// segment in that case. Returns false only when the address definitely did not
+// end up in the segment.
+async function addToNewsletterSegment(email: string): Promise<boolean> {
+  const resend = new Resend(RESEND_API_KEY);
+  const segmentId = RESEND_SEGMENT_ID_GOLDSIMULATIONS_NEWS;
+
+  const { error: createError } = await resend.contacts.create({
+    email,
+    unsubscribed: false,
+    segments: [{ id: segmentId }],
+  });
+
+  if (!createError) return true;
+
+  // Almost always this means the contact already exists. Resend has no distinct
+  // error code for a duplicate — the closest is the generic `validation_error` —
+  // so matching on the message would break the moment they reword it. Instead,
+  // reconcile the contact into the state we need and read the result back.
+  //
+  // This matters beyond duplicates: `create` ignores both `unsubscribed` and
+  // `segments` for an address it already knows, so someone who unsubscribed and
+  // later re-subscribed would silently stay suppressed and never be delivered to.
+  await resend.contacts.update({ email, unsubscribed: false });
+  await resend.contacts.segments.add({ email, segmentId });
+
+  const { data: contact } = await resend.contacts.get({ email });
+  const { data: segments } = await resend.contacts.segments.list({ email });
+
+  const deliverable = contact?.unsubscribed === false;
+  const inSegment = (segments?.data ?? []).some((s) => s.id === segmentId);
+
+  if (!deliverable || !inSegment) {
+    console.error("resend contact reconcile failed:", {
+      email,
+      createError,
+      unsubscribed: contact?.unsubscribed,
+      inSegment,
+    });
+    return false;
+  }
+
+  return true;
+}
 
 if (token && UUID_RE.test(token)) {
   const { data: subscriber, error: lookupError } = await supabase
@@ -28,47 +70,34 @@ if (token && UUID_RE.test(token)) {
 
   if (lookupError) {
     console.error("supabase confirm lookup error:", lookupError);
-  }
-
-  if (subscriber && !subscriber.confirmed_at) {
-    const { error: updateError } = await supabase
-      .from("newsletter_subscribers")
-      .update({
-        confirmed_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-      })
-      .eq("confirmation_token", token);
-
-    if (updateError) {
-      console.error("supabase confirm update error:", updateError);
-    } else {
-      const resend = new Resend(RESEND_API_KEY);
-
-      const { error: contactError } = await resend.contacts.create({
-        email: subscriber.email,
-        audienceId: RESEND_AUDIENCE_ID,
-        unsubscribed: false,
-      });
-
-      // "already exists" is fine — idempotent add.
-      if (contactError && !/already exists/i.test(contactError.message ?? "")) {
-        console.error("resend.contacts.create error:", contactError);
-      }
-
-      const { error: segmentError } = await resend.contacts.segments.add({
-        email: subscriber.email,
-        segmentId: RESEND_SEGMENT_ID_GOLDSIMULATIONS_NEWS,
-      });
-
-      if (segmentError && !/already/i.test(segmentError.message ?? "")) {
-        console.error("resend.contacts.segments.add error:", segmentError);
-      }
-
-      status = "success";
-    }
+    status = "error";
   } else if (subscriber?.confirmed_at) {
-    // Already confirmed: treat as success so a repeat click doesn't scare the user.
+    // Already confirmed: treat a repeat click as success, not an error.
     status = "success";
+  } else if (subscriber) {
+    // Write to Resend *before* marking the row confirmed. If this fails the row
+    // stays pending and the same link can be clicked again to retry, rather than
+    // stranding someone who reads "you're subscribed" but is on no mailing list.
+    const added = await addToNewsletterSegment(subscriber.email);
+
+    if (!added) {
+      status = "error";
+    } else {
+      const { error: updateError } = await supabase
+        .from("newsletter_subscribers")
+        .update({
+          confirmed_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        })
+        .eq("confirmation_token", token);
+
+      if (updateError) {
+        console.error("supabase confirm update error:", updateError);
+        status = "error";
+      } else {
+        status = "success";
+      }
+    }
   }
 }
 ---
@@ -92,11 +121,24 @@ if (token && UUID_RE.test(token)) {
       }
 
       {
+        status === "error" && (
+          <Alert variant="error">
+            <AlertTitle>We couldn't finish subscribing you</AlertTitle>
+            <AlertDescription>
+              Something went wrong on our end. Your confirmation link is still valid — open it
+              again in a few minutes to retry.
+            </AlertDescription>
+          </Alert>
+        )
+      }
+
+      {
         status === "invalid" && (
           <Alert variant="warning">
             <AlertTitle>This link isn't valid</AlertTitle>
             <AlertDescription>
-              It may have expired or already been used. Try subscribing again to get a fresh confirmation email.
+              It may have expired or already been used. Try subscribing again to get a fresh
+              confirmation email.
             </AlertDescription>
           </Alert>
         )

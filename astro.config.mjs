@@ -18,12 +18,11 @@ export default defineConfig({
       SUPABASE_URL: envField.string({ context: "server", access: "secret" }),
       SUPABASE_SECRET_KEY: envField.string({ context: "server", access: "secret" }),
       RESEND_API_KEY: envField.string({ context: "server", access: "secret" }),
-      RESEND_AUDIENCE_ID: envField.string({ context: "server", access: "secret" }),
       RESEND_SEGMENT_ID_GOLDSIMULATIONS_NEWS: envField.string({
         context: "server",
         access: "secret",
       }),
-      SEND_EMAIL_FROM: envField.string({ context: "server", access: "secret" }),
+      SEND_TRANSACTIONAL_FROM: envField.string({ context: "server", access: "secret" }),
     },
   },
   adapter: netlify({
