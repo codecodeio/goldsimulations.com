@@ -1,4 +1,4 @@
-/* MOS default visibility helpers – prevents initial flash of un-animated elements */
+/* MOS default visibility helpers - prevents initial flash of un-animated elements */
 
 /* parent class makes it opt-in */
 /* no pointer events until animation starts */

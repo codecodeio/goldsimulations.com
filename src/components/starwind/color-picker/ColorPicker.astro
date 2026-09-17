@@ -523,7 +523,7 @@ const containerProps = Object.fromEntries(
       // Calculate the percentage (0 to 1)
       const opacityPercentage = normalizeOpacity(x / rect.width);
 
-      // Store as 0–100 for easy state reading
+      // Store as 0-100 for easy state reading
       currentOpacity = Math.round(opacityPercentage * 100);
       const rgb = currentRgb;
       opacityHandle.style.backgroundColor = `rgba(${rgb}, ${opacityPercentage})`;

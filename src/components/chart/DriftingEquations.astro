@@ -1,6 +1,6 @@
 ---
 /**
- * Drifting Equations — animated SVG showing microeconomic notation
+ * Drifting Equations - animated SVG showing microeconomic notation
  * floating untethered, conveying "abstract theory disconnected from
  * practice." Symbols wander on independent ambient paths and never
  * settle into a connected diagram. Used in the /features Challenge
@@ -22,7 +22,7 @@ const symbols: Symbol[] = [
   { text: "MR", x: 540, y: 95, size: 30, fill: "var(--color-brand-green)", fillOpacity: 0.55, driftClass: "drift-b" },
   { text: "ATC", x: 80, y: 285, size: 38, fill: "var(--color-brand-blue)", fillOpacity: 0.6, driftClass: "drift-c" },
   { text: "Q*", x: 370, y: 250, size: 26, fill: "var(--color-foreground)", fillOpacity: 0.65, driftClass: "drift-d" },
-  { text: "π = TR − TC", x: 120, y: 415, size: 18, fill: "var(--color-muted-foreground)", fillOpacity: 0.7, driftClass: "drift-e" },
+  { text: "π = TR - TC", x: 120, y: 415, size: 18, fill: "var(--color-muted-foreground)", fillOpacity: 0.7, driftClass: "drift-e" },
   { text: "∂π/∂Q", x: 590, y: 220, size: 20, fill: "var(--color-foreground)", fillOpacity: 0.55, driftClass: "drift-f" },
   { text: "ΔQ", x: 470, y: 380, size: 28, fill: "var(--color-foreground)", fillOpacity: 0.6, driftClass: "drift-g" },
   { text: "MC(Q)", x: 290, y: 425, size: 22, fill: "var(--color-brand-orange)", fillOpacity: 0.6, driftClass: "drift-h" },
@@ -36,7 +36,7 @@ const symbols: Symbol[] = [
     viewBox="0 0 700 500"
     preserveAspectRatio="xMidYMid meet"
     role="img"
-    aria-label="Microeconomic equations — P = MC, MR, ATC, dTR/dQ, and others — floating without forming a connected diagram."
+    aria-label="Microeconomic equations - P = MC, MR, ATC, dTR/dQ, and others - floating without forming a connected diagram."
     class="block h-auto w-full"
   >
     <defs>
@@ -73,7 +73,7 @@ const symbols: Symbol[] = [
     aspect-ratio: 7 / 5;
   }
 
-  /* Per-symbol ambient drift — each path is a distinct meander so symbols
+  /* Per-symbol ambient drift - each path is a distinct meander so symbols
      never sync up, reinforcing the "untethered" feeling. */
   .drift-symbol {
     transform-box: fill-box;

@@ -32,7 +32,7 @@ async function addToNewsletterSegment(email: string): Promise<boolean> {
   if (!createError) return true;
 
   // Almost always this means the contact already exists. Resend has no distinct
-  // error code for a duplicate — the closest is the generic `validation_error` —
+  // error code for a duplicate - the closest is the generic `validation_error` -
   // so matching on the message would break the moment they reword it. Instead,
   // reconcile the contact into the state we need and read the result back.
   //
@@ -125,7 +125,7 @@ if (token && UUID_RE.test(token)) {
           <Alert variant="error">
             <AlertTitle>We couldn't finish subscribing you</AlertTitle>
             <AlertDescription>
-              Something went wrong on our end. Your confirmation link is still valid — open it
+              Something went wrong on our end. Your confirmation link is still valid - open it
               again in a few minutes to retry.
             </AlertDescription>
           </Alert>

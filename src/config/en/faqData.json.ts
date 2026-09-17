@@ -12,7 +12,7 @@ export const faqData: FaqItem[] = [
   },
   {
     question: 'What is EconRunes?',
-    answer: `EconRunes is an economics game that takes students on a journey through five realms, where they encounter all four major market structures—Perfect Competition, Monopolistic Competition, Oligopoly, and Monopoly. On their journey through these realms, players learn key concepts tied to each market structure (such as cost curves, pricing, market power, strategic behavior, and many more). It provides an immersive and interactive way for students to learn and apply microeconomic principles.`,
+    answer: `EconRunes is an economics game that takes students on a journey through five realms, where they encounter all four major market structures-Perfect Competition, Monopolistic Competition, Oligopoly, and Monopoly. On their journey through these realms, players learn key concepts tied to each market structure (such as cost curves, pricing, market power, strategic behavior, and many more). It provides an immersive and interactive way for students to learn and apply microeconomic principles.`,
   },
   {
     question: "How do I sign up as an instructor and get started?",
@@ -23,8 +23,8 @@ export const faqData: FaqItem[] = [
     answer: `Our games are suitable for college Microeconomics, Managerial Economics, and high school Economics. They have also been used in various business, MBA, and finance courses.`,
   },
   {
-    question: "How does pricing work—do students pay individually or can my department license it?",
-    answer: `We'll offer both individual student purchases and institutional licensing. Individual students pay a one-time fee, while institutions can license by class section or department-wide. Final pricing is being set ahead of the EconRunes launch — our <a href="/pricing/">plans page</a> shows what each tier includes, and you can <a href="/subscribe/">join the list</a> to get pricing as soon as it's announced.`,
+    question: "How does pricing work-do students pay individually or can my department license it?",
+    answer: `We'll offer both individual student purchases and institutional licensing. Individual students pay a one-time fee, while institutions can license by class section or department-wide. Final pricing is being set ahead of the EconRunes launch - our <a href="/pricing/">plans page</a> shows what each tier includes, and you can <a href="/subscribe/">join the list</a> to get pricing as soon as it's announced.`,
   },
   {
     question: "Can I continue to use Beat The Market?",
@@ -32,11 +32,11 @@ export const faqData: FaqItem[] = [
   },
   {
     question: "When will EconRunes launch?",
-    answer: `We're preparing the beta launch of EconRunes. The launch will include all five realms — the four market structures (Perfect Competition, Monopolistic Competition, Oligopoly, and Monopoly) and the Council of Runes capstone. <a href="/subscribe/">Join the waitlist</a> for launch news.`,
+    answer: `We're preparing the beta launch of EconRunes. The launch will include all five realms - the four market structures (Perfect Competition, Monopolistic Competition, Oligopoly, and Monopoly) and the Council of Runes capstone. <a href="/subscribe/">Join the waitlist</a> for launch news.`,
   },
   {
     question: "What does a student actually do in a realm?",
-    answer: `Each realm asks students to make a market decision — choosing a price or a production quantity — and shows the result with cost and demand curves that update in real time. Players reflect, adjust, and earn a Rune as they master each market structure.`,
+    answer: `Each realm asks students to make a market decision - choosing a price or a production quantity - and shows the result with cost and demand curves that update in real time. Players reflect, adjust, and earn a Rune as they master each market structure.`,
   },
   {
     question: "How can I get early access for my classroom?",
