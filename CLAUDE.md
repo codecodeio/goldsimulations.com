@@ -9,12 +9,13 @@ pnpm dev          # Start dev server at localhost:4321
 pnpm build        # Production build to ./dist/
 pnpm preview      # Preview production build locally
 pnpm lint         # Run ESLint
+pnpm astro check  # TypeScript + Astro type check
 pnpm format       # ESLint fix + Prettier with cache
 ```
 
 ## Architecture
 
-**Astro v5** static site deployed to **Netlify**. Uses **TypeScript**, **Tailwind CSS v4**, and **React** (for interactive components only). Content managed via **Keystatic CMS** (accessible at `/admin` or `/keystatic`).
+**Astro v7** static site deployed to **Netlify**. Uses **TypeScript**, **Tailwind CSS v4**, and **React** (for interactive components only). Content managed via **Keystatic CMS** (accessible at `/admin` or `/keystatic`).
 
 ### Key Directories
 - `src/pages/` — File-based routing (Astro)
