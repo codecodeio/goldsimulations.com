@@ -72,84 +72,100 @@ import { Label } from "@/components/starwind/label";
 <script>
   import { actions } from "astro:actions";
 
-  const form = document.getElementById("subscribe-form") as HTMLFormElement | null;
-  const emailInput = document.getElementById("subscribe-email") as HTMLInputElement | null;
-  const button = document.getElementById("subscribe-button") as HTMLButtonElement | null;
-  const buttonText = document.getElementById("subscribe-button-text");
-  const buttonSpinner = document.getElementById("subscribe-button-spinner");
-  const alertError = document.getElementById("subscribe-alert-error");
-  const alertPending = document.getElementById("subscribe-alert-pending");
-  const errorMessage = document.getElementById("subscribe-error-message");
-  const resendContainer = document.getElementById("subscribe-resend-container");
-  const resendButton = document.getElementById("subscribe-resend-button") as HTMLButtonElement | null;
+  // ClientRouter is enabled site-wide (siteSettings.useViewTransitions), so this
+  // module runs on a full page load but NOT on a client-side navigation. Element
+  // references captured at module scope would point at detached nodes after a
+  // swap, and no submit handler would be attached - leaving the form to fall
+  // back to its native method="post", which POSTs to this prerendered page and
+  // 404s. Everything therefore lives in an init function re-run on each swap,
+  // matching the pattern in ContactForm.astro.
+  function initSubscribeForm() {
+    const form = document.getElementById("subscribe-form") as HTMLFormElement | null;
+    if (!form) return;
 
-  let pendingEmail = "";
+    const emailInput = document.getElementById("subscribe-email") as HTMLInputElement | null;
+    const button = document.getElementById("subscribe-button") as HTMLButtonElement | null;
+    const buttonText = document.getElementById("subscribe-button-text");
+    const buttonSpinner = document.getElementById("subscribe-button-spinner");
+    const alertError = document.getElementById("subscribe-alert-error");
+    const alertPending = document.getElementById("subscribe-alert-pending");
+    const errorMessage = document.getElementById("subscribe-error-message");
+    const resendContainer = document.getElementById("subscribe-resend-container");
+    const resendButton = document.getElementById(
+      "subscribe-resend-button",
+    ) as HTMLButtonElement | null;
 
-  function setLoading(loading: boolean) {
-    if (!button) return;
-    button.disabled = loading;
-    if (loading) {
-      buttonText?.setAttribute("hidden", "true");
-      buttonSpinner?.removeAttribute("hidden");
-    } else {
-      buttonText?.removeAttribute("hidden");
-      buttonSpinner?.setAttribute("hidden", "true");
+    let pendingEmail = "";
+
+    function setLoading(loading: boolean) {
+      if (!button) return;
+      button.disabled = loading;
+      if (loading) {
+        buttonText?.setAttribute("hidden", "true");
+        buttonSpinner?.removeAttribute("hidden");
+      } else {
+        buttonText?.removeAttribute("hidden");
+        buttonSpinner?.setAttribute("hidden", "true");
+      }
     }
+
+    function showError(message: string) {
+      if (errorMessage) errorMessage.textContent = message;
+      alertError?.removeAttribute("hidden");
+      alertPending?.setAttribute("hidden", "true");
+      resendContainer?.setAttribute("hidden", "true");
+    }
+
+    function showPending() {
+      alertPending?.removeAttribute("hidden");
+      alertError?.setAttribute("hidden", "true");
+      resendContainer?.removeAttribute("hidden");
+      if (emailInput) emailInput.readOnly = true;
+      button?.setAttribute("hidden", "true");
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      setLoading(true);
+
+      const formData = new FormData(form);
+      pendingEmail = (formData.get("email") as string) ?? "";
+
+      const { error } = await actions.subscribe(formData);
+
+      setLoading(false);
+
+      if (error) {
+        showError(error.message || "Please try again later.");
+      } else {
+        showPending();
+      }
+    });
+
+    resendButton?.addEventListener("click", async () => {
+      if (!pendingEmail) return;
+
+      resendButton.disabled = true;
+      const originalLabel = resendButton.textContent;
+      resendButton.textContent = "Sending...";
+
+      const formData = new FormData();
+      formData.append("email", pendingEmail);
+
+      const { error } = await actions.resendConfirmation(formData);
+
+      if (error) {
+        showError(error.message || "Failed to resend. Please try again.");
+        resendButton.disabled = false;
+        resendButton.textContent = originalLabel ?? "Resend confirmation";
+      } else {
+        resendButton.textContent = "Sent!";
+        resendButton.classList.remove("underline");
+        resendButton.classList.add("text-foreground/50");
+      }
+    });
   }
 
-  function showError(message: string) {
-    if (errorMessage) errorMessage.textContent = message;
-    alertError?.removeAttribute("hidden");
-    alertPending?.setAttribute("hidden", "true");
-    resendContainer?.setAttribute("hidden", "true");
-  }
-
-  function showPending() {
-    alertPending?.removeAttribute("hidden");
-    alertError?.setAttribute("hidden", "true");
-    resendContainer?.removeAttribute("hidden");
-    if (emailInput) emailInput.readOnly = true;
-    button?.setAttribute("hidden", "true");
-  }
-
-  form?.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    setLoading(true);
-
-    const formData = new FormData(form);
-    pendingEmail = (formData.get("email") as string) ?? "";
-
-    const { error } = await actions.subscribe(formData);
-
-    setLoading(false);
-
-    if (error) {
-      showError(error.message || "Please try again later.");
-    } else {
-      showPending();
-    }
-  });
-
-  resendButton?.addEventListener("click", async () => {
-    if (!pendingEmail || !resendButton) return;
-
-    resendButton.disabled = true;
-    const originalLabel = resendButton.textContent;
-    resendButton.textContent = "Sending...";
-
-    const formData = new FormData();
-    formData.append("email", pendingEmail);
-
-    const { error } = await actions.resendConfirmation(formData);
-
-    if (error) {
-      showError(error.message || "Failed to resend. Please try again.");
-      resendButton.disabled = false;
-      resendButton.textContent = originalLabel ?? "Resend confirmation";
-    } else {
-      resendButton.textContent = "Sent!";
-      resendButton.classList.remove("underline");
-      resendButton.classList.add("text-foreground/50");
-    }
-  });
+  initSubscribeForm();
+  document.addEventListener("astro:after-swap", initSubscribeForm);
 </script>
