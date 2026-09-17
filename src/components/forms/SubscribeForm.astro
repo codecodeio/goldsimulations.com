@@ -53,18 +53,18 @@ import { Label } from "@/components/starwind/label";
       Check your inbox
     </AlertTitle>
     <AlertDescription>
-      We've sent a confirmation link to your email. Click the link to finish subscribing.
+      We've just sent you an email. Open it and follow the instructions inside.
     </AlertDescription>
   </Alert>
 
   <div id="subscribe-resend-container" hidden class="text-center text-sm text-foreground/70">
-    <p class="mb-1">Didn't receive the email?</p>
+    <p class="mb-1">Didn't receive it?</p>
     <button
       type="button"
       id="subscribe-resend-button"
       class="text-primary hover:text-primary-accent underline"
     >
-      Resend confirmation
+      Send it again
     </button>
   </div>
 </form>
@@ -157,7 +157,7 @@ import { Label } from "@/components/starwind/label";
       if (error) {
         showError(error.message || "Failed to resend. Please try again.");
         resendButton.disabled = false;
-        resendButton.textContent = originalLabel ?? "Resend confirmation";
+        resendButton.textContent = originalLabel ?? "Send it again";
       } else {
         resendButton.textContent = "Sent!";
         resendButton.classList.remove("underline");

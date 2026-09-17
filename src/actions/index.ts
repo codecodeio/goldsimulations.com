@@ -2,7 +2,10 @@ import { ActionError, defineAction } from "astro:actions";
 import { SITE_URL } from "astro:env/server";
 import { z } from "astro:schema";
 
-import { sendConfirmationEmail } from "@/lib/sendConfirmationEmail";
+import {
+  sendAlreadySubscribedEmail,
+  sendConfirmationEmail,
+} from "@/lib/sendConfirmationEmail";
 import { supabase } from "@/lib/supabase";
 
 const emailSchema = z.object({ email: z.string().email() });
@@ -85,6 +88,17 @@ async function sendOrThrow(email: string, token: string) {
   }
 }
 
+// Tell an existing subscriber, by email, that they are already on the list.
+// A failure here is logged but not surfaced: the caller must return the same
+// response as the confirmation path, or the difference would reveal whether the
+// address is subscribed.
+async function notifyAlreadySubscribed(email: string) {
+  const { error } = await sendAlreadySubscribedEmail({ email });
+  if (error) {
+    console.error("resend already-subscribed send error:", error);
+  }
+}
+
 export const server = {
   subscribe: defineAction({
     accept: "form",
@@ -93,9 +107,12 @@ export const server = {
       const normalized = email.trim().toLowerCase();
       const existing = await findSubscriberByEmail(normalized);
 
-      // Anti-enumeration: never reveal that an email is already on the list.
-      // For a confirmed subscriber, succeed silently with no email sent.
+      // Anti-enumeration: the response is identical whether or not the address
+      // is already subscribed. A confirmed subscriber gets an "already on the
+      // list" email rather than nothing, so the page's "we sent you an email"
+      // is true in both cases and only the address owner learns which.
       if (existing?.confirmed_at) {
+        await notifyAlreadySubscribed(normalized);
         return { status: "pending" as const };
       }
 
@@ -116,8 +133,16 @@ export const server = {
       const normalized = email.trim().toLowerCase();
       const existing = await findSubscriberByEmail(normalized);
 
-      // No row, or already confirmed: succeed silently. Never disclose state.
-      if (!existing || existing.confirmed_at) {
+      // Already confirmed: send the "already on the list" note so the response
+      // stays identical to the resend path without the UI claiming something
+      // untrue. No row at all means we have no consent to mail the address, so
+      // that case stays a silent no-op - it is unreachable from the UI anyway,
+      // since the resend control only appears after a successful subscribe.
+      if (existing?.confirmed_at) {
+        await notifyAlreadySubscribed(normalized);
+        return { status: "sent" as const };
+      }
+      if (!existing) {
         return { status: "sent" as const };
       }
 
