@@ -1,5 +1,6 @@
 import { glob } from "astro/loaders";
-import { defineCollection, reference, z } from "astro:content";
+import { z } from "astro/zod";
+import { defineCollection, reference } from "astro:content";
 
 // Type-check frontmatter using a schema
 const blogCollection = defineCollection({

@@ -12,6 +12,9 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.goldsimulations.com",
+  // Astro 7 defaults to "jsx", which strips spaces between inline elements
+  // (e.g. "2026 <a>Gold Simulations</a>" renders as "2026Gold Simulations").
+  compressHTML: true,
   env: {
     schema: {
       SITE_URL: envField.string({ context: "server", access: "secret" }),
