@@ -1,6 +1,6 @@
+import { z } from "astro/zod";
 import { ActionError, defineAction } from "astro:actions";
 import { SITE_URL } from "astro:env/server";
-import { z } from "astro:schema";
 
 import {
   sendAlreadySubscribedEmail,
@@ -8,7 +8,7 @@ import {
 } from "@/lib/sendConfirmationEmail";
 import { supabase } from "@/lib/supabase";
 
-const emailSchema = z.object({ email: z.string().email() });
+const emailSchema = z.object({ email: z.email() });
 
 interface SubscriberRow {
   email: string;
